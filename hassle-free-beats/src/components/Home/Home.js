@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import "./App.css";
+
+// IMPORT MODULES
+
 import MusicPlayer from "react-responsive-music-player";
 
-class App extends Component {
+// IMPORT COMPONENTS
+
+// IMPORT CSS
+import "./Home.css";
+
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -13,9 +20,10 @@ class App extends Component {
     window.location.href = "http://localhost:3001/api/login";
   }
 
+  // RENDER
   render() {
     return (
-      <div className="App">
+      <div>
         <button onClick={() => this.handleLogin()}> Log In </button>
         <MusicPlayer
           playlist={[
@@ -31,5 +39,12 @@ class App extends Component {
     );
   }
 }
+// MAPSTATE TO PROPS FOR REDUX
+// function mapStateToProps(state){
+//     return state
+// }
 
-export default App;
+// EXPORT COMPONENT
+export default Home;
+// REDUX
+// export default connect(mapStateToProps, outputActions)();
