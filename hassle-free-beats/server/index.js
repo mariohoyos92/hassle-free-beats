@@ -7,7 +7,8 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 require("dotenv").config();
 
-//CONFIG VARIABLES BELOW
+// CONFIG VARIABLES BELOW
+
 const { secret } = require("../config").session;
 
 const { domain, clientID, clientSecret } = require("../config").auth0;
@@ -50,11 +51,11 @@ passport.use(
   )
 );
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser(function(obj, done) {
+passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
