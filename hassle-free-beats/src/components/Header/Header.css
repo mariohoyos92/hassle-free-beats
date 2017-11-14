@@ -1,0 +1,28 @@
+.header {
+  height: 10vh;
+  width: 100%;
+  background-color: #96031a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: fixed;
+}
+
+.header-logo {
+  height: 100%;
+  width: auto;
+  position: relative;
+  left: 0;
+}
+
+.header-image {
+  height: 100%;
+  width: auto;
+}
+
+.header-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

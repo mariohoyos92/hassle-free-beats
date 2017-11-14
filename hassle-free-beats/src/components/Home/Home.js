@@ -5,6 +5,7 @@ import RaisedButton from "material-ui/RaisedButton";
 import MusicPlayer from "react-responsive-music-player";
 
 // IMPORT COMPONENTS
+import Header from "../Header/Header";
 
 // IMPORT CSS
 import "./Home.css";
@@ -24,6 +25,23 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <Header />
+        <div className="splash">
+          <div className="splash-logo">
+            <img
+              className="logo"
+              src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/HassleFreeBeats.png"
+              alt="logo"
+            />
+          </div>
+          <div className="splash-subtext">
+            <p>
+              Are you tired of worrying about paying for royalties? Do you want
+              to be able to maximize your profits and creativity? You've come to
+              the right place.
+            </p>
+          </div>
+        </div>
         <MusicPlayer
           playlist={[
             {
