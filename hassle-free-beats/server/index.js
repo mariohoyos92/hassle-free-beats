@@ -82,19 +82,6 @@ app.get(
   })
 );
 
-app.get("/api/me", (req, res, next) => {
-  if (!req.user) res.json("USER NOT FOUND");
-  else res.json(req.user);
-});
-
-app.post("/api/test", (req, res) => {
-  app
-    .get("db")
-    .createUserFromAuth([req.body.user_id, req.body.email])
-    .then(response => res.json(response))
-    .catch(console.log);
-});
-
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
