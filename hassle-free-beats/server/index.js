@@ -45,18 +45,18 @@ passport.use(
       domain,
       clientID,
       clientSecret,
-      callbackURL: "http://localhost:3000/dashboard"
+      callbackURL: "/api/login"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
       console.log(profile);
       app
         .get("db")
-        .getUserByUserId([profile.user_id])
+        .getUserByUserId([profile._json.user_id])
         .then(response => {
           if (!response[0]) {
             app
               .get("db")
-              .createUserFromAuth([profile.user_id, profile.email])
+              .createUserFromAuth([profile._json.user_id, profile._json.email])
               .then(created => {
                 console.log(created);
                 return done(null, created[0]);
@@ -84,6 +84,11 @@ app.get(
     successRedirect: "http://localhost:3000/dashboard"
   })
 );
+
+app.get("/api/me", (req, res, next) => {
+  if (!req.user) res.json("USER NOT FOUND");
+  else res.json(req.user);
+});
 
 app.post("/api/test", (req, res) => {
   app
