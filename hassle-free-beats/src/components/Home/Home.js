@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // IMPORT MODULES
-
+import RaisedButton from 'material-ui/RaisedButton'
 import MusicPlayer from "react-responsive-music-player";
 
 // IMPORT COMPONENTS
@@ -22,14 +22,15 @@ class Home extends Component {
 
   // RENDER
   render() {
-    return <div>
-        <button onClick={() => this.handleLogin()}> Log In </button>
-        <MusicPlayer 
-        playlist={[{ url: "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3", cover: "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/fullsizeoutput_2.jpeg", title: "Say You Want Me", artist: ["Mario, an Organism", "Liz Ancel"] }, { url: "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/beat+10+sample.wav", cover: "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/fullsizeoutput_2.jpeg", title: "Grungy Tech", artist: ["Mario, an Organism"]}]} 
-        style={{ color: "#6d676e", btnColor: "#96031a" }} 
-        color="#6d676e" 
-        btnColor="#96031a" />
-      </div>;
+    return (<div>
+
+        <RaisedButton primary={true} labelColor={"#fbfffe"} label={"Log In"} onClick={() => this.handleLogin()}></RaisedButton>
+            <MusicPlayer 
+            playlist={[{ url: "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3", cover: "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/fullsizeoutput_2.jpeg", title: "Say You Want Me", artist: ["Mario, an Organism", "Liz Ancel"] }, { url: "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/beat+10+sample.wav", cover: "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/fullsizeoutput_2.jpeg", title: "Grungy Tech", artist: ["Mario, an Organism"]}]} 
+            style={{ color: "#6d676e", btnColor: "#96031a" }} 
+            color="#6d676e" 
+            btnColor="#96031a" />
+      </div>);
   }
 }
 // MAPSTATE TO PROPS FOR REDUX
