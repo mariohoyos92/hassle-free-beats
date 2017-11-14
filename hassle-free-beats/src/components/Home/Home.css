@@ -12,8 +12,7 @@
 }
 
 .splash-logo {
-  height: auto;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +20,7 @@
 }
 
 .logo {
-  height: auto;
+  /* height: auto; */
   width: 100%;
 }
 
