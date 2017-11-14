@@ -21,11 +21,13 @@ const muiTheme = getMuiTheme({
 });
 
 ReactDOM.render(
-  <BrowserRouter>
-    <MuiThemeProvider muiTheme={muiTheme}>
-      <App />
-    </MuiThemeProvider>
-  </BrowserRouter>,
+  <div className="container">
+    <BrowserRouter>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <App />
+      </MuiThemeProvider>
+    </BrowserRouter>
+  </div>,
   document.getElementById("root")
 );
 registerServiceWorker();
