@@ -20,7 +20,7 @@ class Header extends Component {
           <Link to="/">
             <img
               className="header-image"
-              src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/fullsizeoutput_2.jpeg"
+              src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png"
               alt="logo"
             />
           </Link>
