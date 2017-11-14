@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier", "prettier/react"],
+  "extends": ["standard", "standard-react", "prettier", "prettier/react"],
   "plugins": ["prettier"],
   "parserOptions": {
     "ecmaVersion": 2016,

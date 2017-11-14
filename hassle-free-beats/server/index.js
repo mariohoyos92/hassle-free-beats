@@ -48,7 +48,6 @@ passport.use(
       callbackURL: "/api/login"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
-      console.log(profile);
       app
         .get("db")
         .getUserByUserId([profile._json.user_id])
@@ -58,11 +57,9 @@ passport.use(
               .get("db")
               .createUserFromAuth([profile._json.user_id, profile._json.email])
               .then(created => {
-                console.log(created);
                 return done(null, created[0]);
               });
           } else {
-            console.log(response);
             return done(null, response[0]);
           }
         });
