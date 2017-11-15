@@ -7,8 +7,10 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 require("dotenv").config();
 
-// CONFIG VARIABLES BELOW
+// IMPORT CONTROLLERS
+const cartController = require("./controllers/cart_controller");
 
+// CONFIG VARIABLES BELOW
 const { secret } = require("../config").session;
 const { domain, clientID, clientSecret } = require("../config").auth0;
 
@@ -24,8 +26,7 @@ app.use(
   session({
     secret,
     resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 60000 }
+    saveUninitialized: false
   })
 );
 
@@ -75,12 +76,18 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
+// AUTHORIZATION
 app.get(
   "/api/login",
   passport.authenticate("auth0", {
     successRedirect: "http://localhost:3000/dashboard"
   })
 );
+
+// CART
+app.get("/api/cart", cartController.get);
+app.post("/api/cart", cartController.add);
+//
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
