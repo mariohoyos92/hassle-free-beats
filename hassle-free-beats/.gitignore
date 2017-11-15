@@ -23,3 +23,5 @@ yarn-error.log*
 /config.js
 
 .env
+
+/src/frontConfig.js

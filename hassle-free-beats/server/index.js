@@ -5,6 +5,7 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
+
 require("dotenv").config();
 
 // IMPORT CONTROLLERS
@@ -13,6 +14,7 @@ const cartController = require("./controllers/cart_controller");
 // CONFIG VARIABLES BELOW
 const { secret } = require("../config").session;
 const { domain, clientID, clientSecret } = require("../config").auth0;
+const { publishableKey, secretKey } = require("../config").stripe;
 
 const port = process.env.PORT || 3001;
 
@@ -21,6 +23,7 @@ const port = process.env.PORT || 3001;
 const app = express();
 
 // app.use(express.static(`__dirname/build`));
+const stripe = require("stripe")(secretKey);
 
 app.use(
   session({
@@ -87,7 +90,17 @@ app.get(
 // CART
 app.get("/api/cart", cartController.get);
 app.post("/api/cart", cartController.add);
-//
+
+// CHECKOUT
+app.post("/api/charge", (req, res) => {
+  stripe.charges.create(req.body, (stripeErr, stripeRes) => {
+    if (stripeErr) {
+      res.status(500).send({ error: stripeErr });
+    } else {
+      res.status(200).send({ success: stripeRes });
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);

@@ -12,7 +12,6 @@ module.exports = {
     res.status(200).send(req.session.cart);
   },
   get: (req, res, next) => {
-    console.log(req.session);
     if (req.session.cart) {
       res.status(200).json(req.session.cart);
     }

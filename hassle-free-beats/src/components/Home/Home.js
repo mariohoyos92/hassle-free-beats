@@ -27,7 +27,6 @@ class Home extends Component {
 
   componentDidMount() {
     axios.get("api/cart").then(response => {
-      console.log(response);
       this.setState({ cart: response.data.tracks });
     });
   }
@@ -44,7 +43,6 @@ class Home extends Component {
     axios
       .post("/api/cart", track)
       .then(response => {
-        console.log(response);
         this.setState({ cart: response.data.tracks });
       })
       .catch(console.log);
@@ -64,7 +62,6 @@ class Home extends Component {
             />
           </div>
         </div>
-        <Cart cart={this.state.cart} />
         <MusicPlayer
           playlist={[
             {
@@ -139,7 +136,7 @@ class Home extends Component {
           label={"Add To Cart"}
           onClick={() => this.handleAddToCart()}
         />
-        <p>this is a test to look at the font </p>
+        <Cart cart={this.state.cart} />
       </div>
     );
   }
