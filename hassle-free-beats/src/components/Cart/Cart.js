@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // IMPORT MODULES
 
 // IMPORT COMPONENTS
+import Checkout from "./Checkout";
 
 // IMPORT CSS
 import "./Cart.css";
@@ -26,8 +27,6 @@ class Cart extends Component {
 
   // RENDER
   render() {
-    console.log(this.props);
-
     let cartDisplay =
       this.state.cart.length > 0 ? (
         this.state.cart.map(track => {
@@ -36,7 +35,16 @@ class Cart extends Component {
       ) : (
         <p>Your Cart is Empty </p>
       );
-    return <div>{cartDisplay}</div>;
+    return (
+      <div>
+        <div>{cartDisplay}</div>
+        <Checkout
+          name={"Hassle Free Beats"}
+          description={"No Waiting, No Royalties, No Limits"}
+          amount={10 * this.state.cart.length}
+        />
+      </div>
+    );
   }
 }
 // MAPSTATE TO PROPS FOR REDUX
