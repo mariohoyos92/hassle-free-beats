@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import IconButton from "material-ui/IconButton";
 
 // IMPORT MODULES
 
@@ -30,7 +31,18 @@ class Cart extends Component {
     let cartDisplay =
       this.state.cart.length > 0 ? (
         this.state.cart.map(track => {
-          return <p key={Math.random()}>{track}</p>;
+          return (
+            <div className="cart-item">
+              <p key={Math.random()}>{track}</p>
+              <IconButton
+                iconClassName="fa fa-trash"
+                iconStyle={{ iconHoverColor: "#faa916" }}
+                tooltip={"Delete From Cart"}
+                touch={true}
+                tooltipPosition="top-left"
+              />
+            </div>
+          );
         })
       ) : (
         <p>Your Cart is Empty </p>
