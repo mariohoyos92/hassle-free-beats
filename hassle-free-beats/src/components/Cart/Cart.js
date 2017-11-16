@@ -22,6 +22,12 @@ class Cart extends Component {
   }
 
   //   LIFESTYLE FUNCTIONS
+  componentDidMount() {
+    axios.get("api/cart").then(response => {
+      this.setState({ cart: response.data.tracks });
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({ cart: nextProps.cart });
   }

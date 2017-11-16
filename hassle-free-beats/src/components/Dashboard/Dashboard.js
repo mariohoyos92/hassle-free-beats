@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 // IMPORT MODULES
 
@@ -8,7 +9,22 @@ import React, { Component } from "react";
 import "./Dashboard.css";
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      purchases: []
+    };
+  }
   // LIFESTYLE FUNCTIONS
+  componentDidMount() {
+    axios
+      .get("/api/purchases")
+      .then(response => {
+        console.log(response);
+        this.setState({ purchases: response.data });
+      })
+      .catch(console.log);
+  }
 
   // CUSTOM FUNCS
 
