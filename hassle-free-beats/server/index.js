@@ -95,14 +95,19 @@ app.get("/api/beats", (req, res) => {
     .then(response => res.status(200).json(response))
     .catch(res.status(500));
 });
+
 // DASHBOARD
 app.get("/api/purchases", (req, res) => {
-  console.log(req.session);
-  if (req.session.purchases && req.session.paid) {
-    res.status(200).json(req.session.purchases);
-  } else {
-    res.status(500).json("Nothing in purchases");
-  }
+  app
+    .get("db")
+    .getPlaylist()
+    .then(response => {
+      let filter = response.filter(
+        track => req.session.purchases.indexOf(track.title) !== -1
+      );
+      res.status(200).json(filter);
+    })
+    .catch(res.status(500));
 });
 
 // CART
