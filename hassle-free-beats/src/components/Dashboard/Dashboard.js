@@ -21,7 +21,9 @@ class Dashboard extends Component {
       .get("/api/purchases")
       .then(response => {
         console.log(response);
-        this.setState({ purchases: response.data });
+        this.setState({ purchases: response.data }, () =>
+          console.log(this.state)
+        );
       })
       .catch(console.log);
   }
@@ -30,7 +32,20 @@ class Dashboard extends Component {
 
   // RENDER
   render() {
-    return <div>Hello there</div>;
+    const purchaseLinks = this.state.purchases.map(track => (
+      <div key={track.title}>
+        <a href={track.url} download>
+          {track.title}
+        </a>
+      </div>
+    ));
+    return (
+      <div>
+        <div>Hello there</div>
+        <p>Please click the links below to download your beats!</p>
+        {purchaseLinks}
+      </div>
+    );
   }
 }
 // MAPSTATE TO PROPS FOR REDUX
