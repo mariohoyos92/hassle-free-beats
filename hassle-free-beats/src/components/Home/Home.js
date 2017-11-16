@@ -45,7 +45,7 @@ class Home extends Component {
       .then(response => {
         this.setState({ cart: response.data.tracks });
       })
-      .catch(console.log);
+      .catch(() => alert("This beat is already in your cart!"));
   }
 
   // RENDER
@@ -121,8 +121,7 @@ class Home extends Component {
               artist: ["G.E.M."]
             }
           ]}
-          color={"#6d676e"}
-          btnColor={"#96031a"}
+          progressColor={"#96031a"}
         />
         <RaisedButton
           primary={true}
@@ -137,6 +136,12 @@ class Home extends Component {
           onClick={() => this.handleAddToCart()}
         />
         <Cart cart={this.state.cart} />
+        <a
+          href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3"
+          download
+        >
+          Click here to download your song
+        </a>
       </div>
     );
   }
