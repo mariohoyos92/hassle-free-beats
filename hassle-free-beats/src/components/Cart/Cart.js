@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import IconButton from "material-ui/IconButton";
+import axios from "axios";
 
 // IMPORT MODULES
 
@@ -17,6 +18,7 @@ class Cart extends Component {
     };
 
     // BIND FUNCTIONS HERE
+    this.handleDeleteFromCart = this.handleDeleteFromCart.bind(this);
   }
 
   //   LIFESTYLE FUNCTIONS
@@ -25,6 +27,12 @@ class Cart extends Component {
   }
 
   // CUSTOM FUNCS
+  handleDeleteFromCart(track) {
+    axios
+      .delete(`/api/cart/${track}`)
+      .then(response => this.setState({ cart: response.data.tracks }))
+      .catch(console.log);
+  }
 
   // RENDER
   render() {
@@ -32,15 +40,18 @@ class Cart extends Component {
       this.state.cart.length > 0 ? (
         this.state.cart.map(track => {
           return (
-            <div className="cart-item">
-              <p key={Math.random()}>{track}</p>
-              <IconButton
-                iconClassName="fa fa-trash"
-                iconStyle={{ iconHoverColor: "#faa916" }}
-                tooltip={"Delete From Cart"}
-                touch={true}
-                tooltipPosition="top-left"
-              />
+            <div className="cart-item" key={track}>
+              <p>
+                {track}
+                <IconButton
+                  onClick={() => this.handleDeleteFromCart(track)}
+                  iconClassName="fa fa-trash"
+                  iconStyle={{ iconHoverColor: "#faa916" }}
+                  tooltip={"Delete From Cart"}
+                  touch={true}
+                  tooltipPosition="top-left"
+                />
+              </p>
             </div>
           );
         })

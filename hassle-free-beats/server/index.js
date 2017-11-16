@@ -90,6 +90,7 @@ app.get(
 // CART
 app.get("/api/cart", cartController.get);
 app.post("/api/cart", cartController.add);
+app.delete("/api/cart/:title", cartController.delete);
 
 // CHECKOUT
 app.post("/api/charge", (req, res) => {
@@ -97,7 +98,8 @@ app.post("/api/charge", (req, res) => {
     if (stripeErr) {
       res.status(500).send({ error: stripeErr });
     } else {
-      res.status(200).send({ success: stripeRes });
+      req.session.paid = true;
+      res.redirect(200, "/dashboard");
     }
   });
 });

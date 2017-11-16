@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
+import { withRouter } from "react-router-dom";
 
 import { publishableKey } from "../../frontConfig";
 
@@ -8,38 +9,51 @@ const CURRENCY = "USD";
 
 const fromDollarToCent = amount => amount * 100;
 
-const successPayment = data => {
-  console.log(data);
-  alert("Payment Successful");
-};
+class Checkout extends Component {
+  constructor(props) {
+    super(props);
+    this.successPayment = this.successPayment.bind(this);
+    this.errorPayment = this.errorPayment.bind(this);
+    this.onToken = this.onToken.bind(this);
+  }
 
-const errorPayment = data => {
-  alert("Payment Error");
-};
+  successPayment(data) {
+    this.props.history.push("/dashboard");
+  }
 
-const onToken = (amount, description) => token =>
-  axios
-    .post("/api/charge", {
-      description,
-      source: token.id,
-      currency: CURRENCY,
-      amount: fromDollarToCent(amount)
-    })
-    .then(successPayment)
-    .catch(errorPayment);
+  errorPayment(data) {
+    alert("Payment Error");
+  }
 
-const Checkout = ({ name, description, amount }) => (
-  <StripeCheckout
-    name={name}
-    description={description}
-    image="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png"
-    panelLabel="Buy Beats:"
-    amount={fromDollarToCent(amount)}
-    token={onToken(amount, description)}
-    currency={CURRENCY}
-    stripeKey={publishableKey}
-    zipCode={true}
-  />
-);
+  onToken(amount, description) {
+    return token =>
+      axios
+        .post("/api/charge", {
+          description,
+          source: token.id,
+          currency: CURRENCY,
+          amount: fromDollarToCent(amount)
+        })
+        .then(this.successPayment)
+        .catch(this.errorPayment);
+  }
 
-export default Checkout;
+  render() {
+    const { name, description, amount } = this.props;
+    return (
+      <StripeCheckout
+        name={name}
+        description={description}
+        image="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png"
+        panelLabel="Buy Beats:"
+        amount={fromDollarToCent(amount)}
+        token={this.onToken(amount, description)}
+        currency={CURRENCY}
+        stripeKey={publishableKey}
+        zipCode={true}
+      />
+    );
+  }
+}
+
+export default withRouter(Checkout);
