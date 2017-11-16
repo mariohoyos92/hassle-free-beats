@@ -26,8 +26,17 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    axios.get("api/cart").then(response => {
-      this.setState({ cart: response.data.tracks });
+    axios.get("/api/beats").then(response => {
+      let playlist = [];
+      response.data.forEach(element => {
+        playlist.push({
+          url: element.url,
+          artist: [element.artist],
+          cover: element.cover,
+          title: element.title
+        });
+      });
+      this.setState({ playlist: playlist }, () => console.log(this.state));
     });
   }
 
@@ -63,64 +72,19 @@ class Home extends Component {
           </div>
         </div>
         <MusicPlayer
-          playlist={[
-            {
-              url:
-                "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3",
-              cover:
-                "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png",
-              title: "Say You Want Me",
-              artist: ["Mario, an Organism", "Liz Ancel"]
-            },
-            {
-              url:
-                "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/beat+10+sample.wav",
-              cover:
-                "https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/fullsizeoutput_2.jpeg",
-              title: "Grungy Tech",
-              artist: ["Mario, an Organism"]
-            },
-            {
-              url:
-                "http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3",
-              cover:
-                "http://res.cloudinary.com/alick/image/upload/v1502689731/Despacito_uvolhp.jpg",
-              title: "Despacito",
-              artist: ["Luis Fonsi", "Daddy Yankee"]
-            },
-            {
-              url:
-                "http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3",
-              cover:
-                "http://res.cloudinary.com/alick/image/upload/v1502375978/bedtime_stories_bywggz.jpg",
-              title: "Bedtime Stories",
-              artist: ["Jay Chou"]
-            },
-            {
-              url:
-                "http://res.cloudinary.com/alick/video/upload/v1502444212/Actor_ud8ccw.mp3",
-              cover:
-                "http://res.cloudinary.com/alick/image/upload/v1502444304/actor_umzdur.jpg",
-              title: "演员",
-              artist: ["薛之谦"]
-            },
-            {
-              url:
-                "http://res.cloudinary.com/alick/video/upload/v1502444215/Bridge_of_Fate_aaksg1.mp3",
-              cover:
-                "http://res.cloudinary.com/alick/image/upload/v1502444306/Bridge_of_Fate_o36rem.jpg",
-              title: "Bridge of Fate",
-              artist: ["王力宏", "谭维维"]
-            },
-            {
-              url:
-                "http://res.cloudinary.com/alick/video/upload/v1502444222/Goodbye_byaom5.mp3",
-              cover:
-                "http://res.cloudinary.com/alick/image/upload/v1502444310/Goodbye_hpubmk.jpg",
-              title: "Goodbye",
-              artist: ["G.E.M."]
-            }
-          ]}
+          playlist={
+            this.state.playlist.length > 0
+              ? this.state.playlist
+              : [
+                  {
+                    id: 1,
+                    url: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3`,
+                    cover: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png`,
+                    title: "Say You Want Me",
+                    artist: ["Mario, an Organism", "Liz Ancel"]
+                  }
+                ]
+          }
           progressColor={"#96031a"}
         />
         <RaisedButton

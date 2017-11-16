@@ -1,0 +1,1 @@
+SELECT mp3_url FROM beats WHERE $1 = beat_title;

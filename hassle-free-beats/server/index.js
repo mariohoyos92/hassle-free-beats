@@ -87,6 +87,24 @@ app.get(
   })
 );
 
+// BEATS
+app.get("/api/beats", (req, res) => {
+  app
+    .get("db")
+    .getPlaylist()
+    .then(response => res.status(200).json(response))
+    .catch(res.status(500));
+});
+// DASHBOARD
+app.get("/api/purchases", (req, res) => {
+  console.log(req.session);
+  if (req.session.purchases && req.session.paid) {
+    res.status(200).json(req.session.purchases);
+  } else {
+    res.status(500).json("Nothing in purchases");
+  }
+});
+
 // CART
 app.get("/api/cart", cartController.get);
 app.post("/api/cart", cartController.add);
@@ -99,6 +117,8 @@ app.post("/api/charge", (req, res) => {
       res.status(500).send({ error: stripeErr });
     } else {
       req.session.paid = true;
+      req.session.purchases = req.session.cart.tracks;
+      delete req.session.cart;
       res.redirect(200, "/dashboard");
     }
   });
