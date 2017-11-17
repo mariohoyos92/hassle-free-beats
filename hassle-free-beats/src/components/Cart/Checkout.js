@@ -18,7 +18,7 @@ class Checkout extends Component {
   }
 
   successPayment(data) {
-    this.props.history.push("/dashboard");
+    this.props.history.push("/success");
   }
 
   errorPayment(data) {

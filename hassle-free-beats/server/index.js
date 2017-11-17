@@ -124,7 +124,7 @@ app.post("/api/charge", (req, res) => {
       req.session.paid = true;
       req.session.purchases = req.session.cart.tracks;
       delete req.session.cart;
-      res.redirect(200, "/dashboard");
+      res.redirect(200, "/success");
     }
   });
 });

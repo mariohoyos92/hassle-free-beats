@@ -1,0 +1,27 @@
+.footer-container {
+  background-color: #1b1b1e;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.copyright {
+  color: #6d676e;
+}
+
+.footer-span {
+  color: rgb(185, 185, 185);
+  margin-left: 2px;
+}
+
+.footer-link {
+  color: rgb(185, 185, 185);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #faa916;
+}

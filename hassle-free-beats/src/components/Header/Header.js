@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // IMPORT MODULES
 import { Link } from "react-router-dom";
 import FlatButton from "material-ui/FlatButton";
+import LoginButton from "../LoginButton/LoginButton";
 
 // IMPORT CSS
 import "./Header.css";
@@ -30,6 +31,7 @@ class Header extends Component {
           <FlatButton label="About Us" />
           <FlatButton label="Dashboard" />
           <FlatButton label="Contact" />
+          <LoginButton />{" "}
         </div>
       </div>
     );

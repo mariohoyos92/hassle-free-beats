@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 // IMPORT MODULES
 
@@ -16,34 +15,14 @@ class Dashboard extends Component {
     };
   }
   // LIFESTYLE FUNCTIONS
-  componentDidMount() {
-    axios
-      .get("/api/purchases")
-      .then(response => {
-        console.log(response);
-        this.setState({ purchases: response.data }, () =>
-          console.log(this.state)
-        );
-      })
-      .catch(console.log);
-  }
 
   // CUSTOM FUNCS
 
   // RENDER
   render() {
-    const purchaseLinks = this.state.purchases.map(track => (
-      <div key={track.title}>
-        <a href={track.url} download>
-          {track.title}
-        </a>
-      </div>
-    ));
     return (
-      <div>
+      <div className="dashboard-container">
         <div>Hello there</div>
-        <p>Please click the links below to download your beats!</p>
-        {purchaseLinks}
       </div>
     );
   }

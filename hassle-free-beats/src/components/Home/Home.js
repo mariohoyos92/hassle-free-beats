@@ -21,7 +21,6 @@ class Home extends Component {
       cart: []
     };
 
-    this.handleLogin = this.handleLogin.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
@@ -38,10 +37,6 @@ class Home extends Component {
       });
       this.setState({ playlist: playlist }, () => console.log(this.state));
     });
-  }
-
-  handleLogin() {
-    window.location.href = "http://localhost:3001/api/login";
   }
 
   handleAddToCart() {
@@ -90,22 +85,10 @@ class Home extends Component {
         <RaisedButton
           primary={true}
           labelColor={"#fbfffe"}
-          label={"Log In"}
-          onClick={() => this.handleLogin()}
-        />{" "}
-        <RaisedButton
-          primary={true}
-          labelColor={"#fbfffe"}
           label={"Add To Cart"}
           onClick={() => this.handleAddToCart()}
         />
         <Cart cart={this.state.cart} />
-        <a
-          href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3"
-          download
-        >
-          Click here to download your song
-        </a>
       </div>
     );
   }
