@@ -5,7 +5,6 @@ import axios from "axios";
 // IMPORT MODULES
 
 // IMPORT COMPONENTS
-import Checkout from "./Checkout";
 
 // IMPORT CSS
 import "./Cart.css";
@@ -67,11 +66,6 @@ class Cart extends Component {
     return (
       <div>
         <div>{cartDisplay}</div>
-        <Checkout
-          name={"Hassle Free Beats"}
-          description={"No Waiting, No Royalties, No Limits"}
-          amount={10 * this.state.cart.length}
-        />
       </div>
     );
   }

@@ -27,10 +27,18 @@ class Header extends Component {
           </Link>
         </div>
         <div className="header-button">
-          <FlatButton label="Home" />
-          <FlatButton label="About Us" />
-          <FlatButton label="Dashboard" />
-          <FlatButton label="Contact" />
+          <Link to="/">
+            <FlatButton label="Home" />
+          </Link>
+          <Link to="/about">
+            <FlatButton label="About Us" />{" "}
+          </Link>
+          <Link to="/dashboard">
+            <FlatButton label="Dashboard" />
+          </Link>
+          <Link to="contact">
+            <FlatButton label="Contact" />
+          </Link>
           <LoginButton />{" "}
         </div>
       </div>
