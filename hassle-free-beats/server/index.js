@@ -10,6 +10,8 @@ require("dotenv").config();
 
 // IMPORT CONTROLLERS
 const cartController = require("./controllers/cart_controller");
+const beatController = require("./controllers/beats_controller");
+const dashboardController = require("./controllers/dashboard_controller");
 
 // CONFIG VARIABLES BELOW
 const { secret } = require("../config").session;
@@ -88,27 +90,10 @@ app.get(
 );
 
 // BEATS
-app.get("/api/beats", (req, res) => {
-  app
-    .get("db")
-    .getPlaylist()
-    .then(response => res.status(200).json(response))
-    .catch(res.status(500));
-});
+app.get("/api/beats", beatController.playlist);
 
 // DASHBOARD
-app.get("/api/purchases", (req, res) => {
-  app
-    .get("db")
-    .getPlaylist()
-    .then(response => {
-      let filter = response.filter(
-        track => req.session.purchases.indexOf(track.title) !== -1
-      );
-      res.status(200).json(filter);
-    })
-    .catch(res.status(500));
-});
+app.get("/api/purchases", dashboardController.getPurchases);
 
 // CART
 app.get("/api/cart", cartController.get);
@@ -125,7 +110,7 @@ app.post("/api/charge", (req, res) => {
       req.session.purchases = req.session.cart.tracks;
       delete req.session.cart;
       res.redirect(200, "/success");
-      console.log(req.session);
+
       if (req.session.passport) {
         app
           .get("db")
@@ -139,7 +124,6 @@ app.post("/api/charge", (req, res) => {
                 response[0].id
               ])
               .then(invoiceResponse => {
-                console.log("invresp", invoiceResponse);
                 app
                   .get("db")
                   .getPlaylist()
@@ -148,24 +132,25 @@ app.post("/api/charge", (req, res) => {
                       track => req.session.purchases.indexOf(track.title) !== -1
                     );
                     filter.forEach(trackObj => {
-                      console.log("trackobj", trackObj);
                       app
                         .get("db")
                         .createInvoiceLineForUser([
                           invoiceResponse[0].invoice_id,
                           trackObj.beat_id
                         ])
-                        .then(line => console.log(line));
+                        .then()
+                        .catch(console.log("InvoiceLine"));
                     });
-                  });
-              });
+                  })
+                  .catch(console.log("getplaylist"));
+              })
+              .catch(console.log("createInvoiceForUser"));
           });
       } else {
         app
           .get("db")
           .createInvoiceForUser([new Date(), req.body.amount, null])
           .then(invoiceResponse => {
-            console.log("invresp", invoiceResponse);
             app
               .get("db")
               .getPlaylist()
@@ -174,51 +159,23 @@ app.post("/api/charge", (req, res) => {
                   track => req.session.purchases.indexOf(track.title) !== -1
                 );
                 filter.forEach(trackObj => {
-                  console.log("trackobj", trackObj);
                   app
                     .get("db")
                     .createInvoiceLineForUser([
                       invoiceResponse[0].invoice_id,
                       trackObj.beat_id
                     ])
-                    .then(line => console.log(line));
+                    .then()
+                    .catch(console.log("trackobj"));
                 });
-              });
-          });
+              })
+              .catch(console.log("getplaylist2"));
+          })
+          .catch(console.log("CreateInvoiceforUser2"));
       }
     }
   });
 });
-//       if(req.session.passport.user){
-//         app.get('db').getUserID([req.session.passport.user.user_id]).then(console.log(response))
-
-//         app
-//     .get("db")
-//     .getPlaylist()
-//     .then(response => {
-//       let filter = response.filter(
-//         track => req.session.purchases.indexOf(track.title) !== -1
-//       );
-
-//     }).catch(res.status(500))
-//       })} else {
-//         app
-//     .get("db")
-//     .getPlaylist()
-//     .then(response => {
-//       let filter = response.filter(
-//         track => req.session.purchases.indexOf(track.title) !== -1
-//       );
-
-//       }
-
-//       req.session.paid = true;
-//       req.session.purchases = req.session.cart.tracks;
-//       delete req.session.cart;
-//       res.redirect(200, "/success");
-//     }
-//   });
-// });
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
