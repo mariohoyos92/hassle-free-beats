@@ -1,0 +1,1 @@
+INSERT INTO invoice_line (invoice_reference_id, sold_beat, price) VALUES ($1, $2, 10.00) RETURNING line_id;

@@ -125,9 +125,100 @@ app.post("/api/charge", (req, res) => {
       req.session.purchases = req.session.cart.tracks;
       delete req.session.cart;
       res.redirect(200, "/success");
+      console.log(req.session);
+      if (req.session.passport) {
+        app
+          .get("db")
+          .getUserId([req.session.passport.user.user_id])
+          .then(response => {
+            app
+              .get("db")
+              .createInvoiceForUser([
+                new Date(),
+                req.body.amount,
+                response[0].id
+              ])
+              .then(invoiceResponse => {
+                console.log("invresp", invoiceResponse);
+                app
+                  .get("db")
+                  .getPlaylist()
+                  .then(response => {
+                    let filter = response.filter(
+                      track => req.session.purchases.indexOf(track.title) !== -1
+                    );
+                    filter.forEach(trackObj => {
+                      console.log("trackobj", trackObj);
+                      app
+                        .get("db")
+                        .createInvoiceLineForUser([
+                          invoiceResponse[0].invoice_id,
+                          trackObj.beat_id
+                        ])
+                        .then(line => console.log(line));
+                    });
+                  });
+              });
+          });
+      } else {
+        app
+          .get("db")
+          .createInvoiceForUser([new Date(), req.body.amount, null])
+          .then(invoiceResponse => {
+            console.log("invresp", invoiceResponse);
+            app
+              .get("db")
+              .getPlaylist()
+              .then(response => {
+                let filter = response.filter(
+                  track => req.session.purchases.indexOf(track.title) !== -1
+                );
+                filter.forEach(trackObj => {
+                  console.log("trackobj", trackObj);
+                  app
+                    .get("db")
+                    .createInvoiceLineForUser([
+                      invoiceResponse[0].invoice_id,
+                      trackObj.beat_id
+                    ])
+                    .then(line => console.log(line));
+                });
+              });
+          });
+      }
     }
   });
 });
+//       if(req.session.passport.user){
+//         app.get('db').getUserID([req.session.passport.user.user_id]).then(console.log(response))
+
+//         app
+//     .get("db")
+//     .getPlaylist()
+//     .then(response => {
+//       let filter = response.filter(
+//         track => req.session.purchases.indexOf(track.title) !== -1
+//       );
+
+//     }).catch(res.status(500))
+//       })} else {
+//         app
+//     .get("db")
+//     .getPlaylist()
+//     .then(response => {
+//       let filter = response.filter(
+//         track => req.session.purchases.indexOf(track.title) !== -1
+//       );
+
+//       }
+
+//       req.session.paid = true;
+//       req.session.purchases = req.session.cart.tracks;
+//       delete req.session.cart;
+//       res.redirect(200, "/success");
+//     }
+//   });
+// });
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
