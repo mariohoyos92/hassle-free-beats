@@ -31,7 +31,7 @@ class Header extends Component {
             <FlatButton label="Home" />
           </Link>
           <Link to="/about">
-            <FlatButton label="About Us" />{" "}
+            <FlatButton label="About Us" />
           </Link>
           <Link to="/dashboard">
             <FlatButton label="Dashboard" />

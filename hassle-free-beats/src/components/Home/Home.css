@@ -2,13 +2,15 @@
   width: 100%;
   height: 100vh;
   background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/background+gradient.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: none;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .splash-logo {

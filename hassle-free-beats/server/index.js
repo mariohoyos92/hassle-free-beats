@@ -10,8 +10,6 @@ require("dotenv").config();
 
 // IMPORT CONTROLLERS
 const cartController = require("./controllers/cart_controller");
-const beatController = require("./controllers/beats_controller");
-const dashboardController = require("./controllers/dashboard_controller");
 
 // CONFIG VARIABLES BELOW
 const { secret } = require("../config").session;
@@ -21,7 +19,6 @@ const { publishableKey, secretKey } = require("../config").stripe;
 const port = process.env.PORT || 3001;
 
 // BEGIN SERVER
-
 const app = express();
 
 // app.use(express.static(`__dirname/build`));
@@ -90,10 +87,27 @@ app.get(
 );
 
 // BEATS
-app.get("/api/beats", beatController.playlist);
+app.get("/api/beats", (req, res, next) => {
+  app
+    .get("db")
+    .getPlaylist()
+    .then(response => res.status(200).json(response))
+    .catch(res.status(500));
+});
 
 // DASHBOARD
-app.get("/api/purchases", dashboardController.getPurchases);
+app.get("/api/purchases", (req, res, next) => {
+  app
+    .get("db")
+    .getPlaylist()
+    .then(response => {
+      let filter = response.filter(
+        track => req.session.purchases.indexOf(track.title) !== -1
+      );
+      res.status(200).json(filter);
+    })
+    .catch(res.status(500));
+});
 
 // CART
 app.get("/api/cart", cartController.get);
