@@ -86,6 +86,14 @@ app.get(
   })
 );
 
+app.get("/api/logstatus", (req, res, next) => {
+  res.status(200).json(req.session);
+});
+
+app.get("/api/logout", (req, res, next) => {
+  req.session.destroy();
+  res.redirect(200, "/");
+});
 // BEATS
 app.get("/api/beats", (req, res, next) => {
   app
@@ -107,6 +115,11 @@ app.get("/api/purchases", (req, res, next) => {
       res.status(200).json(filter);
     })
     .catch(res.status(500));
+});
+
+// LOGINSTATUS
+app.get("/api/logstatus", (req, res, next) => {
+  res.status(200).json(req.session);
 });
 
 // CART
