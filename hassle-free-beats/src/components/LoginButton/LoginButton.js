@@ -16,7 +16,6 @@ class LoginButton extends Component {
 
   componentDidMount() {
     axios.get("/api/logstatus").then(response => {
-      console.log(response);
       if (response.data.passport) {
         this.setState({ loggedIn: true });
       }

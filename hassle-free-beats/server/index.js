@@ -94,6 +94,7 @@ app.get("/api/logout", (req, res, next) => {
   req.session.destroy();
   res.redirect(200, "/");
 });
+
 // BEATS
 app.get("/api/beats", (req, res, next) => {
   app
@@ -104,6 +105,28 @@ app.get("/api/beats", (req, res, next) => {
 });
 
 // DASHBOARD
+app.get("/api/pastpurchases", (req, res, next) => {
+  if (req.session.passport) {
+    app
+      .get("db")
+      .getUserId([req.session.passport.user.user_id])
+      .then(response => {
+        console.log(response);
+        app
+          .get("db")
+          .getPastPurchases([response[0].id])
+          .then(beats => {
+            console.log(beats);
+            res.status(200).json(beats);
+          })
+          .catch(console.log);
+      });
+  } else {
+    res.status(200).json("User not logged in");
+  }
+});
+
+// SUCCESS
 app.get("/api/purchases", (req, res, next) => {
   app
     .get("db")
