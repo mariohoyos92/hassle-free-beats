@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 // IMPORT COMPONENTS
 import Header from "../Header/Header";
 import Cart from "../Cart/Cart";
+import MusicStore from "../MusicStore/MusicStore";
 
 // IMPORT CSS
 import "./Home.css";
@@ -100,6 +101,21 @@ class Home extends Component {
           />
         </Link>
         <Cart cart={this.state.cart} />
+        <MusicStore
+          playlist={
+            this.state.playlist.length > 0
+              ? this.state.playlist
+              : [
+                  {
+                    id: 1,
+                    url: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3`,
+                    cover: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png`,
+                    title: "Say You Want Me",
+                    artist: ["Mario, an Organism", "Liz Ancel"]
+                  }
+                ]
+          }
+        />
       </div>
     );
   }

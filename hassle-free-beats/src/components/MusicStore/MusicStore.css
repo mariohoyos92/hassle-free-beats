@@ -1,0 +1,48 @@
+.store-container {
+  width: 80%;
+  margin: 0 10%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.store-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 10%;
+  width: 100%;
+}
+
+.store-header-left {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  width: 35%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.store-header-right {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  width: 50%;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.store-logo {
+  height: 100%;
+  width: auto;
+}
+
+.store-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.beats-container {
+  overflow-y: scroll;
+}
