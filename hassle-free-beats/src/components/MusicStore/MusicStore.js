@@ -49,8 +49,39 @@ class MusicStore extends Component {
     this.handleNext();
   }
 
+  handleAdjustVolume(e) {
+    const volumeContainer = this.volumeContainer;
+    let volume =
+      (e.clientX - volumeContainer.getBoundingClientRect().left) /
+      volumeContainer.clientWidth;
+    volume = volume < 0 ? 0 : volume;
+    this.audioContainer.volume = volume;
+    this.setState({
+      volume: volume
+    });
+  }
+
+  handleAdjustProgress(e) {
+    const progressContainer = this.progressContainer;
+    const progress =
+      (e.clientX - progressContainer.getBoundingClientRect().left) /
+      progressContainer.clientWidth;
+    const currentTime = this.audioContainer.duration * progress;
+    this.audioContainer.currentTime = currentTime;
+    this.setState(
+      {
+        play: true,
+        progress: progress
+      },
+      () => {
+        this.audioContainer.play();
+      }
+    );
+  }
+
   handleToggle() {
     this.state.play ? this.audioContainer.pause() : this.audioContainer.play();
+    this.setState({ play: !this.state.play });
   }
 
   handlePrev() {
@@ -141,7 +172,53 @@ class MusicStore extends Component {
           </div>
         </div>
         <div className="beats-container">{storeItems}</div>
-        <div className="player-controls" />
+        <div className="player-controls">
+          <div className="controls-container" />
+          <i
+            className="icon fa fa-step-backward"
+            style={{ color: "rgb(74, 74, 74)" }}
+            onClick={this.handlePrev.bind(this)}
+          />
+          <i
+            className={`icon fa fa-${this.state.play ? "pause" : "play"}`}
+            style={{ color: "rgb(74, 74, 74)" }}
+            onClick={this.handleToggle.bind(this)}
+          />
+          <i
+            className="icon fa fa-step-forward"
+            style={{ color: "rgb(74, 74, 74)" }}
+            onClick={this.handleNext.bind(this)}
+          />
+          <div className="volume-icon">
+            <i className="icon fa fa-volume-up" />
+          </div>
+          <div className="volume-wrapper">
+            <div
+              className="progress-container"
+              onClick={this.handleAdjustVolume.bind(this)}
+              ref={ref => {
+                this.volumeContainer = ref;
+              }}
+            >
+              <div
+                className="progress"
+                style={{ width: `${this.state.volume * 100}%` }}
+              />
+            </div>
+          </div>
+          <div
+            className="progress-container"
+            onClick={this.handleAdjustProgress.bind(this)}
+            ref={ref => {
+              this.progressContainer = ref;
+            }}
+          >
+            <div className="progress" style={progressStyle} />
+            <div className="left-time">
+              -{this._formatTime(this.state.leftTime)}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

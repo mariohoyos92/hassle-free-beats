@@ -1,3 +1,16 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica,
+    Arial, PingFang SC, Source Han Sans CN, Hiragino Sans GB, Microsoft YaHei,
+    WenQuanYi Micro Hei, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hide {
+  display: none;
+}
+
 .store-container {
   width: 80%;
   margin: 0 10%;
@@ -44,5 +57,52 @@
 }
 
 .beats-container {
+  height: 80%;
   overflow-y: scroll;
+  width: 100%;
+}
+
+.player-controls {
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+}
+
+/* .volume-container {
+  display: none;
+} */
+
+.volume-icon i {
+  color: #6d676e;
+}
+
+.volume-wrapper {
+  width: 50px;
+  padding-left: 2px;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+.progress-container {
+  height: 2px;
+  margin-top: calc(0.8em - 1px);
+  background-color: #6d676e;
+}
+
+.progress {
+  height: 2px;
+  background-color: #6d676e;
+}
+
+.volume-wrapper:hover {
+  opacity: 1;
+}
+
+.progress-container {
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  cursor: pointer;
+}
+.progress {
+  height: 100%;
 }
