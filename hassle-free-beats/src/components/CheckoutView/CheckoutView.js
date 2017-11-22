@@ -73,16 +73,16 @@ export default class CheckoutView extends Component {
         </div>
         <div className="checkout-cart">
           <p>
-            Verify that the contents of your car are accurate below, then click
+            Verify that the contents of your cart are accurate below, then click
             Pay With Card to check out securely using Stripe
           </p>
           {cartViewDisplay}
+          <Checkout
+            name={"Hassle Free Beats"}
+            description={"No Waiting, No Royalties, No Limits"}
+            amount={10 * this.state.cart.length}
+          />
         </div>
-        <Checkout
-          name={"Hassle Free Beats"}
-          description={"No Waiting, No Royalties, No Limits"}
-          amount={10 * this.state.cart.length}
-        />
       </div>
     );
   }

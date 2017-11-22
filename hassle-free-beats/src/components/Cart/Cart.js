@@ -42,7 +42,7 @@ class Cart extends Component {
   // RENDER
   render() {
     let cartDisplay =
-      this.state.cart.length > 0 ? (
+      this.state.cart && this.state.cart.length > 0 ? (
         this.state.cart.map(track => {
           return (
             <div className="cart-item" key={track}>
@@ -54,8 +54,9 @@ class Cart extends Component {
                   iconStyle={{ iconHoverColor: "#faa916" }}
                   tooltip={"Delete From Cart"}
                   touch={true}
-                  tooltipPosition="top-left"
+                  tooltipPosition="bottom-right"
                 />
+                <span style={{ "font-weight": "bold" }}>$10.00</span>
               </p>
             </div>
           );
@@ -66,6 +67,14 @@ class Cart extends Component {
     return (
       <div>
         <div>{cartDisplay}</div>
+        <div
+          style={{
+            "text-align": "right",
+            "font-weight": "bold"
+          }}
+        >
+          Total: ${this.state.cart.length * 10}.00
+        </div>
       </div>
     );
   }

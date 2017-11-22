@@ -30,6 +30,7 @@ class LoginButton extends Component {
         .get("/api/logout")
         .then(this.props.history.push("/"))
         .catch(console.log);
+      this.setState({ loggedIn: false });
     }
   }
 

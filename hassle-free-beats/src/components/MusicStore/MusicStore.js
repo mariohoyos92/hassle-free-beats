@@ -2,7 +2,12 @@ import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
+import FlatButton from "material-ui/FlatButton";
 import IconButton from "material-ui/IconButton";
+import Dialog from "material-ui/Dialog";
+import axios from "axios";
+
+import Cart from "../Cart/Cart";
 
 import "./MusicStore.css";
 
@@ -18,8 +23,12 @@ class MusicStore extends Component {
       volume: 0.75,
       totalPrice: 0,
       cart: [],
-      play: false
+      play: false,
+      open: false
     };
+
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +39,9 @@ class MusicStore extends Component {
     );
     audioContainer.addEventListener("ended", this.end.bind(this));
     this.setState({ playlist: this.props.playlist });
+    axios.get("api/cart").then(response => {
+      this.setState({ cart: response.data.tracks });
+    });
   }
   componentWillUnmount() {
     const audioContainer = this.audioContainer;
@@ -38,6 +50,30 @@ class MusicStore extends Component {
       this.updateProgress.bind(this)
     );
     audioContainer.removeEventListener("ended", this.end.bind(this));
+  }
+
+  handleOpen() {
+    this.setState({ open: true });
+  }
+
+  handleClose() {
+    axios.get("api/cart").then(response => {
+      this.setState({ cart: response.data.tracks });
+    });
+    this.setState({ open: false });
+  }
+
+  handleAddToCart(beat) {
+    if (this.state.cart.indexOf(beat) === -1) {
+      axios
+        .post("/api/cart", { title: beat })
+        .then(response => {
+          this.setState({ cart: response.data.tracks });
+        })
+        .catch(() => alert("This beat is already in your cart!"));
+    } else {
+      alert("This Item Is Already In Your Cart!");
+    }
   }
 
   updateProgress() {
@@ -89,6 +125,10 @@ class MusicStore extends Component {
     this.setState({ play: !this.state.play });
   }
 
+  handleSelect(index) {
+    this._playMusic(index);
+  }
+
   handlePrev() {
     const { activeMusicIndex } = this.state;
     const total = this.props.playlist.length;
@@ -137,7 +177,11 @@ class MusicStore extends Component {
     };
 
     const storeItems = playlist.map(track => (
-      <div className="store-item" key={track.title}>
+      <div
+        className="store-item"
+        key={track.title}
+        onClick={() => this.handleSelect(playlist.indexOf(track))}
+      >
         <div className="store-item-left">
           <p className="track-title">{track.title}</p>
           <p className="track-genre">{track.artist}</p>
@@ -146,10 +190,15 @@ class MusicStore extends Component {
           <span>$10.00</span>
           <IconButton
             iconClassName="fa fa-plus-square"
-            iconStyle={{ iconHoverColor: "#faa916" }}
+            iconStyle={
+              this.state.cart.indexOf(track.title) === -1
+                ? { iconHoverColor: "#faa916", zIndex: "2" }
+                : { color: "#faa916" }
+            }
             tooltip={"Add To Cart"}
             touch={true}
             tooltipPosition="bottom-left"
+            onClick={() => this.handleAddToCart(track.title)}
           />
         </div>
       </div>
@@ -184,7 +233,30 @@ class MusicStore extends Component {
               tooltip={"Shopping Cart"}
               touch={true}
               tooltipPosition="top-right"
+              onClick={this.handleOpen}
             />
+            <Dialog
+              title="Here are the beats you've added to your cart!"
+              actions={[
+                <FlatButton
+                  label="Continue Shopping"
+                  primary={true}
+                  onClick={this.handleClose}
+                />,
+                <Link to={"/checkout"}>
+                  <FlatButton
+                    label="Checkout Now"
+                    primary={true}
+                    keyboardFocused={true}
+                  />
+                </Link>
+              ]}
+              modal={true}
+              open={this.state.open}
+              onRequestClose={this.handleClose}
+            >
+              <Cart cart={this.state.cart} />
+            </Dialog>
             <Link to="/checkout">
               <RaisedButton
                 primary={true}
@@ -243,7 +315,7 @@ class MusicStore extends Component {
             <div className="progress" style={progressStyle} />
             <div className="left-time">
               <div className="track-title currently-playing">
-                {playlist.length > 0
+                {this.state.leftTime > 0
                   ? playlist[this.state.activeMusicIndex].title
                   : ""}
               </div>

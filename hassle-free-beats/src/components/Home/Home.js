@@ -19,11 +19,8 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      playlist: [],
-      cart: []
+      playlist: []
     };
-
-    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -44,19 +41,6 @@ class Home extends Component {
     });
   }
 
-  handleAddToCart() {
-    const title = document.getElementsByClassName("title")[0].innerHTML;
-    const track = {
-      title
-    };
-    axios
-      .post("/api/cart", track)
-      .then(response => {
-        this.setState({ cart: response.data.tracks });
-      })
-      .catch(() => alert("This beat is already in your cart!"));
-  }
-
   // RENDER
   render() {
     return (
@@ -71,56 +55,54 @@ class Home extends Component {
             />
           </div>
         </div>
-       { 
-        //  <MusicPlayer
-        //   playlist={
-        //     this.state.playlist.length > 0
-        //       ? this.state.playlist
-        //       : [
-        //           {
-        //             id: 1,
-        //             url: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3`,
-        //             cover: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png`,
-        //             title: "Say You Want Me",
-        //             artist: ["Mario, an Organism", "Liz Ancel"]
-        //           }
-        //         ]
-        //   }
-        //   progressColor={"#96031a"}
-        // />
-      
-        // <RaisedButton
-        //   primary={true}
-        //   labelColor={"#fbfffe"}
-        //   label={"Add To Cart"}
-        //   onClick={() => this.handleAddToCart()}
-        // />{" "}
-        // <Link to="/checkout">
-        //   <RaisedButton
-        //     primary={true}
-        //     labelColor={"#fbfffe"}
-        //     label={"CHECKOUT"}
-        //   />
-        // </Link>
-        // <Cart cart={this.state.cart} />
-       }
-       <div className="music-store">
-        <MusicStore
-          
-          playlist={
-            this.state.playlist.length > 0
-              ? this.state.playlist
-              : [
-                  {
-                    id: 1,
-                    url: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3`,
-                    cover: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png`,
-                    title: "Say You Want Me",
-                    artist: ["Mario, an Organism", "Liz Ancel"]
-                  }
-                ]
-          }
-        />
+        {
+          //  <MusicPlayer
+          //   playlist={
+          //     this.state.playlist.length > 0
+          //       ? this.state.playlist
+          //       : [
+          //           {
+          //             id: 1,
+          //             url: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3`,
+          //             cover: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png`,
+          //             title: "Say You Want Me",
+          //             artist: ["Mario, an Organism", "Liz Ancel"]
+          //           }
+          //         ]
+          //   }
+          //   progressColor={"#96031a"}
+          // />
+          // <RaisedButton
+          //   primary={true}
+          //   labelColor={"#fbfffe"}
+          //   label={"Add To Cart"}
+          //   onClick={() => this.handleAddToCart()}
+          // />{" "}
+          // <Link to="/checkout">
+          //   <RaisedButton
+          //     primary={true}
+          //     labelColor={"#fbfffe"}
+          //     label={"CHECKOUT"}
+          //   />
+          // </Link>
+          // <Cart cart={this.state.cart} />
+        }
+        <div className="music-store">
+          <MusicStore
+            playlist={
+              this.state.playlist.length > 0
+                ? this.state.playlist
+                : [
+                    {
+                      id: 1,
+                      url: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3`,
+                      cover: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png`,
+                      title: "Say You Want Me",
+                      artist: ["Mario, an Organism", "Liz Ancel"]
+                    }
+                  ]
+            }
+          />
         </div>
       </div>
     );

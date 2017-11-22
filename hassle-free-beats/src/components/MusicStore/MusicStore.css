@@ -20,6 +20,7 @@
   border-style: solid;
   border-color: #96031a;
   text-align: left;
+  max-width: 864px;
 }
 
 .store-header {
@@ -62,13 +63,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* border-style: solid;
-  border-top-width: 0.1px;
-  border-top-color: rgb(141, 141, 141);
-  border-bottom-width: 0.1px;
-  border-bottom-color: rgb(141, 141, 141);
-  border-left: none;
-  border-right: none; */
+  transition: background-color 0.5s linear;
   background-image: -webkit-gradient(
     linear,
     left top,
@@ -76,9 +71,15 @@
     from(rgb(191, 191, 191)),
     to(white)
   );
-  background-image: -webkit-linear-gradient(top, rgb(191, 191, 191), white));
-  background-image: -moz-linear-gradient(top, rgb(191, 191, 191), white));
-  background-image: linear-gradient(to bottom, rgb(191, 191, 191), white));
+  background-image: -webkit-linear-gradient(top, rgb(191, 191, 191),  (white));
+  background-image: -moz-linear-gradient(top, rgb(191, 191, 191),  (white));
+  background-image: linear-gradient(to bottom, rgb(191, 191, 191),  (white));
+}
+
+.store-item:hover {
+  background-image: none;
+  background-color: rgb(191, 191, 191);
+  cursor: pointer;
 }
 
 .store-item-left {
@@ -109,10 +110,17 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-top: solid;
+  border-width: 1px;
+  border-color: #96031a;
 }
 
 .control-icon {
   font-size: 2em;
+}
+
+.control-icon:hover {
+  opacity: 0.7;
 }
 
 .cotrols-container {
