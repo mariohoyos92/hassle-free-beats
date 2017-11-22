@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import IconButton from "material-ui/IconButton";
+import Divider from "material-ui/Divider";
 import Dialog from "material-ui/Dialog";
 import axios from "axios";
 
@@ -177,30 +178,32 @@ class MusicStore extends Component {
     };
 
     const storeItems = playlist.map(track => (
-      <div
-        className="store-item"
-        key={track.title}
-        onClick={() => this.handleSelect(playlist.indexOf(track))}
-      >
-        <div className="store-item-left">
-          <p className="track-title">{track.title}</p>
-          <p className="track-genre">{track.artist}</p>
+      <div key={track.title}>
+        <div
+          className="store-item"
+          onClick={() => this.handleSelect(playlist.indexOf(track))}
+        >
+          <div className="store-item-left">
+            <p className="track-title">{track.title}</p>
+            <p className="track-genre">{track.artist}</p>
+          </div>
+          <div className="store-item-right">
+            <span>$10.00</span>
+            <IconButton
+              iconClassName="fa fa-plus-square"
+              iconStyle={
+                this.state.cart.indexOf(track.title) === -1
+                  ? { color: "#96031A", iconHoverColor: "#faa916", zIndex: "4" }
+                  : { color: "#faa916" }
+              }
+              tooltip={"Add To Cart"}
+              touch={true}
+              tooltipPosition="bottom-left"
+              onClick={() => this.handleAddToCart(track.title)}
+            />
+          </div>
         </div>
-        <div className="store-item-right">
-          <span>$10.00</span>
-          <IconButton
-            iconClassName="fa fa-plus-square"
-            iconStyle={
-              this.state.cart.indexOf(track.title) === -1
-                ? { iconHoverColor: "#faa916", zIndex: "2" }
-                : { color: "#faa916" }
-            }
-            tooltip={"Add To Cart"}
-            touch={true}
-            tooltipPosition="bottom-left"
-            onClick={() => this.handleAddToCart(track.title)}
-          />
-        </div>
+        <Divider />
       </div>
     ));
 

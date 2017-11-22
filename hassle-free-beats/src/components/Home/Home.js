@@ -12,7 +12,6 @@ import MusicStore from "../MusicStore/MusicStore";
 
 // IMPORT CSS
 import "./Home.css";
-import { zIndex } from "material-ui/styles/zIndex";
 
 class Home extends Component {
   constructor(props) {
@@ -88,7 +87,6 @@ class Home extends Component {
           // <Cart cart={this.state.cart} />
         }
         <div className="music-store">
-          <h1> Buy Your Beats Here! </h1>
           <MusicStore
             playlist={
               this.state.playlist.length > 0

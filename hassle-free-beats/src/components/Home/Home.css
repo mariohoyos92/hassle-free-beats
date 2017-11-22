@@ -37,11 +37,40 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/background+gradient.jpg");
+  /* background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/background+gradient.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  /* background-color: #faa916; */
+  background-color: black;
+}
+
+.vocal-tag-disclaimer {
+  color: white;
+}
+
+.licensing-card-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("	https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/MonitoringBoard.jpeg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-weight: bold;
+}
+
+.license-header {
+  color: #96031a;
+}
+
+.license-divide {
+  width: 50%;
 }
 
 @media (max-width: 1025px) {
@@ -57,28 +86,4 @@
   .logo {
     height: 50%;
   }
-}
-
-.licensing-card-container {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/fullsizeoutput_3.jpeg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-weight: bold;
-}
-
-.license-header {
-  color: #96031a;
-}
-
-.license-divide {
-  color: #faa916;
-  width: 50%;
 }

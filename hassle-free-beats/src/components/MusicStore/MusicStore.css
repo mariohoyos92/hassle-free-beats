@@ -17,8 +17,8 @@
   height: 80vh;
   display: flex;
   flex-direction: column;
-  border-style: solid;
-  border-color: #96031a;
+  /* border-style: solid; */
+  /* border-color: #96031a; */
   text-align: left;
   max-width: 864px;
 }
@@ -42,6 +42,7 @@
   justify-content: space-between;
   margin-left: 3px;
   font-size: 0.8em;
+  padding-top: 2px;
 }
 
 .store-header-right {
@@ -64,7 +65,7 @@
   flex-direction: row;
   justify-content: space-between;
   transition: background-color 0.5s linear;
-  background-image: -webkit-gradient(
+  /* background-image: -webkit-gradient(
     linear,
     left top,
     left bottom,
@@ -73,7 +74,8 @@
   );
   background-image: -webkit-linear-gradient(top, rgb(191, 191, 191),  (white));
   background-image: -moz-linear-gradient(top, rgb(191, 191, 191),  (white));
-  background-image: linear-gradient(to bottom, rgb(191, 191, 191),  (white));
+  background-image: linear-gradient(to bottom, rgb(191, 191, 191),  (white)); */
+  background-color: rgb(255, 255, 255);
 }
 
 .store-item:hover {
@@ -83,15 +85,17 @@
 }
 
 .store-item-left {
-  margin-left: 3px;
+  margin-left: 6px;
 }
 
 .track-title {
   font-size: 1em;
+  font-weight: bold;
 }
 
 .track-genre {
   font-size: 0.7em;
+  color: grey;
 }
 
 .store-item-right {
@@ -102,6 +106,7 @@
   height: 80%;
   overflow-y: scroll;
   width: 100%;
+  background-color: white;
 }
 
 .player-controls {
@@ -113,6 +118,7 @@
   border-top: solid;
   border-width: 1px;
   border-color: #96031a;
+  background-color: rgb(255, 255, 255);
 }
 
 .control-icon {

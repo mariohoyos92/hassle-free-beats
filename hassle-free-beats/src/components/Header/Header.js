@@ -33,8 +33,8 @@ class Header extends Component {
           <Link to="/about">
             <FlatButton style={{ color: "white" }} label="About Us" />
           </Link>
-          <Link to="/dashboard">
-            <FlatButton style={{ color: "white" }} label="Dashboard" />
+          <Link to="/FAQ">
+            <FlatButton style={{ color: "white" }} label="FAQ" />
           </Link>
           <Link to="contact">
             <FlatButton style={{ color: "white" }} label="Contact" />
