@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+import { Link } from "react-router-dom";
+import RaisedButton from "material-ui/RaisedButton";
+import IconButton from "material-ui/IconButton";
+
 import "./MusicStore.css";
 
 class MusicStore extends Component {
@@ -132,14 +136,20 @@ class MusicStore extends Component {
     };
 
     const storeItems = playlist.map(track => (
-      <div className="store-item">
+      <div className="store-item" key={track.title}>
         <div className="store-item-left">
-          <h4>{track.title}</h4>
-          <h5>{track.artist}</h5>
+          <p>{track.title}</p>
+          <p>{track.artist}</p>
         </div>
         <div className="store-item-right">
           <span>$10.00</span>
-          <button> Add To Cart </button>
+          <IconButton
+            iconClassName="fa fa-plus-square"
+            iconStyle={{ iconHoverColor: "#faa916" }}
+            tooltip={"Add To Cart"}
+            touch={true}
+            tooltipPosition="bottom-left"
+          />
         </div>
       </div>
     ));
@@ -167,8 +177,20 @@ class MusicStore extends Component {
           </div>
           <div className="store-header-right">
             <span>${10 * this.state.cart.length}.00</span>
-            <span>Icon Button</span>
-            <span>Checkout Button</span>
+            <IconButton
+              iconClassName="fa fa-shopping-cart"
+              iconStyle={{ iconHoverColor: "#faa916" }}
+              tooltip={"Shopping Cart"}
+              touch={true}
+              tooltipPosition="top-right"
+            />
+            <Link to="/checkout">
+              <RaisedButton
+                primary={true}
+                labelColor={"#fbfffe"}
+                label={"CHECKOUT"}
+              />
+            </Link>
           </div>
         </div>
         <div className="beats-container">{storeItems}</div>

@@ -17,6 +17,9 @@
   height: 80vh;
   display: flex;
   flex-direction: column;
+  border-style: solid;
+  border-color: #96031a;
+  text-align: left;
 }
 
 .store-header {
@@ -25,6 +28,8 @@
   justify-content: space-between;
   height: 10%;
   width: 100%;
+  background-color: #6d666e;
+  color: white;
 }
 
 .store-header-left {
@@ -34,6 +39,7 @@
   width: 35%;
   align-items: center;
   justify-content: space-between;
+  margin-left: 3px;
 }
 
 .store-header-right {
@@ -43,6 +49,7 @@
   width: 50%;
   align-items: center;
   justify-content: flex-end;
+  margin-right: 3px;
 }
 
 .store-logo {
@@ -54,6 +61,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.store-item-left {
+  margin-left: 3px;
+}
+
+.store-item-right {
+  margin-right: 3px;
 }
 
 .beats-container {
