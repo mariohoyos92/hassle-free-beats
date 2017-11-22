@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: fixed;
-  z-index: 2;
+  z-index: 999;
 }
 
 .header-logo {

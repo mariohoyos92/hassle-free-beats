@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 
 // IMPORT MODULES
-import RaisedButton from "material-ui/RaisedButton";
-import MusicPlayer from "react-responsive-music-player";
+import Divider from "material-ui/Divider";
+import Paper from "material-ui/Paper";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 // IMPORT COMPONENTS
 import Header from "../Header/Header";
-import Cart from "../Cart/Cart";
 import MusicStore from "../MusicStore/MusicStore";
 
 // IMPORT CSS
 import "./Home.css";
+import { zIndex } from "material-ui/styles/zIndex";
 
 class Home extends Component {
   constructor(props) {
@@ -88,6 +88,7 @@ class Home extends Component {
           // <Cart cart={this.state.cart} />
         }
         <div className="music-store">
+          <h1> Buy Your Beats Here! </h1>
           <MusicStore
             playlist={
               this.state.playlist.length > 0
@@ -103,6 +104,44 @@ class Home extends Component {
                   ]
             }
           />
+          <p className="vocal-tag-disclaimer">
+            **Vocal Tags Are Removed Automatically Upon Purchase**
+          </p>
+        </div>
+        <div className="licensing-card-container">
+          <Paper
+            style={{
+              height: "auto",
+              width: "60%",
+              margin: "20",
+              textAlign: "center",
+              zIndex: "5",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+            zDepth={5}
+          >
+            <h1 className="license-header">Hassle-Free-License</h1>
+            <Divider className="license-divide" />
+            <p>Mp3 (320 kbps)</p>
+            <Divider className="license-divide" />
+            <p>100% Royalty-Free</p>
+            <Divider className="license-divide" />
+            <p>No Restrictions on Youtube use</p>
+            <Divider className="license-divide" />
+            <p>No Expiration Date</p>
+            <Divider className="license-divide" />
+            <p>No Exclusive Rights</p>
+            <Divider className="license-divide" />
+            <p>UNLIMITED Radio Spins</p>
+            <Divider className="license-divide" />
+            <p>UNLIMITED Total Earnings Allowed</p>
+            <Divider className="license-divide" />
+            <p>INSTANT Download</p>
+            <Divider className="license-divide" />
+          </Paper>
         </div>
       </div>
     );
