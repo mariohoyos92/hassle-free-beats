@@ -40,6 +40,7 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 3px;
+  font-size: 0.8em;
 }
 
 .store-header-right {
@@ -61,10 +62,35 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* border-style: solid;
+  border-top-width: 0.1px;
+  border-top-color: rgb(141, 141, 141);
+  border-bottom-width: 0.1px;
+  border-bottom-color: rgb(141, 141, 141);
+  border-left: none;
+  border-right: none; */
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgb(191, 191, 191)),
+    to(white)
+  );
+  background-image: -webkit-linear-gradient(top, rgb(191, 191, 191), white));
+  background-image: -moz-linear-gradient(top, rgb(191, 191, 191), white));
+  background-image: linear-gradient(to bottom, rgb(191, 191, 191), white));
 }
 
 .store-item-left {
   margin-left: 3px;
+}
+
+.track-title {
+  font-size: 1em;
+}
+
+.track-genre {
+  font-size: 0.7em;
 }
 
 .store-item-right {
@@ -81,11 +107,27 @@
   height: 10%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* .volume-container {
-  display: none;
-} */
+.control-icon {
+  font-size: 2em;
+}
+
+.cotrols-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40%;
+  height: 100%;
+}
+
+.volume-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 .volume-icon i {
   color: #6d676e;
@@ -96,16 +138,20 @@
   padding-left: 2px;
   opacity: 0;
   transition: opacity 0.5s linear;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .progress-container {
   height: 2px;
-  margin-top: calc(0.8em - 1px);
-  background-color: #6d676e;
+  /* margin-top: calc(0.8em - 1px); */
+  background-color: rgb(191, 191, 191);
 }
 
 .progress {
   height: 2px;
-  background-color: #6d676e;
+  background-color: #96031a;
 }
 
 .volume-wrapper:hover {
@@ -115,9 +161,28 @@
 .progress-container {
   width: 100%;
   height: 3px;
-  background-color: black;
+  background-color: rgb(191, 191, 191);
   cursor: pointer;
 }
 .progress {
   height: 100%;
+}
+
+.track-progress {
+  width: 60%;
+  margin-right: 5px;
+}
+
+.left-time {
+  text-align: right;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.currently-playing {
+  height: 15px;
+  width: 50%;
+  text-align: left;
 }

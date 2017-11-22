@@ -15,7 +15,7 @@ class MusicStore extends Component {
       activeMusicIndex: 0,
       leftTime: 0,
       progress: 0,
-      volume: 1,
+      volume: 0.75,
       totalPrice: 0,
       cart: [],
       play: false
@@ -29,6 +29,7 @@ class MusicStore extends Component {
       this.updateProgress.bind(this)
     );
     audioContainer.addEventListener("ended", this.end.bind(this));
+    this.setState({ playlist: this.props.playlist });
   }
   componentWillUnmount() {
     const audioContainer = this.audioContainer;
@@ -90,14 +91,14 @@ class MusicStore extends Component {
 
   handlePrev() {
     const { activeMusicIndex } = this.state;
-    const total = this.state.playlist.length;
+    const total = this.props.playlist.length;
     const index = activeMusicIndex > 0 ? activeMusicIndex - 1 : total - 1;
     this._playMusic(index);
   }
 
   handleNext() {
     const { activeMusicIndex } = this.state;
-    const total = this.state.playlist.length;
+    const total = this.props.playlist.length;
     const index = activeMusicIndex < total - 1 ? activeMusicIndex + 1 : 0;
     this._playMusic(index);
   }
@@ -132,14 +133,14 @@ class MusicStore extends Component {
     const activeMusic = playlist[activeMusicIndex];
     const progressStyle = {
       width: `${this.state.progress * 100}%`,
-      backgroundColor: "red"
+      backgroundColor: "#96031a"
     };
 
     const storeItems = playlist.map(track => (
       <div className="store-item" key={track.title}>
         <div className="store-item-left">
-          <p>{track.title}</p>
-          <p>{track.artist}</p>
+          <p className="track-title">{track.title}</p>
+          <p className="track-genre">{track.artist}</p>
         </div>
         <div className="store-item-right">
           <span>$10.00</span>
@@ -197,39 +198,43 @@ class MusicStore extends Component {
         <div className="player-controls">
           <div className="controls-container" />
           <i
-            className="icon fa fa-step-backward"
+            className="icon fa fa-step-backward control-icon"
             style={{ color: "rgb(74, 74, 74)" }}
             onClick={this.handlePrev.bind(this)}
           />
           <i
-            className={`icon fa fa-${this.state.play ? "pause" : "play"}`}
+            className={`icon fa fa-${
+              this.state.play ? "pause" : "play"
+            } control-icon`}
             style={{ color: "rgb(74, 74, 74)" }}
             onClick={this.handleToggle.bind(this)}
           />
           <i
-            className="icon fa fa-step-forward"
+            className="icon fa fa-step-forward control-icon"
             style={{ color: "rgb(74, 74, 74)" }}
             onClick={this.handleNext.bind(this)}
           />
-          <div className="volume-icon">
-            <i className="icon fa fa-volume-up" />
-          </div>
-          <div className="volume-wrapper">
-            <div
-              className="progress-container"
-              onClick={this.handleAdjustVolume.bind(this)}
-              ref={ref => {
-                this.volumeContainer = ref;
-              }}
-            >
+          <div className="volume-container">
+            <div className="volume-icon">
+              <i className="icon fa fa-volume-up" />
+            </div>
+            <div className="volume-wrapper">
               <div
-                className="progress"
-                style={{ width: `${this.state.volume * 100}%` }}
-              />
+                className="progress-container"
+                onClick={this.handleAdjustVolume.bind(this)}
+                ref={ref => {
+                  this.volumeContainer = ref;
+                }}
+              >
+                <div
+                  className="progress"
+                  style={{ width: `${this.state.volume * 100}%` }}
+                />
+              </div>
             </div>
           </div>
           <div
-            className="progress-container"
+            className="progress-container track-progress"
             onClick={this.handleAdjustProgress.bind(this)}
             ref={ref => {
               this.progressContainer = ref;
@@ -237,6 +242,11 @@ class MusicStore extends Component {
           >
             <div className="progress" style={progressStyle} />
             <div className="left-time">
+              <div className="track-title currently-playing">
+                {playlist.length > 0
+                  ? playlist[this.state.activeMusicIndex].title
+                  : ""}
+              </div>
               -{this._formatTime(this.state.leftTime)}
             </div>
           </div>
