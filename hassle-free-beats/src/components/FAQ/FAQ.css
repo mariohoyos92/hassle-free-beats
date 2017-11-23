@@ -1,0 +1,19 @@
+.faq-container {
+  padding-top: 10vh;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82)),
+    url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/mixing-board-2.jpeg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.faq-header {
+  color: white;
+}
