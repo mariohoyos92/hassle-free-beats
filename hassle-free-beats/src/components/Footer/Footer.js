@@ -12,10 +12,12 @@ export default Footer => {
       </span>
       <span className="footer-span">
         |{" "}
-        <Link to="/faq" style={{ textDecoration: "none" }}>
-          <a href="#" className="footer-link">
-            F.A.Q{" "}
-          </a>
+        <Link
+          to="/faq"
+          className="footer-link"
+          style={{ textDecoration: "none" }}
+        >
+          F.A.Q{" "}
         </Link>|<a href="#" className="footer-link">
           {" "}
           About Us{" "}

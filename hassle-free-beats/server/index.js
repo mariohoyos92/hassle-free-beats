@@ -5,7 +5,6 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-const nodemailer = require("nodemailer");
 
 require("dotenv").config();
 
@@ -16,6 +15,7 @@ const cartController = require("./controllers/cart_controller");
 const { secret } = require("../config").session;
 const { domain, clientID, clientSecret } = require("../config").auth0;
 const { publishableKey, secretKey } = require("../config").stripe;
+const { mailgunKey, mailgunDomain } = require("../config").mailgun;
 
 const port = process.env.PORT || 3001;
 
@@ -24,6 +24,11 @@ const app = express();
 
 // app.use(express.static(`__dirname/build`));
 const stripe = require("stripe")(secretKey);
+
+const mailgun = require("mailgun-js")({
+  apiKey: mailgunKey,
+  domain: mailgunDomain
+});
 
 app.use(
   session({
@@ -108,35 +113,21 @@ app.get("/api/beats", (req, res, next) => {
 // CONTACT
 
 app.post("/api/contact", function(req, res) {
-  var emailInfo = req.body;
+  let data = {
+    from: `${req.body.name} <${req.body.email}>`,
+    to: "support@hasslefreebeats.com, support@hasslefreebeats.com",
+    subject: `${req.body.subject}`,
+    text: `${req.body.emailBody}`
+  };
 
-  var smtpTransport = nodemailer.createTransport("SMTP", {
-    service: "Gmail",
-    auth: {
-      user: "mariohoyos92@gmail.com",
-      pass: "gmailPassword"
+  mailgun.messages().send(data, function(error, body) {
+    if ((body.message = "Queued. Thank you.")) {
+      res.status(200).json("message sent");
+    } else {
+      res.status(500).json(error);
+      console.log(error);
     }
   });
-
-  smtpTransport.sendMail(
-    {
-      //email options
-      from: `${emailInfo.name} <${emailInfo.email}>`,
-      to: "HassleFreeBeats <support@hasslefreebeats.com>", // receiver
-      subject: `${emailInfo.subject}`, // subject
-      html: `${emailInfo.emailBody}` // body (var data which we've declared)
-    },
-    function(error, response) {
-      //callback
-      if (error) {
-        console.log(error);
-      } else {
-        console.log("Message sent: " + res.message);
-      }
-
-      smtpTransport.close();
-    }
-  );
 });
 
 // DASHBOARD

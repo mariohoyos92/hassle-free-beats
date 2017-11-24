@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import Divider from "material-ui/Divider";
 import Paper from "material-ui/Paper";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 // IMPORT COMPONENTS
 import Header from "../Header/Header";
