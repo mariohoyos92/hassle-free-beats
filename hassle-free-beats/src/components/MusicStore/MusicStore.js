@@ -39,6 +39,7 @@ class MusicStore extends Component {
       this.updateProgress.bind(this)
     );
     audioContainer.addEventListener("ended", this.end.bind(this));
+
     this.setState({ playlist: this.props.playlist });
     axios.get("api/cart").then(response => {
       this.setState({ cart: response.data.tracks });
@@ -78,8 +79,10 @@ class MusicStore extends Component {
   }
 
   updateProgress() {
-    const duration = this.audioContainer.duration;
-    const currentTime = this.audioContainer.currentTime;
+    const duration = this.audioContainer ? this.audioContainer.duration : 0;
+    const currentTime = this.audioContainer
+      ? this.audioContainer.currentTime
+      : 0;
     const progress = currentTime / duration;
     this.setState({
       progress: progress,
@@ -258,7 +261,7 @@ class MusicStore extends Component {
               open={this.state.open}
               onRequestClose={this.handleClose}
             >
-              <Cart cart={this.state.cart} />
+              <Cart />
             </Dialog>
             <Link to="/checkout">
               <RaisedButton

@@ -27,9 +27,9 @@ class Cart extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ cart: nextProps.cart });
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({ cart: nextProps.cart });
+  // }
 
   // CUSTOM FUNCS
   handleDeleteFromCart(track) {
