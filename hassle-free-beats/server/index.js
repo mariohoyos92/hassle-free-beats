@@ -5,6 +5,7 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
+const nodemailer = require("nodemailer");
 
 require("dotenv").config();
 
@@ -102,6 +103,40 @@ app.get("/api/beats", (req, res, next) => {
     .getPlaylist()
     .then(response => res.status(200).json(response))
     .catch(res.status(500));
+});
+
+// CONTACT
+
+app.post("/api/contact", function(req, res) {
+  var emailInfo = req.body;
+
+  var smtpTransport = nodemailer.createTransport("SMTP", {
+    service: "Gmail",
+    auth: {
+      user: "mariohoyos92@gmail.com",
+      pass: "gmailPassword"
+    }
+  });
+
+  smtpTransport.sendMail(
+    {
+      //email options
+      from: `${emailInfo.name} <${emailInfo.email}>`,
+      to: "HassleFreeBeats <support@hasslefreebeats.com>", // receiver
+      subject: `${emailInfo.subject}`, // subject
+      html: `${emailInfo.emailBody}` // body (var data which we've declared)
+    },
+    function(error, response) {
+      //callback
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Message sent: " + res.message);
+      }
+
+      smtpTransport.close();
+    }
+  );
 });
 
 // DASHBOARD

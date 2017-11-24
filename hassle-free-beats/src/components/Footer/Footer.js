@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../Footer/Footer.css";
 
@@ -11,9 +12,11 @@ export default Footer => {
       </span>
       <span className="footer-span">
         |{" "}
-        <a href="#" className="footer-link">
-          F.A.Q{" "}
-        </a>|<a href="#" className="footer-link">
+        <Link to="/faq" style={{ textDecoration: "none" }}>
+          <a href="#" className="footer-link">
+            F.A.Q{" "}
+          </a>
+        </Link>|<a href="#" className="footer-link">
           {" "}
           About Us{" "}
         </a>|{" "}

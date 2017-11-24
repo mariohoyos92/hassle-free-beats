@@ -139,6 +139,7 @@ class Home extends Component {
             <Divider className="license-divide" />
             <p>INSTANT Download</p>
             <Divider className="license-divide" />
+            <p />
           </Paper>
         </div>
         <div className="bottom-portion info">

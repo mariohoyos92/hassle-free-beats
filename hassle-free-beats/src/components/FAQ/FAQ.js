@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import QuestionAnswer from "../QuestionAnswer/QuestionAnswer";
 
 import "./FAQ.css";
@@ -40,10 +42,19 @@ const FAQ = () => (
       answer={`For any publishing, it suffices to include "Instrumental by Hassle-Free-Beats https://hasslefreebeats.com" in the credits.`}
     />
 
-    <h2 className="faq-header">
-      For any other questions please email us at support@hasslefreebeats.com or
-      go to our contact page.
-    </h2>
+    <h3 className="faq-header">
+      For any other questions please email us at{" "}
+      <a
+        href="mailto:support@hasslefreebeats.com"
+        style={{ color: "#F8AA15", textDecoration: "none" }}
+      >
+        support@hasslefreebeats.com
+      </a>{" "}
+      or go to our{" "}
+      <Link to="/contact" style={{ color: "#F8AA15", textDecoration: "none" }}>
+        contact page
+      </Link>.
+    </h3>
   </div>
 );
 
