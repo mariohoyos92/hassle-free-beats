@@ -196,7 +196,11 @@ class MusicStore extends Component {
               iconClassName="fa fa-plus-square"
               iconStyle={
                 this.state.cart.indexOf(track.title) === -1
-                  ? { color: "#96031A", iconHoverColor: "#faa916", zIndex: "4" }
+                  ? {
+                      color: "#96031A",
+                      iconHoverColor: "#faa916",
+                      zIndex: "50"
+                    }
                   : { color: "#faa916" }
               }
               tooltip={"Add To Cart"}

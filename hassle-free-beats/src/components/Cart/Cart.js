@@ -5,7 +5,7 @@ import axios from "axios";
 // IMPORT MODULES
 
 // IMPORT COMPONENTS
-
+import Divider from "material-ui/Divider";
 // IMPORT CSS
 import "./Cart.css";
 
@@ -27,10 +27,6 @@ class Cart extends Component {
     });
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({ cart: nextProps.cart });
-  // }
-
   // CUSTOM FUNCS
   handleDeleteFromCart(track) {
     axios
@@ -46,18 +42,22 @@ class Cart extends Component {
         this.state.cart.map(track => {
           return (
             <div className="cart-item" key={track}>
-              <p>
-                {track}
-                <IconButton
-                  onClick={() => this.handleDeleteFromCart(track)}
-                  iconClassName="fa fa-trash"
-                  iconStyle={{ iconHoverColor: "#faa916" }}
-                  tooltip={"Delete From Cart"}
-                  touch={true}
-                  tooltipPosition="bottom-right"
-                />
+              <div className="cart-left">
+                <p>
+                  {track}
+                  <IconButton
+                    onClick={() => this.handleDeleteFromCart(track)}
+                    iconClassName="fa fa-trash"
+                    iconStyle={{ iconHoverColor: "#faa916" }}
+                    tooltip={"Delete From Cart"}
+                    touch={true}
+                    tooltipPosition="bottom-right"
+                  />
+                </p>
+              </div>
+              <div className="cart-right">
                 <span style={{ "font-weight": "bold" }}>$10.00</span>
-              </p>
+              </div>
             </div>
           );
         })
@@ -67,6 +67,7 @@ class Cart extends Component {
     return (
       <div>
         <div>{cartDisplay}</div>
+        <Divider />
         <div
           style={{
             "text-align": "right",

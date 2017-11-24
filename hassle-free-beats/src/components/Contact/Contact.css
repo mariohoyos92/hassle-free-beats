@@ -5,6 +5,10 @@
   flex-direction: column;
   align-items: center;
   background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/background+gradient.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .contact-card {

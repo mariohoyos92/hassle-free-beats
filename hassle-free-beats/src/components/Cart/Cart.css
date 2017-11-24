@@ -1,1 +1,17 @@
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.cart-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
