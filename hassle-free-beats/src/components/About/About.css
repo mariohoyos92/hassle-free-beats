@@ -1,0 +1,54 @@
+.about-container {
+  padding-top: 10vh;
+  width: 100%;
+  min-height: 80vh;
+  height: auto;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.97),
+      rgba(255, 255, 255, 0.97)
+    ),
+    url("	https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/MonitoringBoard.jpeg");
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-logo {
+  width: 60%;
+}
+
+.about-blurb {
+  width: 75%;
+  height: auto;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.about-blurb-link {
+  text-decoration: none;
+  color: #faa916;
+}
+
+.about-blurb-link:hover {
+  opacity: 0.5;
+}
+
+.info {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
+    url("	https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/MonitoringBoard.jpeg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-bottom-link {
+  text-decoration: none;
+  color: #faa916;
+}

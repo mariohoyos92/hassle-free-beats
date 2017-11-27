@@ -104,6 +104,8 @@ class Home extends Component {
             <Divider className="license-divide" />
             <p>UNLIMITED Radio Spins</p>
             <Divider className="license-divide" />
+            <p>UNLIMITED Performances</p>
+            <Divider className="license-divide" />
             <p>UNLIMITED Total Earnings Allowed</p>
             <Divider className="license-divide" />
             <p>INSTANT Download</p>
