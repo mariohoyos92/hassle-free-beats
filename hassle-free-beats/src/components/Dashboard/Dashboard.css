@@ -1,3 +1,64 @@
 .dashboard-container {
-  padding-top: 10vh;
+  padding-top: 15vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 80vh;
+  background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/microphonebackground.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-option {
+  padding: 10% 10%;
+  width: 80%;
+  text-align: center;
+}
+
+.past-purchase-link {
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-paragraph {
+  text-align: left;
+}
+.checkout-cart {
+  padding: 10% 10%;
+  width: 80%;
+  text-align: center;
+}
+
+.checkout-view-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.checkout-view-cart-right {
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+.checkout-view-cart-left {
+  width: 80%;
+  text-align: left;
+}
+
+.auth0logo {
+  height: 1.5em;
+}
+.checkout-card {
+  width: 100%;
+  min-height: 60vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5% 5%;
 }

@@ -17,8 +17,7 @@
   height: 80vh;
   display: flex;
   flex-direction: column;
-  /* border-style: solid; */
-  /* border-color: #96031a; */
+
   text-align: left;
   max-width: 864px;
 }

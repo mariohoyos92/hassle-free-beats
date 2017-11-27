@@ -12,7 +12,10 @@ import "./CheckoutView.css";
 export default class CheckoutView extends Component {
   constructor(props) {
     super(props);
-    this.state = { cart: [] };
+    this.state = {
+      cart: [],
+      loggedIn: false
+    };
 
     this.handleDeleteFromCart = this.handleDeleteFromCart.bind(this);
   }
@@ -23,7 +26,14 @@ export default class CheckoutView extends Component {
         cart: response.data.tracks
       });
     });
+
+    axios.get("/api/logstatus").then(response => {
+      if (response.data.passport) {
+        this.setState({ loggedIn: true });
+      }
+    });
   }
+
   handleDeleteFromCart(track) {
     axios
       .delete(`/api/cart/${track}`)
@@ -64,33 +74,46 @@ export default class CheckoutView extends Component {
         <p>Your Cart is Empty </p>
       );
 
+    let loginView = this.state.loggedIn ? (
+      <div>
+        <h1>You're logged in.</h1>
+        <p>
+          Upon your purchase, we will save the download links to your account so
+          that you can download your instrumentals again in the future if you
+          need to.
+        </p>
+      </div>
+    ) : (
+      <div>
+        <h1> Login </h1>
+        <Divider />
+        <p className="login-paragraph">
+          If you would like to be able to access the download links for this
+          order and any in the future, please Login/Register using the button
+          below.
+        </p>
+        <LoginButton />
+        <br />
+        <br />
+        <br />
+        <span>
+          ** Protected with{" "}
+          <a href="https://auth0.com/" target="_blank">
+            <img
+              src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/logo-100-grey.png"
+              alt="auth0 logo"
+              className="auth0logo"
+            />
+          </a>{" "}
+          **
+        </span>
+      </div>
+    );
+
     return (
       <div className="checkout-container">
         <div className="login-option">
-          <Card className="checkout-card">
-            <h1> Login </h1>
-            <Divider />
-            <p className="login-paragraph">
-              If you would like to be able to access the download links for this
-              order and any in the future, please Login/Register using the
-              button below.
-            </p>
-            <LoginButton />
-            <br />
-            <br />
-            <br />
-            <span>
-              ** Protected with{" "}
-              <a href="https://auth0.com/" target="_blank">
-                <img
-                  src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/logo-100-grey.png"
-                  alt="auth0 logo"
-                  className="auth0logo"
-                />
-              </a>{" "}
-              **
-            </span>
-          </Card>
+          <Card className="checkout-card">{loginView}</Card>
         </div>
         <div className="checkout-cart">
           <Card className="checkout-card">

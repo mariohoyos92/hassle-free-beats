@@ -185,6 +185,11 @@ class MusicStore extends Component {
         <div
           className="store-item"
           onClick={() => this.handleSelect(playlist.indexOf(track))}
+          style={{
+            backgroundColor:
+              this.state.activeMusicIndex === playlist.indexOf(track) &&
+              "#cccccc"
+          }}
         >
           <div className="store-item-left">
             <p className="track-title">{track.title}</p>
