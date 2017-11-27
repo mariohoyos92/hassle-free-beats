@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Divider from "material-ui/Divider";
 import Paper from "material-ui/Paper";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // IMPORT COMPONENTS
 import Header from "../Header/Header";
@@ -119,25 +120,18 @@ class Home extends Component {
           <Testimonials />
         </div>
         <div className="bottom-portion info">
-          <p className="brief-information">
-            Here at Hassle-Free-Beats we are focused on one thing: Maximizing
-            YOUR earning potential. Other beat-stores try to trick you with
-            multiple licenses, which are all designed for their profit and not
-            yours. Here, we only have one license and it is as flexible for you
-            as it is for us. We removed all of the limitations associated with
-            profitable use and exposure so that YOU can differentiate yourself
-            from the competition and earn as much money as possible. We also
-            only have one price-level, which is a VERY reasonable $10. Our
-            competitors will have you paying upwards of $50 dollars for a much
-            more restrictive license. We leave the power in YOUR hands by
-            offering low-cost, high-quality instrumentals where all you ever pay
-            is for the upfront download.{" "}
-          </p>
-        </div>
-        <div className="faq-contact  info bottom-portion">
-          <span>
-            If you have ANY questions at all check out our FAQ or EMAIL US
-          </span>
+          <div className="faq-contact  info bottom-portion">
+            <span>
+              If you have ANY questions at all check out our{" "}
+              <Link to="/faq" className="home-bottom-link">
+                FAQ
+              </Link>{" "}
+              or{" "}
+              <Link to="/contact" className="home-bottom-link">
+                hit us up
+              </Link>!
+            </span>
+          </div>
         </div>
       </div>
     );

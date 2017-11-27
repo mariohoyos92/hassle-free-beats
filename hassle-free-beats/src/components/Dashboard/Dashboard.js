@@ -135,7 +135,11 @@ class Dashboard extends Component {
             <br />
             <span>
               ** Protected with{" "}
-              <a href="https://stripe.com/" target="_blank">
+              <a
+                href="https://stripe.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fa fa-cc-stripe" aria-hidden="true" />
               </a>{" "}
               **

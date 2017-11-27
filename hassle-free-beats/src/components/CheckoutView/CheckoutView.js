@@ -98,7 +98,11 @@ export default class CheckoutView extends Component {
         <br />
         <span>
           ** Protected with{" "}
-          <a href="https://auth0.com/" target="_blank">
+          <a
+            href="https://auth0.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/logo-100-grey.png"
               alt="auth0 logo"
@@ -140,7 +144,11 @@ export default class CheckoutView extends Component {
             <br />
             <span>
               ** Protected with{" "}
-              <a href="https://stripe.com/" target="_blank">
+              <a
+                href="https://stripe.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className="fa fa-cc-stripe" aria-hidden="true" />
               </a>{" "}
               **

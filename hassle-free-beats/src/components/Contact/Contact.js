@@ -16,13 +16,19 @@ export default class Contact extends Component {
       email: "",
       subject: "",
       emailBody: "",
-      sent: false
+      sent: false,
+      emailError: null,
+      nameError: null,
+      messageError: null
     };
     this.handleName = this.handleName.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleSubject = this.handleSubject.bind(this);
     this.handleBody = this.handleBody.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
+    this.validateMessage = this.validateMessage.bind(this);
+    this.validateName = this.validateName.bind(this);
   }
 
   handleName(event) {
@@ -43,19 +49,59 @@ export default class Contact extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios
-      .post("/api/contact", {
-        name: this.state.name,
-        email: this.state.email,
-        subject: this.state.subject,
-        emailBody: this.state.emailBody
-      })
-      .then(response => {
-        if (response.status === 200) {
-          this.setState({ sent: true });
-        }
-      })
-      .catch(console.log);
+    if (
+      this.validateEmail(this.state.email) &&
+      this.validateName(this.state.name) &&
+      this.validateMessage(this.state.emailBody)
+    ) {
+      axios
+        .post("/api/contact", {
+          name: this.state.name,
+          email: this.state.email,
+          subject: this.state.subject,
+          emailBody: this.state.emailBody
+        })
+        .then(response => {
+          if (response.status === 200) {
+            this.setState({ sent: true });
+          }
+        })
+        .catch(console.log);
+    }
+    if (!this.validateEmail(this.state.email)) {
+      this.setState({ emailError: "Please enter a valid email address" });
+    } else {
+      this.setState({ emailError: null });
+    }
+    if (!this.validateMessage(this.state.emailBody)) {
+      this.setState({
+        messageError: "Please enter a message longer than 20 characters"
+      });
+    } else {
+      this.setState({ messageError: null });
+    }
+    if (!this.validateName(this.state.name)) {
+      this.setState({
+        nameError: "Please enter a name"
+      });
+    } else {
+      this.setState({
+        nameError: null
+      });
+    }
+  }
+
+  validateMessage(message) {
+    return message.length > 20;
+  }
+
+  validateName(name) {
+    return name.length > 0;
+  }
+
+  validateEmail(email) {
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
   }
 
   render() {
@@ -86,6 +132,7 @@ export default class Contact extends Component {
             floatingLabelText="Your Name (required)"
             onChange={this.handleName}
             value={this.state.name}
+            errorText={this.state.nameError}
           />
           <br />
           <TextField
@@ -93,6 +140,7 @@ export default class Contact extends Component {
             floatingLabelText="Your Email (required)"
             onChange={this.handleEmail}
             value={this.state.email}
+            errorText={this.state.emailError}
           />
           <br />
           <TextField
@@ -109,6 +157,7 @@ export default class Contact extends Component {
             onChange={this.handleBody}
             value={this.state.emailBody}
             rows={1}
+            errorText={this.state.messageError}
           />
           <br />
           <br />
