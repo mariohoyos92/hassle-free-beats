@@ -78,6 +78,7 @@ export default class Contact extends Component {
       </div>
     ) : (
       <div>
+        <h1>HAVE A QUESTION? WE HAVE AN ANSWER!</h1>
         <form className="contact-form">
           <TextField
             hintText={`eg. "John Doe"`}
@@ -133,7 +134,6 @@ export default class Contact extends Component {
 
     return (
       <div className="contact-container">
-        <h1>HAVE A QUESTION? WE HAVE AN ANSWER!</h1>
         <Card className="contact-card">{cardDisplay}</Card>
       </div>
     );
