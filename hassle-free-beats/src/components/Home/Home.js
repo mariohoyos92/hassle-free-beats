@@ -8,6 +8,7 @@ import axios from "axios";
 // IMPORT COMPONENTS
 import Header from "../Header/Header";
 import MusicStore from "../MusicStore/MusicStore";
+import Testimonials from "../Testimonials/Testimonials";
 
 // IMPORT CSS
 import "./Home.css";
@@ -53,39 +54,7 @@ class Home extends Component {
             />
           </div>
         </div>
-        {
-          //  <MusicPlayer
-          //   playlist={
-          //     this.state.playlist.length > 0
-          //       ? this.state.playlist
-          //       : [
-          //           {
-          //             id: 1,
-          //             url: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/LANDR-Say+You+Want+Me+take+3.mp3`,
-          //             cover: `https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png`,
-          //             title: "Say You Want Me",
-          //             artist: ["Mario, an Organism", "Liz Ancel"]
-          //           }
-          //         ]
-          //   }
-          //   progressColor={"#96031a"}
-          // />
-          // <RaisedButton
-          //   primary={true}
-          //   labelColor={"#fbfffe"}
-          //   label={"Add To Cart"}
-          //   onClick={() => this.handleAddToCart()}
-          // />{" "}
-          // <Link to="/checkout">
-          //   <RaisedButton
-          //     primary={true}
-          //     labelColor={"#fbfffe"}
-          //     label={"CHECKOUT"}
-          //   />
-          // </Link>
-          // <Cart cart={this.state.cart} />
-        }
-        <div className="music-store">
+        <div className="music-store" id="musicStore">
           <MusicStore
             playlist={
               this.state.playlist.length > 0
@@ -105,7 +74,7 @@ class Home extends Component {
             **Vocal Tags Are Removed Automatically Upon Purchase**
           </p>
         </div>
-        <div className="licensing-card-container">
+        <div className="licensing-card-container" id="license">
           <Paper
             style={{
               height: "auto",
@@ -141,6 +110,14 @@ class Home extends Component {
             <p />
           </Paper>
         </div>
+        <div className="home-testimonials" id="testimonials">
+          <h1 className="testimonial-header">
+            {" "}
+            What Our <span style={{ color: "#FAA916" }}>Friends</span> Have To
+            Say{" "}
+          </h1>
+          <Testimonials />
+        </div>
         <div className="bottom-portion info">
           <p className="brief-information">
             Here at Hassle-Free-Beats we are focused on one thing: Maximizing
@@ -157,7 +134,7 @@ class Home extends Component {
             is for the upfront download.{" "}
           </p>
         </div>
-        <div className="faq-contact bottom-portion">
+        <div className="faq-contact  info bottom-portion">
           <span>
             If you have ANY questions at all check out our FAQ or EMAIL US
           </span>

@@ -1,6 +1,7 @@
 .faq-container {
   padding-top: 10vh;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82)),
     url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/mixing-board-2.jpeg");

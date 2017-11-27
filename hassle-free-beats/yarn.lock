@@ -6426,6 +6426,12 @@ react-router-dom@^4.2.2:
     react-router "^4.2.0"
     warning "^3.0.0"
 
+react-router-hash-link@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-router-hash-link/-/react-router-hash-link-1.1.1.tgz#7380cc7a8809243d94385924af52dc9d2c9fbaa1"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-router@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.2.0.tgz#61f7b3e3770daeb24062dae3eedef1b054155986"

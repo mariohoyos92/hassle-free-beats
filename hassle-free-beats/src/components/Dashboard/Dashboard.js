@@ -7,7 +7,7 @@ import Divider from "material-ui/Divider";
 import Checkout from "../Cart/Checkout";
 import IconButton from "material-ui/IconButton";
 import LoginButton from "../LoginButton/LoginButton";
-import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 
 // IMPORT COMPONENTS
 
@@ -71,7 +71,7 @@ class Dashboard extends Component {
             have purchased any instrumentals yet. To start creating, click the
             button below and go check out our beats!
           </p>
-          <Link to="/">
+          <Link to="/#musicStore">
             <RaisedButton label="Quality Beats This Way" primary={true} />
           </Link>
         </div>

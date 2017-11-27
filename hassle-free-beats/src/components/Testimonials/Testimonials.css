@@ -1,0 +1,25 @@
+.testimonial-container {
+  width: 100%;
+  display: flex;
+  height: auto;
+  justify-content: space-around;
+  padding: 5% 0;
+  background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/background+gradient.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.testimonial-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-right {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

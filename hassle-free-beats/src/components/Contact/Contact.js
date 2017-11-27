@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import Card from "material-ui/Card";
@@ -66,15 +66,16 @@ export default class Contact extends Component {
           <br /> {this.state.email}
           <br />
           <br /> within 12-24 hours.
+          <br />
+          <br />
+          <Link to="/#musicStore">
+            <RaisedButton
+              label="Quality Beats This Way"
+              primary={true}
+              style={{ marginBottom: "10px" }}
+            />
+          </Link>
         </p>
-        <Link to="/">
-          <RaisedButton
-            label="Return to the home page!"
-            primary={true}
-            labelColor={"#fbfffe"}
-            style={{ marginBottom: "10px" }}
-          />
-        </Link>
       </div>
     ) : (
       <div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
 
 import "../Footer/Footer.css";
 
@@ -22,12 +22,20 @@ export default Footer => {
           {" "}
           About Us{" "}
         </a>|{" "}
-        <a href="#" className="footer-link">
+        <Link
+          to="/#license"
+          className="footer-link"
+          style={{ textDecoration: "none" }}
+        >
           Hassle-Free-License{" "}
-        </a>|{" "}
-        <a href="#" className="footer-link">
-          Testimonials
-        </a>
+        </Link>|{" "}
+        <Link
+          to="/#testimonials"
+          className="footer-link"
+          style={{ textDecoration: "none" }}
+        >
+          Testimonials{" "}
+        </Link>
       </span>
     </div>
   );
