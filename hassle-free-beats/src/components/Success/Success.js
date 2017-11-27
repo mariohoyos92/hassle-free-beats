@@ -34,16 +34,23 @@ class Success extends Component {
   render() {
     const purchaseLinks = this.state.purchases.map(track => (
       <div key={track.title}>
-        <a href={track.url} download>
+        <a className="download-link" href={track.url} download>
           {track.title}
         </a>
       </div>
     ));
     return (
       <div className="success-container">
-        <div>Hello there</div>
-        <p>Please click the links below to download your beats!</p>
+        <h1 className="thank-you">THANK YOU!</h1>
+        <h2>Please click the links below to download your beats!</h2>
         <div>{purchaseLinks}</div>
+        <br />
+        <br />
+        <p style={{ textDecoration: "underline" }}>
+          {" "}
+          ** Unless you logged in before purchase you will not have access to
+          these links again, please download them NOW **
+        </p>
       </div>
     );
   }

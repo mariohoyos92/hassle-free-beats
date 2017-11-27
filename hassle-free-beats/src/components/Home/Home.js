@@ -56,6 +56,9 @@ class Home extends Component {
           </div>
         </div>
         <div className="music-store" id="musicStore">
+          <h1 style={{ color: "white", fontSize: "2.5em", fontWeight: "bold" }}>
+            BEAT STORE
+          </h1>
           <MusicStore
             playlist={
               this.state.playlist.length > 0

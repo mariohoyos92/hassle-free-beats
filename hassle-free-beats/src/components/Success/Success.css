@@ -1,3 +1,21 @@
 .success-container {
   padding-top: 10vh;
+  min-height: 80vh;
+  width: 100%;
+  height: auto;
+}
+
+.thank-you {
+  font-size: 5em;
+}
+
+.download-link {
+  font-weight: bold;
+  font-size: 2em;
+  text-decoration: none;
+  color: #96031a;
+}
+
+.download-link:hover {
+  color: #faa916;
 }
