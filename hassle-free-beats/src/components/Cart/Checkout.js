@@ -3,7 +3,7 @@ import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 import { withRouter } from "react-router-dom";
 
-import { publishableKey } from "../../frontConfig";
+
 
 const CURRENCY = "USD";
 
@@ -40,19 +40,7 @@ class Checkout extends Component {
 
   render() {
     const { name, description, amount } = this.props;
-    return (
-      <StripeCheckout
-        name={name}
-        description={description}
-        image="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png"
-        panelLabel="Buy Beats:"
-        amount={fromDollarToCent(amount)}
-        token={this.onToken(amount, description)}
-        currency={CURRENCY}
-        stripeKey={publishableKey}
-        zipCode={true}
-      />
-    );
+    return <StripeCheckout name={name} description={description} image="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png" panelLabel="Buy Beats:" amount={fromDollarToCent(amount)} token={this.onToken(amount, description)} currency={CURRENCY} stripeKey={`pk_test_3K5DAd2ifP6uTwcvSMDlskAs`} zipCode={true} />;
   }
 }
 

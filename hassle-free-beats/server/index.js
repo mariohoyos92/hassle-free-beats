@@ -24,22 +24,22 @@ const app = express();
 
 app.use(express.static(`${__dirname}/build`));
 
-const stripe = require("stripe")(secretKey);
+const stripe = require("stripe")(process.env.STRIPE_SECRET || secretKey);
 
 const mailgun = require("mailgun-js")({
-  apiKey: mailgunKey,
-  domain: mailgunDomain
+  apiKey: process.env.MAILGUN_KEY || mailgunKey,
+  domain: process.env.MAILGUN_SECRET || mailgunDomain
 });
 
 app.use(
   session({
-    secret,
+    secret: process.env.SESSION_SECRET || secret,
     resave: false,
     saveUninitialized: false
   })
 );
 
-massive(process.env.CONNECTION_STRING)
+massive(process.env.DATABASE_URL)
   .then(db => app.set("db", db))
   .catch(console.log);
 
@@ -52,9 +52,9 @@ app.use(passport.session());
 passport.use(
   new Auth0Strategy(
     {
-      domain,
-      clientID,
-      clientSecret,
+      domain: process.env.AUTH0_DOMAIN || domain,
+      clientID: process.env.AUTH0_CLIENTID || clientID,
+      clientSecret: process.env.AUTH0_CLIENTSECRET || clientSecret,
       callbackURL: "/api/login"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
