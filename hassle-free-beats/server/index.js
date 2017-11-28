@@ -22,7 +22,8 @@ const port = process.env.PORT || 3001;
 // BEGIN SERVER
 const app = express();
 
-// app.use(express.static(`__dirname/build`));
+app.use(express.static(`__dirname/build`));
+
 const stripe = require("stripe")(secretKey);
 
 const mailgun = require("mailgun-js")({
