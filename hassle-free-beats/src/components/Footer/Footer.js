@@ -18,10 +18,13 @@ export default Footer => {
           style={{ textDecoration: "none" }}
         >
           F.A.Q{" "}
-        </Link>|<a href="#" className="footer-link">
-          {" "}
+        </Link>|<Link
+          to="/about"
+          className="footer-link"
+          style={{ textDecoration: "none" }}
+        >
           About Us{" "}
-        </a>|{" "}
+        </Link>|{" "}
         <Link
           to="/#license"
           className="footer-link"

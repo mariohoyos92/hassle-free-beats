@@ -2,8 +2,8 @@ blockquote {
   font-family: Georgia, serif;
   font-size: 18px;
   font-style: italic;
-  width: 500px;
-  margin: 0.25em 0;
+  width: 80%;
+  margin: 5%;
   padding: 0.35em 40px;
   line-height: 1.45;
   position: relative;
@@ -36,5 +36,11 @@ blockquote cite:before {
   width: auto;
   height: auto;
   padding: 10px;
-  margin: 5% 0;
+  margin: 5% 5%;
 }
+
+/* @media (max-width: 637px) {
+  blockquote {
+    font-size: 0.5em;
+  }
+} */

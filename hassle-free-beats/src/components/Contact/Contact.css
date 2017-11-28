@@ -1,6 +1,7 @@
 .contact-container {
   padding-top: 10vh;
-  height: 80vh;
+  min-height: 80vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +14,8 @@
 }
 
 .contact-card {
-  width: 60%;
+  width: auto;
+  padding: 2%;
   height: auto;
   display: flex;
   flex-direction: column;

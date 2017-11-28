@@ -51,8 +51,8 @@ class Dashboard extends Component {
             <br />
             <br />
             {this.state.pastPurchases.map(track => (
-              <div className="past-purchase-link" key={track.title}>
-                <a href={track.url} download>
+              <div key={track.title}>
+                <a className="past-purchase-link" href={track.url} download>
                   {track.title}
                 </a>
               </div>

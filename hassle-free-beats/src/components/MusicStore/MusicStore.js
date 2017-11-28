@@ -236,9 +236,9 @@ class MusicStore extends Component {
               src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png"
               alt="logo"
             />
-            <p>{`Total Beats: ${playlist.length}  `}</p>
+            <p className="player-info">{`Total Beats: ${playlist.length}  `}</p>
 
-            <p>Total Plays: 2.1M </p>
+            <p className="player-info">Total Plays: 2.1M </p>
           </div>
           <div className="store-header-right">
             <span>${10 * this.state.cart.length}.00</span>

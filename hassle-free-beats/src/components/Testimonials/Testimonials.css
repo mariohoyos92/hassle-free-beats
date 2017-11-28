@@ -14,6 +14,8 @@
 .testimonial-left {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .testimonial-right {
@@ -22,4 +24,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1209px) {
+  .testimonial-container {
+    flex-direction: column;
+  }
 }

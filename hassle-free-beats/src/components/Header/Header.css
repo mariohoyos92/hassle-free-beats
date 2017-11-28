@@ -31,3 +31,37 @@
   margin-right: 3px;
   margin-bottom: 3px;
 }
+
+.hamburger {
+  visibility: hidden;
+}
+
+@media (max-width: 600px) {
+  .hamburger {
+    visibility: visible;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    font-size: 75px;
+    padding-left: 2%;
+  }
+
+  .hamburger:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  .header-button {
+    display: none;
+  }
+
+  .header-logo {
+    display: none;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}

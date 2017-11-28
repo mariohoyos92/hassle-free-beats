@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 80vh;
+  min-height: 80vh;
   background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/microphonebackground.jpg");
   background-attachment: fixed;
   background-position: center;
@@ -20,7 +20,14 @@
 
 .past-purchase-link {
   text-align: center;
+  font-weight: bold;
+  font-size: 2em;
   text-decoration: none;
+  color: #96031a;
+}
+
+.past-purchase-link:hover {
+  color: #faa916;
 }
 
 .login-paragraph {
