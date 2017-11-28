@@ -2,6 +2,9 @@
   "name": "hassle-free-beats",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "8.9.1"
+  },
   "dependencies": {
     "axios": "^0.17.0",
     "body-parser": "^1.18.2",
@@ -12,12 +15,10 @@
     "mailgun-js": "^0.13.1",
     "massive": "^4.4.0",
     "material-ui": "^0.19.4",
-    "nodemailer": "^4.4.0",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "react-responsive-music-player": "^0.2.4",
     "react-router-dom": "^4.2.2",
     "react-router-hash-link": "^1.1.1",
     "react-scripts": "1.0.17",

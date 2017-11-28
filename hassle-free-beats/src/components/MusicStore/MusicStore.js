@@ -204,7 +204,7 @@ class MusicStore extends Component {
                   ? {
                       color: "#96031A",
                       iconHoverColor: "#faa916",
-                      zIndex: "50"
+                      zIndex: "9999"
                     }
                   : { color: "#faa916" }
               }

@@ -38,6 +38,34 @@ class About extends Component {
             Check out what some of our customers have to say!
           </Link>{" "}
         </p>
+        <div className="additional-info">
+          <div className="about-us-triplet">
+            <i className="fa fa-cc-stripe triplet" aria-hidden="true" />
+            <h3 style={{ color: "#faa916" }}>Secure Payment</h3>
+            <p>
+              We use Stripe to handle our payments so that you can be sure your
+              financial information is secure
+            </p>
+          </div>
+          <div className="about-us-triplet">
+            <i className="fa fa-download triplet" aria-hidden="true" />
+            <h3 style={{ color: "#faa916" }}>Instant Download</h3>
+            <p>
+              Immediately after processing your payment you will be redirected
+              to a page with your download links so that you can begin creating
+              NOW!
+            </p>
+          </div>
+          <div className="about-us-triplet">
+            <i className="fa fa-music triplet" aria-hidden="true" />
+            <h3 style={{ color: "#faa916" }}>Quality Music</h3>
+            <p>
+              Our team of producers uses the latest in production techniques to
+              ensure that you are receiving quality instrumentals that are ready
+              for your recordings.
+            </p>
+          </div>
+        </div>
         <div className="faq-contact  info bottom-portion">
           <span>
             If you have ANY questions at all check out our{" "}

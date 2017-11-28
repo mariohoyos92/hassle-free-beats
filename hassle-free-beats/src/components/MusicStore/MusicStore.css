@@ -99,6 +99,7 @@
 
 .store-item-right {
   margin-right: 3px;
+  z-index: 999;
 }
 
 .beats-container {

@@ -8,8 +8,6 @@ import CheckoutView from "./components/CheckoutView/CheckoutView";
 import About from "./components/About/About";
 import FAQ from "./components/FAQ/FAQ";
 import Contact from "./components/Contact/Contact";
-import HassleFreeLicense from "./components/HassleFreeLicense/HassleFreeLicense";
-import Testimonials from "./components/Testimonials/Testimonials";
 
 export default (
   <Switch>
@@ -20,7 +18,5 @@ export default (
     <Route path="/about" component={About} />
     <Route path="/faq" component={FAQ} />
     <Route path="/contact" component={Contact} />
-    <Route path="/hasslefreelicense" component={HassleFreeLicense} />
-    <Route path="/testimonials" component={Testimonials} />
   </Switch>
 );

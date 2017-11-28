@@ -121,7 +121,7 @@ app.post("/api/contact", function(req, res) {
   };
 
   mailgun.messages().send(data, function(error, body) {
-    if ((body.message = "Queued. Thank you.")) {
+    if (body.message === "Queued. Thank you.") {
       res.status(200).json("message sent");
     } else {
       res.status(500).json(error);
