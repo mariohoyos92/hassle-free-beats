@@ -65,7 +65,7 @@ export default class CheckoutView extends Component {
                 </p>
               </div>
               <div className="checkout-view-cart-right">
-                <span style={{ "font-weight": "bold" }}>$10.00</span>
+                <span style={{ fontWeight: "bold" }}>$10.00</span>
               </div>
             </div>
           );
@@ -127,8 +127,8 @@ export default class CheckoutView extends Component {
             <Divider />
             <div
               style={{
-                "text-align": "right",
-                "font-weight": "bold",
+                textAlign: "right",
+                fontWeight: "bold",
                 marginBottom: "20px"
               }}
             >

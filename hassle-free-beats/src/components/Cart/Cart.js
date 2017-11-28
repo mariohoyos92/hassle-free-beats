@@ -56,7 +56,7 @@ class Cart extends Component {
                 </p>
               </div>
               <div className="cart-right">
-                <span style={{ "font-weight": "bold" }}>$10.00</span>
+                <span style={{ fontWeight: "bold" }}>$10.00</span>
               </div>
             </div>
           );
@@ -70,8 +70,8 @@ class Cart extends Component {
         <Divider />
         <div
           style={{
-            "text-align": "right",
-            "font-weight": "bold"
+            textAlign: "right",
+            fontWeight: "bold"
           }}
         >
           Total: ${this.state.cart.length * 10}.00

@@ -14,7 +14,7 @@ const cartController = require("./controllers/cart_controller");
 // CONFIG VARIABLES BELOW
 const { secret } = require("../config").session;
 const { domain, clientID, clientSecret } = require("../config").auth0;
-const { publishableKey, secretKey } = require("../config").stripe;
+const { secretKey } = require("../config").stripe;
 const { mailgunKey, mailgunDomain } = require("../config").mailgun;
 
 const port = process.env.PORT || 3001;
