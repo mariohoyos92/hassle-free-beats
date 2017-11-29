@@ -34,7 +34,7 @@ class Home extends Component {
           title: element.title
         });
       });
-      this.setState({ playlist: playlist }, () => console.log(this.state));
+      this.setState({ playlist: playlist });
     });
     axios.get("api/cart").then(response => {
       this.setState({ cart: response.data.tracks });

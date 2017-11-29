@@ -21,9 +21,7 @@ class Success extends Component {
       .get("/api/purchases")
       .then(response => {
         console.log(response);
-        this.setState({ purchases: response.data }, () =>
-          console.log(this.state)
-        );
+        this.setState({ purchases: response.data });
       })
       .catch(console.log);
   }
