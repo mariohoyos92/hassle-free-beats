@@ -1,0 +1,1 @@
+SELECT DISTINCT title, url FROM invoice INNER JOIN invoice_line ON invoice.invoice_id = invoice_line.invoice_reference_id INNER JOIN beats_untagged ON invoice_line.sold_beat = beats_untagged.beat_untagged_id WHERE customer_id = $1;
