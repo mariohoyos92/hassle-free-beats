@@ -55,7 +55,7 @@ passport.use(
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENTID,
       clientSecret: process.env.AUTH0_CLIENTSECRET,
-      callbackURL: "/api/login"
+      callbackURL: "https://www.hasslefreebeats.com/api/login"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
       app
