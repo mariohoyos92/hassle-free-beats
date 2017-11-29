@@ -24,7 +24,7 @@ class LoginButton extends Component {
 
   handleLogin() {
     if (!this.state.loggedIn) {
-      window.location.href = "http://www.hasslefreebeats/api/login";
+      window.location.href = "https://www.hasslefreebeats/api/login";
     } else {
       axios
         .get("/api/logout")
