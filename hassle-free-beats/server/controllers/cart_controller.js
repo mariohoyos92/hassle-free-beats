@@ -20,6 +20,9 @@ module.exports = {
     if (req.session.cart) {
       res.status(200).json(req.session.cart);
     }
+    else {
+      res.status(500).json("nothing in cart")
+    }
   },
   delete: (req, res, next) => {
     if (req.session.cart.tracks.indexOf(req.params.title) !== -1) {
