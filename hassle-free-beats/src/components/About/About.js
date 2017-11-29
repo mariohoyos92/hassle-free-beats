@@ -18,11 +18,11 @@ class About extends Component {
         />
         <h1>We Exist To Let You Be Creative</h1>
         <p className="about-blurb">
-          Hassle-Free-Beats, founded in 2015, was created with the vision of
-          allowing artists to channel their full creativity without worrying
-          about license terms and other legal issues. Our founders realized that
-          every time they wanted to purchase an instrumental they had to waste
-          time reading through different licensing terms and trying to find{" "}
+          Hassle-Free-Beats was created with the vision of allowing artists to
+          channel their full creativity without worrying about license terms and
+          other legal issues. Our founders realized that every time they wanted
+          to purchase an instrumental they had to waste time reading through
+          different licensing terms and trying to find{" "}
           <Link className="about-blurb-link" to="/#musicStore">
             quality beats at a reasonable price
           </Link>, so they set out to change that. Our production team enjoys

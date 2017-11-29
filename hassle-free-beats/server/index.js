@@ -157,7 +157,7 @@ app.get("/api/pastpurchases", (req, res, next) => {
 app.get("/api/purchases", (req, res, next) => {
   app
     .get("db")
-    .getPlaylist()
+    .getPurchasedTracks()
     .then(response => {
       let filter = response.filter(
         track => req.session.purchases.indexOf(track.title) !== -1

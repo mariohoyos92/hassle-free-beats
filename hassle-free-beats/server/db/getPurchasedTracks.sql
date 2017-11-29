@@ -1,1 +1,1 @@
-SELECT mp3_url FROM beats WHERE $1 = beat_title;
+SELECT * FROM beats_untagged;

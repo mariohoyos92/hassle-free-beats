@@ -203,8 +203,7 @@ class MusicStore extends Component {
                 this.state.cart.indexOf(track.title) === -1
                   ? {
                       color: "#96031A",
-                      iconHoverColor: "#faa916",
-                      zIndex: "9999"
+                      iconHoverColor: "#faa916"
                     }
                   : { color: "#faa916" }
               }
@@ -238,7 +237,7 @@ class MusicStore extends Component {
             />
             <p className="player-info">{`Total Beats: ${playlist.length}  `}</p>
 
-            <p className="player-info">Total Plays: 2.1M </p>
+            <p className="player-info">Total Plays: 1.2M </p>
           </div>
           <div className="store-header-right">
             <span>${10 * this.state.cart.length}.00</span>
