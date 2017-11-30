@@ -89,7 +89,7 @@ passport.deserializeUser((obj, done) => {
 app.get(
   "/api/login",
   passport.authenticate("auth0", {
-    successRedirect: "https://www.hasslefreebeats.com/dashboard"
+    successRedirect: "/dashboard"
   })
 );
 
@@ -253,6 +253,11 @@ app.post("/api/charge", (req, res) => {
       }
     }
   });
+});
+
+const path = require("path");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
 app.listen(port, () => {
