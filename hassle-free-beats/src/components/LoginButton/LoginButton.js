@@ -24,7 +24,7 @@ class LoginButton extends Component {
 
   handleLogin() {
     if (!this.state.loggedIn) {
-      axios.get("/login").catch(console.log);
+      axios.get("/api/login").catch(console.log);
     } else {
       axios
         .get("/api/logout")
