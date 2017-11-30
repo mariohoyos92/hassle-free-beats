@@ -55,7 +55,7 @@ passport.use(
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENTID,
       clientSecret: process.env.AUTH0_CLIENTSECRET,
-      callbackURL: "https://www.hasslefreebeats.com/api/login"
+      callbackURL: "/api/login"
     },
     function(accessToken, refreshToken, extraParams, profile, done) {
       app
@@ -122,8 +122,8 @@ app.post("/api/contact", function(req, res) {
   };
 
   mailgun.messages().send(data, function(error, body) {
-    console.log(body)
-    if (body.message === 'Queued. Thank you.') {
+    console.log(body);
+    if (body.message === "Queued. Thank you.") {
       res.status(200).json("message sent");
     } else {
       res.status(500).json(error);
