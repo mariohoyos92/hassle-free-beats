@@ -89,7 +89,7 @@ passport.deserializeUser((obj, done) => {
 app.get(
   "/api/login",
   passport.authenticate("auth0", {
-    successRedirect: "https://www.hasslefreebeats/dashboard"
+    successRedirect: "/dashboard"
   })
 );
 
