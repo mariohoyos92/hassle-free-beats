@@ -2,11 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
 import App from "./components/App/App.jsx";
-import registerServiceWorker from "./registerServiceWorker";
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -22,12 +21,11 @@ const muiTheme = getMuiTheme({
 
 ReactDOM.render(
   <div className="container">
-    <HashRouter>
+    <BrowserRouter>
       <MuiThemeProvider muiTheme={muiTheme}>
         <App />
       </MuiThemeProvider>
-    </HashRouter>
+    </BrowserRouter>
   </div>,
   document.getElementById("root")
 );
-registerServiceWorker();
