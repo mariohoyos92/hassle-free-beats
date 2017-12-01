@@ -25,8 +25,8 @@ class LoginButton extends Component {
 
   handleLogin() {
     if (!this.state.loggedIn) {
-      window.location.href = "/api/login";
-      // window.location.href = "http://localhost:3001/api/login";
+      // window.location.href = "/api/login";
+      window.location.href = "http://localhost:3001/api/login";
     } else {
       axios
         .get("/api/logout")
