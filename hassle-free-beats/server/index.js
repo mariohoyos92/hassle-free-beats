@@ -31,7 +31,7 @@ const port = process.env.PORT || 3001;
 const app = (module.exports = express());
 
 // SERVE FRONTEND
-app.use(express.static(`${__dirname}/../build`));
+// app.use(express.static(`${__dirname}/../build`));
 
 // INITIALIZE SESSION
 app.use(
@@ -77,7 +77,7 @@ passport.deserializeUser((obj, done) => {
 app.get(
   "/api/login",
   passport.authenticate("auth0", {
-    successRedirect: "https://www.hasslefreebeats.com/dashboard"
+    successRedirect: "http://localhost:3000/dashboard"
   })
 );
 app.get("/api/logstatus", authController.checkLogStatus);
