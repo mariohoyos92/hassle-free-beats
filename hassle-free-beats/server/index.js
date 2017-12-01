@@ -8,6 +8,12 @@ const Auth0Strategy = require("passport-auth0");
 
 require("dotenv").config();
 
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
+const mailgun = require("mailgun-js")({
+  apiKey: process.env.MAILGUN_KEY,
+  domain: process.env.MAILGUN_SECRET
+});
+
 // IMPORT CONTROLLERS
 const cartController = require("./controllers/cart_controller");
 
@@ -22,15 +28,10 @@ const port = process.env.PORT || 3001;
 // BEGIN SERVER
 const app = express();
 
+// SERVE FRONTEND
 app.use(express.static(`${__dirname}/../build`));
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET);
-
-const mailgun = require("mailgun-js")({
-  apiKey: process.env.MAILGUN_KEY,
-  domain: process.env.MAILGUN_SECRET
-});
-
+// INITIALIZE SESSION
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -39,6 +40,7 @@ app.use(
   })
 );
 
+// CONNECT TO DATABASE
 massive(process.env.DATABASE_URL)
   .then(db => app.set("db", db))
   .catch(console.log);
@@ -102,7 +104,7 @@ app.get("/api/logout", (req, res, next) => {
   res.redirect(200, "/");
 });
 
-// BEATS
+// GET BEATS FOR MUSIC STORE
 app.get("/api/beats", (req, res, next) => {
   app
     .get("db")
@@ -111,8 +113,7 @@ app.get("/api/beats", (req, res, next) => {
     .catch(res.status(500));
 });
 
-// CONTACT
-
+// SEND CONTACT-ME FORM EMAIL
 app.post("/api/contact", function(req, res) {
   let data = {
     from: `${req.body.name} <${req.body.email}>`,
@@ -132,7 +133,7 @@ app.post("/api/contact", function(req, res) {
   });
 });
 
-// DASHBOARD
+// USER DASHBOARD
 app.get("/api/pastpurchases", (req, res, next) => {
   if (req.session.passport) {
     app
@@ -154,7 +155,7 @@ app.get("/api/pastpurchases", (req, res, next) => {
   }
 });
 
-// SUCCESS
+// SUCCESSFUL PAYMENT PAGE
 app.get("/api/purchases", (req, res, next) => {
   app
     .get("db")
@@ -166,11 +167,6 @@ app.get("/api/purchases", (req, res, next) => {
       res.status(200).json(filter);
     })
     .catch(res.status(500));
-});
-
-// LOGINSTATUS
-app.get("/api/logstatus", (req, res, next) => {
-  res.status(200).json(req.session);
 });
 
 // CART
@@ -255,6 +251,7 @@ app.post("/api/charge", (req, res) => {
   });
 });
 
+// CATCH-ALL TO SERVE FRONT END FILES
 const path = require("path");
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/../build/index.html"));

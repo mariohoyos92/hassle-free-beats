@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import IconButton from "material-ui/IconButton";
-import axios from "axios";
 
 // IMPORT MODULES
+import axios from "axios";
+import IconButton from "material-ui/IconButton";
+import Divider from "material-ui/Divider";
 
 // IMPORT COMPONENTS
-import Divider from "material-ui/Divider";
+
 // IMPORT CSS
 import "./Cart.css";
 
@@ -20,7 +21,7 @@ class Cart extends Component {
     this.handleDeleteFromCart = this.handleDeleteFromCart.bind(this);
   }
 
-  //   LIFESTYLE FUNCTIONS
+  // LIFESTYLE FUNCTIONS
   componentDidMount() {
     axios.get("api/cart").then(response => {
       this.setState({ cart: response.data.tracks });
@@ -80,12 +81,5 @@ class Cart extends Component {
     );
   }
 }
-// MAPSTATE TO PROPS FOR REDUX
-// function mapStateToProps(state){
-//     return state
-// }
 
-// EXPORT COMPONENT
 export default Cart;
-// REDUX
-// export default connect(mapStateToProps, outputActions)();

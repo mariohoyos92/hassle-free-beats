@@ -53,14 +53,5 @@ class Success extends Component {
     );
   }
 }
-// MAPSTATE TO PROPS FOR REDUX
-// function mapStateToProps(state){
-//     return state
-// }
-
-// EXPORT COMPONENT
 
 export default Success;
-// REDUX
-
-// export default connect(mapStateToProps, outputActions)();

@@ -142,12 +142,5 @@ class Home extends Component {
     );
   }
 }
-// MAPSTATE TO PROPS FOR REDUX
-// function mapStateToProps(state){
-//     return state
-// }
 
-// EXPORT COMPONENT
 export default Home;
-// REDUX
-// export default connect(mapStateToProps, outputActions)();

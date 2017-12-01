@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import IconButton from "material-ui/IconButton";
+import Divider from "material-ui/Divider";
+import Card from "material-ui/Card";
 
 import Checkout from "../Cart/Checkout";
 import LoginButton from "../LoginButton/LoginButton";
-import Divider from "material-ui/Divider";
-import Card from "material-ui/Card";
 
 import "./CheckoutView.css";
 

@@ -6,14 +6,14 @@ import Card from "material-ui/Card";
 import Divider from "material-ui/Divider";
 import Checkout from "../Cart/Checkout";
 import IconButton from "material-ui/IconButton";
-import LoginButton from "../LoginButton/LoginButton";
 import { HashLink as Link } from "react-router-hash-link";
+import { RaisedButton } from "material-ui";
 
 // IMPORT COMPONENTS
+import LoginButton from "../LoginButton/LoginButton";
 
 // IMPORT CSS
 import "./Dashboard.css";
-import { RaisedButton } from "material-ui";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -24,7 +24,6 @@ class Dashboard extends Component {
     };
   }
   // LIFESTYLE FUNCTIONS
-
   componentDidMount() {
     axios
       .get("/api/pastpurchases")
@@ -150,14 +149,5 @@ class Dashboard extends Component {
     );
   }
 }
-// MAPSTATE TO PROPS FOR REDUX
-// function mapStateToProps(state){
-//     return state
-// }
-
-// EXPORT COMPONENT
 
 export default Dashboard;
-// REDUX
-
-// export default connect(mapStateToProps, outputActions)();

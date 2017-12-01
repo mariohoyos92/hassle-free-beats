@@ -3,9 +3,10 @@ import React, { Component } from "react";
 // IMPORT MODULES
 import { Link } from "react-router-dom";
 import FlatButton from "material-ui/FlatButton";
-import LoginButton from "../LoginButton/LoginButton";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
+
+import LoginButton from "../LoginButton/LoginButton";
 
 // IMPORT CSS
 import "./Header.css";
@@ -18,8 +19,6 @@ class Header extends Component {
     };
     this.handleDrawer = this.handleDrawer.bind(this);
   }
-  // LIFESTYLE FUNCTIONS
-
   // CUSTOM FUNCS
   handleDrawer() {
     this.setState({ open: !this.state.open });
@@ -98,12 +97,5 @@ class Header extends Component {
     );
   }
 }
-// MAPSTATE TO PROPS FOR REDUX
-// function mapStateToProps(state){
-//     return state
-// }
 
-//EXPORT COMPONENT
 export default Header;
-//REDUX
-// export default connect(mapStateToProps, outputActions)();

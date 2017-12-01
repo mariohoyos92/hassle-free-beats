@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 // IMPORT MODULES
 import { HashLink as Link } from "react-router-hash-link";
+
 // IMPORT COMPONENTS
 
 // IMPORT CSS
@@ -82,12 +83,5 @@ class About extends Component {
     );
   }
 }
-// MAPSTATE TO PROPS FOR REDUX
-// function mapStateToProps(state){
-//     return state
-// }
 
-// EXPORT COMPONENT
 export default About;
-// REDUX
-// export default connect(mapStateToProps, outputActions)();
