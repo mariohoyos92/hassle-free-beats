@@ -91,7 +91,7 @@ passport.deserializeUser((obj, done) => {
 app.get(
   "/api/login",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3001/dashboard"
+    successRedirect: "http://localhost:3000/dashboard"
   })
 );
 
@@ -252,10 +252,10 @@ app.post("/api/charge", (req, res) => {
 });
 
 // CATCH-ALL TO SERVE FRONT END FILES
-const path = require("path");
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/../build/index.html"));
-});
+// const path = require("path");
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "/../build/index.html"));
+// });
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
