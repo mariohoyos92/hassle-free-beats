@@ -5,10 +5,10 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-
+const { secretKey } = require("../config").stripe;
 require("dotenv").config();
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET);
+const stripe = require("stripe")(secretKey);
 const mailgun = require("mailgun-js")({
   apiKey: process.env.MAILGUN_KEY,
   domain: process.env.MAILGUN_SECRET
@@ -29,7 +29,7 @@ const port = process.env.PORT || 3001;
 const app = express();
 
 // SERVE FRONTEND
-app.use(express.static(`${__dirname}/../build`));
+// app.use(express.static(`${__dirname}/../build`));
 
 // INITIALIZE SESSION
 app.use(
@@ -91,7 +91,7 @@ passport.deserializeUser((obj, done) => {
 app.get(
   "/api/login",
   passport.authenticate("auth0", {
-    successRedirect: "https://www.hasslefreebeats.com/dashboard"
+    successRedirect: "http://localhost:3001/dashboard"
   })
 );
 
