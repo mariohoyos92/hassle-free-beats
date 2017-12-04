@@ -5,8 +5,9 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-
 require("dotenv").config();
+
+const port = process.env.PORT || 3001;
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const mailgun = require("mailgun-js")({
@@ -18,14 +19,6 @@ const mailgun = require("mailgun-js")({
 const cartController = require("./controllers/cart_controller");
 const authController = require("./controllers/authorization");
 const emailController = require("./controllers/email");
-
-// CONFIG VARIABLES BELOW
-// const { secret } = require("../config").session;
-// const { domain, clientID, clientSecret } = require("../config").auth0;
-// const { secretKey } = require("../config").stripe;
-// const { mailgunKey, mailgunDomain } = require("../config").mailgun;
-
-const port = process.env.PORT || 3001;
 
 // BEGIN SERVER
 const app = (module.exports = express());
