@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const { json } = require("body-parser");
 const cors = require("cors");
@@ -5,17 +6,13 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-require("dotenv").config();
-
-const port = process.env.PORT || 3001;
-
-const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const mailgun = require("mailgun-js")({
   apiKey: process.env.MAILGUN_KEY,
   domain: process.env.MAILGUN_SECRET
 });
 
 // IMPORT CONTROLLERS
+const beatsController = require('./controllers/beats_controller');
 const cartController = require("./controllers/cart_controller");
 const authController = require("./controllers/authorization");
 const emailController = require("./controllers/email");
@@ -77,16 +74,16 @@ app.get("/api/logstatus", authController.checkLogStatus);
 app.get("/api/logout", authController.logout);
 
 // GET BEATS FOR MUSIC STORE
-app.get("/api/beats", getPlaylistFromDb);
+app.get("/api/beats", beatsController.getPlaylistFromDb);
 
 // SEND CONTACT-ME FORM EMAIL
 app.post("/api/contact", emailController.contactForm);
 
 // USER DASHBOARD
-app.get("/api/pastpurchases", getPastPurchasesFromDb);
+app.get("/api/pastpurchases", beatsController.getPastPurchasesFromDb);
 
 // SUCCESSFUL PAYMENT PAGE
-app.get("/api/purchases", getNewPurchasedTracks);
+app.get("/api/purchases", beatsController.getNewPurchasedTracks);
 
 // CART
 app.get("/api/cart", cartController.get);
@@ -94,7 +91,7 @@ app.post("/api/cart", cartController.add);
 app.delete("/api/cart/:title", cartController.delete);
 
 // CHECKOUT
-app.post("/api/charge", postSaleToDbAndRedirect);
+app.post("/api/charge", beatsController.postSaleToDbAndRedirect);
 
 // CATCH-ALL TO SERVE FRONT END FILES
 const path = require("path");
@@ -102,11 +99,26 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/../build/index.html"));
 });
 
+
+
+const port = process.env.PORT || 3001;
+
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
 
-// ---------------------------------------------------------------------------Functions That Call The Database---------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+// ---------------------------------------------------------------------------Separating for Readability---------------------------------------------------------------------------------------------------------
 
 function getOrCreatUser(accessToken, refreshToken, extraParams, profile, done) {
   app
@@ -124,122 +136,4 @@ function getOrCreatUser(accessToken, refreshToken, extraParams, profile, done) {
         return done(null, response[0]);
       }
     });
-}
-
-function getPlaylistFromDb(req, res, next) {
-  app
-    .get("db")
-    .getPlaylist()
-    .then(response => res.status(200).json(response))
-    .catch(res.status(500));
-}
-
-function getPastPurchasesFromDb(req, res, next) {
-  if (req.session.passport) {
-    app
-      .get("db")
-      .getUserId([req.session.passport.user.user_id])
-      .then(response => {
-        console.log(response);
-        app
-          .get("db")
-          .getPastPurchases([response[0].id])
-          .then(beats => {
-            console.log(beats);
-            res.status(200).json(beats);
-          })
-          .catch(console.log);
-      });
-  } else {
-    res.status(200).json("User not logged in");
-  }
-}
-
-function getNewPurchasedTracks(req, res, next) {
-  app
-    .get("db")
-    .getPurchasedTracks()
-    .then(response => {
-      let filter = response.filter(
-        track => req.session.purchases.indexOf(track.title) !== -1
-      );
-      res.status(200).json(filter);
-    })
-    .catch(res.status(500));
-}
-
-function postSaleToDbAndRedirect(req, res) {
-  stripe.charges.create(req.body, (stripeErr, stripeRes) => {
-    if (stripeErr) {
-      res.status(500).send({ error: stripeErr });
-    } else {
-      req.session.paid = true;
-      req.session.purchases = req.session.cart.tracks;
-      delete req.session.cart;
-      res.redirect(200, "/success");
-
-      if (req.session.passport) {
-        app
-          .get("db")
-          .getUserId([req.session.passport.user.user_id])
-          .then(response => {
-            app
-              .get("db")
-              .createInvoiceForUser([
-                new Date(),
-                req.body.amount,
-                response[0].id
-              ])
-              .then(invoiceResponse => {
-                app
-                  .get("db")
-                  .getPlaylist()
-                  .then(response => {
-                    let filter = response.filter(
-                      track => req.session.purchases.indexOf(track.title) !== -1
-                    );
-                    filter.forEach(trackObj => {
-                      app
-                        .get("db")
-                        .createInvoiceLineForUser([
-                          invoiceResponse[0].invoice_id,
-                          trackObj.beat_id
-                        ])
-                        .then()
-                        .catch(console.log("InvoiceLine"));
-                    });
-                  })
-                  .catch(console.log("getplaylist"));
-              })
-              .catch(console.log("createInvoiceForUser"));
-          });
-      } else {
-        app
-          .get("db")
-          .createInvoiceForUser([new Date(), req.body.amount, null])
-          .then(invoiceResponse => {
-            app
-              .get("db")
-              .getPlaylist()
-              .then(response => {
-                let filter = response.filter(
-                  track => req.session.purchases.indexOf(track.title) !== -1
-                );
-                filter.forEach(trackObj => {
-                  app
-                    .get("db")
-                    .createInvoiceLineForUser([
-                      invoiceResponse[0].invoice_id,
-                      trackObj.beat_id
-                    ])
-                    .then()
-                    .catch(console.log("trackobj"));
-                });
-              })
-              .catch(console.log("getplaylist2"));
-          })
-          .catch(console.log("CreateInvoiceforUser2"));
-      }
-    }
-  });
 }
