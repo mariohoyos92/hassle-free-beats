@@ -9,7 +9,7 @@
 * React
 * Material-UI
 
-### Backend technologies
+### Back-End technologies
 
 * Node
 * Express
