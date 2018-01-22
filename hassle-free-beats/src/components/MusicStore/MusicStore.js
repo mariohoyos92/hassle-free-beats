@@ -65,7 +65,8 @@ class MusicStore extends Component {
     this.setState({ open: false });
   }
 
-  handleAddToCart(beat) {
+  handleAddToCart(beat, e) {
+    e.stopPropagation();
     if (this.state.cart.indexOf(beat) === -1) {
       axios
         .post("/api/cart", { title: beat })
@@ -210,7 +211,7 @@ class MusicStore extends Component {
               tooltip={"Add To Cart"}
               touch={true}
               tooltipPosition="bottom-left"
-              onClick={() => this.handleAddToCart(track.title)}
+              onClick={(e) => this.handleAddToCart(track.title, e)}
             />
           </div>
         </div>
