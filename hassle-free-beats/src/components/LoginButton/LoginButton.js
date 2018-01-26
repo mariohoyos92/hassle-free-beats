@@ -43,6 +43,7 @@ class LoginButton extends Component {
         labelColor={"#fbfffe"}
         label={this.state.loggedIn ? "Log Out" : "Log In"}
         onClick={() => this.handleLogin()}
+        style={{boxShadow: 0}}
       />
     );
   }

@@ -43,7 +43,9 @@
     width: 100%;
     text-align: left;
     font-size: 75px;
-    padding-left: 2%;
+    font-size: 4em;
+    padding: 3%;
+    padding-top: 4%;
   }
 
   .hamburger:hover {

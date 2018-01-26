@@ -51,7 +51,9 @@ class Header extends Component {
           containerStyle={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-around"
+            justifyContent: "flex-start",
+            paddingTop: '10%',
+            
           }}
         >
           <MenuItem onClick={this.handleDrawer}>
