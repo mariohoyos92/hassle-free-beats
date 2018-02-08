@@ -26,3 +26,14 @@
 .footer-link:hover {
   color: #faa916;
 }
+
+@media (max-width: 450px){
+  .copyright {
+    display: none;
+  }
+  .footer-container{
+    font-size: 0.8em;
+    text-align: center;
+    justify-content: center;
+  }
+}

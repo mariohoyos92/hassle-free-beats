@@ -62,6 +62,7 @@ class Home extends Component {
         labelColor={"#fbfffe"}
         label={"Shop Now"}
         onClick={() => scrollToComponent(this.Store)}
+        style={{marginBottom: "5%"}}
       />
    
         </div>

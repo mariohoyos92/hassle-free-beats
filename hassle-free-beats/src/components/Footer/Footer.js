@@ -38,7 +38,7 @@ export default Footer => {
           style={{ textDecoration: "none" }}
         >
           Testimonials{" "}
-        </Link>
+        </Link>|
       </span>
     </div>
   );
