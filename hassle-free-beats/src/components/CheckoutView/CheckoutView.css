@@ -59,4 +59,8 @@
 }
 
 @media (max-width: 450px){
+  .checkout-container {
+    flex-direction: column;
+    flex-flow: column-reverse;
+  }
 }
