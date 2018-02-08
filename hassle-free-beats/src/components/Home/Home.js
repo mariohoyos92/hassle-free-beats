@@ -38,7 +38,7 @@ class Home extends Component {
     });
     axios.get("api/cart").then(response => {
       this.setState({ cart: response.data.tracks });
-    });
+    }).catch(console.log)
   }
 
   // RENDER

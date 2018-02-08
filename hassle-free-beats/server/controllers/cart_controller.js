@@ -21,7 +21,7 @@ module.exports = {
       res.status(200).json(req.session.cart);
     }
     else {
-      res.status(500).json("nothing in cart")
+      res.status(200).json({tracks: []})
     }
   },
   delete: (req, res, next) => {

@@ -6,10 +6,10 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-const mailgun = require("mailgun-js")({
-  apiKey: process.env.MAILGUN_KEY,
-  domain: process.env.MAILGUN_SECRET
-});
+// const mailgun = require("mailgun-js")({
+//   apiKey: process.env.MAILGUN_KEY,
+//   domain: process.env.MAILGUN_SECRET
+// });
 
 // IMPORT CONTROLLERS
 const beatsController = require('./controllers/beats_controller');
