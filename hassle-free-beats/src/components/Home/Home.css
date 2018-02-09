@@ -1,6 +1,6 @@
 .splash {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/background+gradient.jpg");
 
   display: flex;
@@ -24,6 +24,30 @@
 .logo {
   /* height: auto; */
   width: 100%;
+}
+
+.call-to-action {
+  background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/background+gradient.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 50vh;
+}
+
+.call-to-action h1 {
+  margin: 0;
+  font-size: 3em;
+}
+.call-to-action h3 {
+  margin-top: 20%;
+  font-size: 2.5em;
+  padding: 0 10%;
+}
+
+.call-to-action a {
+  font-size: 1.2em;
+  text-decoration: underline;
 }
 
 .splash-subtext {
@@ -121,4 +145,30 @@
   .logo {
     height: 50%;
   }
+
+
+  .call-to-action {
+  background-image: url("https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/background+gradient.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 50vh;
+}
+
+.call-to-action h1 {
+  margin: 0;
+  font-size: 1.85em;
+}
+.call-to-action h3 {
+  margin: 60% 0;
+  font-size: 1.7em;
+  padding: 0 10%;
+
+}
+
+.call-to-action a {
+  font-size: 1em;
+  text-decoration: underline;
+}
 }

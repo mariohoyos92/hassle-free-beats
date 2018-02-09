@@ -56,15 +56,19 @@ class Home extends Component {
               alt="logo"
             />
           </div>
-          
+        </div>
+        <div className="call-to-action">
+        <h1>Sound too good to be true?</h1>
+          <a className="download-link" href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/Untagged+Mastered+Beats+Ready+For+Website/Motherland+-+Alt-Rap.mp3" download><h3>Here, have a free beat.</h3></a>
+          <h3>Easy enough, right?</h3>
+          <h3>Want to be free to create AND maximize your profits?</h3> 
           <RaisedButton
-        primary={true}
-        labelColor={"#fbfffe"}
-        label={"Shop Now"}
-        onClick={() => scrollToComponent(this.Store)}
-        style={{marginBottom: "5%"}}
-      />
-   
+            primary={true && true}
+            labelColor={"#fbfffe"}
+            label={"Shop Now"}
+            onClick={() => scrollToComponent(this.Store)}
+            style={{marginBottom: "20%"}}
+          /> 
         </div>
         <div className="music-store" id="musicStore" ref={(div) => {this.Store = div}} >
           <h1 style={{ color: "white", fontSize: "2.5em", fontWeight: "bold" }}>
@@ -93,7 +97,7 @@ class Home extends Component {
           <Paper
             style={{
               height: "auto",
-              width: "60%",
+              width: "70%",
               margin: "20",
               textAlign: "center",
               zIndex: "5",
