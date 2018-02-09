@@ -73,9 +73,12 @@ class MusicStore extends Component {
         .then(response => {
           this.setState({ cart: response.data.tracks });
         })
-        .catch(() => alert("This beat is already in your cart!"));
+        .catch((console.log));
     } else {
-      alert("This Item Is Already In Your Cart!");
+      axios
+      .delete(`/api/cart/${beat}`)
+      .then(response => this.setState({ cart: response.data.tracks }))
+      .catch(console.log);
     }
   }
 
@@ -199,7 +202,7 @@ class MusicStore extends Component {
           <div className="store-item-right">
             <span>$10.00</span>
             <IconButton
-              iconClassName="fa fa-plus-square"
+              iconClassName={this.state.cart.indexOf(track.title) === -1 ? "fa fa-plus-square" : "fa fa-minus-square"}
               iconStyle={
                 this.state.cart.indexOf(track.title) === -1
                   ? {
@@ -208,7 +211,7 @@ class MusicStore extends Component {
                     }
                   : { color: "#faa916" }
               }
-              tooltip={"Add To Cart"}
+              tooltip={this.state.cart.indexOf(track.title) === -1 ? "Add To Cart" : "Remove From Cart"}
               touch={true}
               tooltipPosition="bottom-left"
               onClick={(e) => this.handleAddToCart(track.title, e)}
