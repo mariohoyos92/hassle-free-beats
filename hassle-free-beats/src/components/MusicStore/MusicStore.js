@@ -11,6 +11,7 @@ import axios from "axios";
 import Cart from "../Cart/Cart";
 
 import "./MusicStore.css";
+import logo from './header-logo.jpg'
 
 class MusicStore extends Component {
   constructor(props) {
@@ -236,7 +237,7 @@ class MusicStore extends Component {
           <div className="store-header-left">
             <img
               className="store-logo"
-              src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png"
+              src={logo}
               alt="logo"
             />
             <p className="player-info">{`Total Beats: ${playlist.length}  `}</p>

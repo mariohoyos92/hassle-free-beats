@@ -10,6 +10,7 @@ import LoginButton from "../LoginButton/LoginButton";
 
 // IMPORT CSS
 import "./Header.css";
+import headerLogo from './header-logo.jpg'
 
 class Header extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class Header extends Component {
           <Link to="/">
             <img
               className="header-image"
-              src="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/header-logo.png"
+              src={headerLogo}
               alt="logo"
             />
           </Link>
