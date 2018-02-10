@@ -6,6 +6,7 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./components/App/App.jsx";
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 
 import "./index.css";
 
@@ -24,9 +25,11 @@ const muiTheme = getMuiTheme({
 ReactDOM.render(
   <div className="container">
     <BrowserRouter>
+    <ScrollToTop>
       <MuiThemeProvider muiTheme={muiTheme}>
         <App />
       </MuiThemeProvider>
+      </ScrollToTop>
     </BrowserRouter>
   </div>,
   document.getElementById("root")

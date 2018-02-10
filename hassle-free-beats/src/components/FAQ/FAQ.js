@@ -19,7 +19,7 @@ const FAQ = () => (
     />
     <QuestionAnswer
       question={`DO I HAVE TO PAY YOU A PERCENTAGE OF THE MONEY I EARN?`}
-      answer={`No you do not! We like to provide you with the opportunity`}
+      answer={`No you do not! We like to provide you with the opportunity to earn as much for yourself off of your creative work. All you will ever have to pay us for is the purcahse of the license.`}
     />
     <QuestionAnswer
       question={`HOW LONG DO I HAVE TO WAIT TO DOWNLOAD MY INSTRUMENTAL?`}

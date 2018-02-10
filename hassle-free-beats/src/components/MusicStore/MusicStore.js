@@ -211,7 +211,7 @@ class MusicStore extends Component {
                     }
                   : { color: "#faa916" }
               }
-              tooltip={this.state.cart.indexOf(track.title) === -1 ? "Add To Cart" : "Remove From Cart"}
+              
               touch={true}
               tooltipPosition="bottom-left"
               onClick={(e) => this.handleAddToCart(track.title, e)}
