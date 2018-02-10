@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import IconButton from "material-ui/IconButton";
-import Divider from "material-ui/Divider";
 import Dialog from "material-ui/Dialog";
 import axios from "axios";
 
 import Cart from "../Cart/Cart";
+import StoreItem from './StoreItem/StoreItem'
 
 import "./MusicStore.css";
 import logo from '../../assets/header-logo.jpg'
@@ -31,6 +31,8 @@ class MusicStore extends Component {
 
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -186,41 +188,7 @@ class MusicStore extends Component {
     };
 
     const storeItems = playlist.map(track => (
-      <div key={track.title}>
-        <div
-          className="store-item"
-          onClick={() => this.handleSelect(playlist.indexOf(track))}
-          style={{
-            backgroundColor:
-              this.state.activeMusicIndex === playlist.indexOf(track) &&
-              "#cccccc"
-          }}
-        >
-          <div className="store-item-left">
-            <p className="track-title">{track.title}</p>
-            <p className="track-genre">{track.artist}</p>
-          </div>
-          <div className="store-item-right">
-            <span>$10.00</span>
-            <IconButton
-              iconClassName={this.state.cart.indexOf(track.title) === -1 ? "fa fa-plus-square" : "fa fa-minus-square"}
-              iconStyle={
-                this.state.cart.indexOf(track.title) === -1
-                  ? {
-                      color: "#96031A",
-                      iconHoverColor: "#faa916"
-                    }
-                  : { color: "#faa916" }
-              }
-              tooltip={this.state.cart.indexOf(track.title) === -1 ? "Add To Cart" : "Remove From Cart"}
-              touch={true}
-              tooltipPosition="bottom-left"
-              onClick={(e) => this.handleAddToCart(track.title, e)}
-            />
-          </div>
-        </div>
-        <Divider />
-      </div>
+      <StoreItem track={track} playlist = {playlist} activeMusicIndex={activeMusicIndex} handleAddToCart={this.handleAddToCart} handleSelect={this.handleSelect} cart={this.state.cart} />
     ));
 
     return (
