@@ -7,7 +7,7 @@
       rgba(255, 255, 255, 0.97),
       rgba(255, 255, 255, 0.97)
     ),
-    url("./MonitoringBoard (1)-min.jpeg");
+    url("../../assets/MonitoringBoard (1)-min.jpeg");
 
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@
 
 .info {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
-    url("./MonitoringBoard (1)-min.jpeg");
+    url("../../assets/MonitoringBoard (1)-min.jpeg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

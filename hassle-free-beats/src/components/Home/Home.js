@@ -15,7 +15,7 @@ import Testimonials from "../Testimonials/Testimonials";
 
 // IMPORT CSS
 import "./Home.css";
-import splashLogo from './HassleFreeBeats (2).png'
+import splashLogo from '../../assets/HassleFreeBeats (2).png'
 class Home extends Component {
   constructor(props) {
     super(props);

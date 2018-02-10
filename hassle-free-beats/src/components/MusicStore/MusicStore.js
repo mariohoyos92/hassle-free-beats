@@ -11,7 +11,7 @@ import axios from "axios";
 import Cart from "../Cart/Cart";
 
 import "./MusicStore.css";
-import logo from './header-logo.jpg'
+import logo from '../../assets/header-logo.jpg'
 
 class MusicStore extends Component {
   constructor(props) {
@@ -212,7 +212,7 @@ class MusicStore extends Component {
                     }
                   : { color: "#faa916" }
               }
-              
+              tooltip={this.state.cart.indexOf(track.title) === -1 ? "Add To Cart" : "Remove From Cart"}
               touch={true}
               tooltipPosition="bottom-left"
               onClick={(e) => this.handleAddToCart(track.title, e)}
@@ -227,7 +227,7 @@ class MusicStore extends Component {
       <div className="store-container">
         <audio
           autoPlay={this.state.play}
-          preload="auto"
+          preload="none"
           ref={ref => {
             this.audioContainer = ref;
           }}

@@ -7,7 +7,7 @@ import { HashLink as Link } from "react-router-hash-link";
 
 // IMPORT CSS
 import "./About.css";
-import aboutLogo from './fullsizeoutput_b.jpeg'
+import aboutLogo from '../../assets/fullsizeoutput_b.jpeg'
 
 class About extends Component {
   render() {

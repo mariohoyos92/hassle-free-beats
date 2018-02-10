@@ -10,7 +10,7 @@ import LoginButton from "../LoginButton/LoginButton";
 
 // IMPORT CSS
 import "./Header.css";
-import headerLogo from './header-logo.jpg'
+import headerLogo from '../../assets/header-logo.jpg'
 
 class Header extends Component {
   constructor(props) {
