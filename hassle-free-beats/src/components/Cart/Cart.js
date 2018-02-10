@@ -57,7 +57,7 @@ class Cart extends Component {
                 </p>
               </div>
               <div className="cart-right">
-                <span style={{ fontWeight: "bold" }}>$10.00</span>
+                <span className="struck">$50.00  {"  "}</span><span style={{ fontWeight: "bold" }}>$25.00</span>
               </div>
             </div>
           );
@@ -75,7 +75,7 @@ class Cart extends Component {
             fontWeight: "bold"
           }}
         >
-          Total: ${this.state.cart.length * 10}.00
+          Total: ${this.state.cart.length * 25}.00
         </div>
       </div>
     );

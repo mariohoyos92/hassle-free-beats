@@ -64,16 +64,6 @@
   flex-direction: row;
   justify-content: space-between;
   transition: background-color 0.5s linear;
-  /* background-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(rgb(191, 191, 191)),
-    to(white)
-  );
-  background-image: -webkit-linear-gradient(top, rgb(191, 191, 191),  (white));
-  background-image: -moz-linear-gradient(top, rgb(191, 191, 191),  (white));
-  background-image: linear-gradient(to bottom, rgb(191, 191, 191),  (white)); */
   background-color: rgb(255, 255, 255);
 }
 
@@ -85,6 +75,12 @@
 
 .store-item-left {
   margin-left: 6px;
+}
+
+.struck {
+  text-decoration: #96031A line-through;
+  margin-right: 5px;
+  
 }
 
 .track-title {

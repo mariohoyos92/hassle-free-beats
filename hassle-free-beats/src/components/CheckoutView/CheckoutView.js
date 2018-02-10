@@ -65,7 +65,7 @@ export default class CheckoutView extends Component {
                 </p>
               </div>
               <div className="checkout-view-cart-right">
-                <span style={{ fontWeight: "bold" }}>$10.00</span>
+               <span className="struck">$50.00  {"  "}</span> <span style={{ fontWeight: "bold" }}>$25.00</span>
               </div>
             </div>
           );
@@ -132,12 +132,12 @@ export default class CheckoutView extends Component {
                 marginBottom: "20px"
               }}
             >
-              Total: ${this.state.cart.length * 10}.00
+              Total: ${this.state.cart.length * 25}.00
             </div>
             <Checkout
               name={"Hassle Free Beats"}
               description={"No Waiting, No Royalties, No Limits"}
-              amount={10 * this.state.cart.length}
+              amount={25 * this.state.cart.length}
             />
             <br />
             <br />
