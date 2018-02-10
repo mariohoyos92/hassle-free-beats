@@ -58,22 +58,23 @@ class Home extends Component {
           </div>
         </div>
         <div className="call-to-action">
-        <h1>Sound too good to be true?</h1>
-          <a className="download-link" href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/Untagged+Mastered+Beats+Ready+For+Website/Motherland+-+Alt-Rap.mp3" download><h3>Here, have a free beat.</h3></a>
-          <h3>Easy enough, right?</h3>
-          <h3>Want to be free to create AND maximize your profits?</h3> 
+        <h1 className="mobile">Sound too good to be true?</h1>
+          <a className="download-link mobile" href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/Untagged+Mastered+Beats+Ready+For+Website/Motherland+-+Alt-Rap.mp3" download><h3 className="mobile">Here, have a free beat.</h3></a>
+          <h3 className="mobile">Easy enough, right?</h3>
+          <h3 className="mobile">Want to be free to create AND maximize your profits?</h3> 
           <RaisedButton
             primary={true && true}
             labelColor={"#fbfffe"}
             label={"Shop Now"}
             onClick={() => scrollToComponent(this.Store)}
             style={{marginBottom: "20%"}}
-          /> 
+          />           
         </div>
         <div className="music-store" id="musicStore" ref={(div) => {this.Store = div}} >
-          <h1 style={{ color: "white", fontSize: "2.5em", fontWeight: "bold" }}>
+          <h1 className="beat-store-headers">
             BEAT STORE
           </h1>
+          <h1  className="beat-store-headers promotion">*** 50% OFF ALL BEATS FOR VALENTINE'S DAY BECAUSE WE <span style={{color: "#96031a"}} >❤</span> YOU ***</h1>
           <MusicStore
             playlist={
               this.state.playlist.length > 0

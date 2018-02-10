@@ -54,6 +54,12 @@
   width: 60%;
 }
 
+.beat-store-headers {
+  color: white;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
 .music-store {
   min-height: 100vh;
   width: 100%;
@@ -170,5 +176,14 @@
 .call-to-action a {
   font-size: 1em;
   text-decoration: underline;
+}
+
+.mobile {
+  display: none;
+}
+
+
+.promotion{
+  font-size: 1.5em;
 }
 }

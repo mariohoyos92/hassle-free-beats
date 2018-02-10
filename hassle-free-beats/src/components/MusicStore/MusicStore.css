@@ -211,6 +211,9 @@
   .track-title {
     font-size: 0.75em;
   }
+  .store-item-right {
+  font-size: 0.75em;
+}
   .currently-playing {
     font-size: 0.5em;
   }

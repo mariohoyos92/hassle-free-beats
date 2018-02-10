@@ -45,7 +45,12 @@ class About extends Component {
             <i className="fa fa-cc-stripe triplet" aria-hidden="true" />
             <h3 style={{ color: "#faa916" }}>Secure Payment</h3>
             <p>
-              We use Stripe to handle our payments so that you can be sure your
+              We use <a
+                href="https://stripe.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="about-blurb-link"
+              >Stripe</a> to handle our payments so that you can be sure your
               financial information is secure
             </p>
           </div>
