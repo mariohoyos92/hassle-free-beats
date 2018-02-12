@@ -6,6 +6,7 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
+const compression = require('compression');
 // const mailgun = require("mailgun-js")({
 //   apiKey: process.env.MAILGUN_KEY,
 //   domain: process.env.MAILGUN_SECRET
@@ -19,9 +20,10 @@ const emailController = require("./controllers/email");
 
 // BEGIN SERVER
 const app = (module.exports = express());
+app.use(compression())
 
 // SERVE FRONTEND
-app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build/`));
 
 // INITIALIZE SESSION
 app.use(
