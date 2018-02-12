@@ -69,3 +69,10 @@
   text-decoration: none;
   color: #faa916;
 }
+
+@media (max-width: 450px){
+  .additional-info {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
