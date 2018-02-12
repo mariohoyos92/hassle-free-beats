@@ -47,7 +47,7 @@ class Checkout extends Component {
         amount={fromDollarToCent(amount)}
         token={this.onToken(amount, description)}
         currency={CURRENCY}
-        stripeKey={`pk_live_UAtbgRScKq81NMYFOpua52J9`}
+        stripeKey={`pk_test_3K5DAd2ifP6uTwcvSMDlskAs`}
         zipCode={true}
       />
     );

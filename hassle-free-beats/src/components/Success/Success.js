@@ -20,7 +20,6 @@ class Success extends Component {
     axios
       .get("/api/purchases")
       .then(response => {
-        console.log(response);
         this.setState({ purchases: response.data });
       })
       .catch(console.log);

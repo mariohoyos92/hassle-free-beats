@@ -2,6 +2,8 @@ const mailgun = require("mailgun-js")({
   apiKey: process.env.MAILGUN_KEY,
   domain: process.env.MAILGUN_SECRET
 });
+
+
 module.exports = {
   contactForm: (req, res) => {
     let data = {
