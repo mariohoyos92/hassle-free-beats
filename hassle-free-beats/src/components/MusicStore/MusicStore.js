@@ -11,7 +11,7 @@ import Cart from "../Cart/Cart";
 import StoreItem from './StoreItem/StoreItem'
 
 import "./MusicStore.css";
-import logo from '../../assets/header-logo.jpg'
+import logo from '../../assets/header-logo-min.jpg'
 
 class MusicStore extends Component {
   constructor(props) {
