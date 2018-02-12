@@ -65,7 +65,8 @@ export default class CheckoutView extends Component {
                 </p>
               </div>
               <div className="checkout-view-cart-right">
-               <span className="struck">$50.00  {"  "}</span> <span style={{ fontWeight: "bold" }}>$25.00</span>
+                <span className="struck">$50.00 {"  "}</span>{" "}
+                <span style={{ fontWeight: "bold" }}>$25.00</span>
               </div>
             </div>
           );
@@ -90,7 +91,9 @@ export default class CheckoutView extends Component {
         <p className="login-paragraph">
           If you would like to be able to access the download links for this
           order and any in the future, please Login/Register using the button
-          below.
+          below. You will still have access to the download links in your email
+          for as long as you keep our email if you do not want to make an
+          account.
         </p>
         <LoginButton />
         <br />

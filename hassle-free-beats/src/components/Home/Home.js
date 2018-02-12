@@ -5,8 +5,8 @@ import Divider from "material-ui/Divider";
 import Paper from "material-ui/Paper";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import RaisedButton from 'material-ui/RaisedButton'
-import scrollToComponent from 'react-scroll-to-component';
+import RaisedButton from "material-ui/RaisedButton";
+import scrollToComponent from "react-scroll-to-component";
 
 // IMPORT COMPONENTS
 import Header from "../Header/Header";
@@ -15,7 +15,7 @@ import Testimonials from "../Testimonials/Testimonials";
 
 // IMPORT CSS
 import "./Home.css";
-import splashLogo from '../../assets/HassleFreeBeats (2).png'
+import splashLogo from "../../assets/HassleFreeBeats (2).png";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -38,9 +38,12 @@ class Home extends Component {
       });
       this.setState({ playlist: playlist });
     });
-    axios.get("api/cart").then(response => {
-      this.setState({ cart: response.data.tracks });
-    }).catch(console.log);
+    axios
+      .get("api/cart")
+      .then(response => {
+        this.setState({ cart: response.data.tracks });
+      })
+      .catch(console.log);
   }
 
   // RENDER
@@ -50,31 +53,42 @@ class Home extends Component {
         <Header />
         <div className="splash">
           <div className="splash-logo">
-            <img
-              className="logo"
-              src={splashLogo}
-              alt="logo"
-            />
+            <img className="logo" src={splashLogo} alt="logo" />
           </div>
         </div>
         <div className="call-to-action">
-        <h1 className="mobile">Sound too good to be true?</h1>
-          <a className="download-link mobile" href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/Untagged+Mastered+Beats+Ready+For+Website/Motherland+-+Alt-Rap.mp3" download><h3 className="mobile">Here, have a free beat.</h3></a>
+          <h1 className="mobile">Sound too good to be true?</h1>
+          <a
+            className="download-link mobile"
+            href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/Untagged+Mastered+Beats+Ready+For+Website/Motherland+-+Alt-Rap.mp3"
+            download
+          >
+            <h3 className="mobile">Here, have a free beat.</h3>
+          </a>
           <h3 className="mobile">Easy enough, right?</h3>
-          <h3 className="mobile">Want to be free to create AND maximize your profits?</h3> 
+          <h3 className="mobile">
+            Want to be free to create AND maximize your profits?
+          </h3>
           <RaisedButton
             primary={true && true}
             labelColor={"#fbfffe"}
             label={"Shop Now"}
             onClick={() => scrollToComponent(this.Store)}
-            style={{marginBottom: "20%"}}
-          />           
+            style={{ marginBottom: "20%" }}
+          />
         </div>
-        <div className="music-store" id="musicStore" ref={(div) => {this.Store = div}} >
-          <h1 className="beat-store-headers">
-            BEAT STORE
+        <div
+          className="music-store"
+          id="musicStore"
+          ref={div => {
+            this.Store = div;
+          }}
+        >
+          <h1 className="beat-store-headers">IMMEDIATE DELIVERY BEAT STORE</h1>
+          <h1 className="beat-store-headers promotion">
+            *** 50% OFF ALL BEATS FOR VALENTINE'S DAY BECAUSE WE{" "}
+            <span style={{ color: "#96031a" }}>❤</span> YOU ***
           </h1>
-          <h1  className="beat-store-headers promotion">*** 50% OFF ALL BEATS FOR VALENTINE'S DAY BECAUSE WE <span style={{color: "#96031a"}} >❤</span> YOU ***</h1>
           <MusicStore
             playlist={
               this.state.playlist.length > 0
@@ -91,7 +105,8 @@ class Home extends Component {
             }
           />
           <p className="vocal-tag-disclaimer">
-            **Vocal Tags Are Removed Automatically Upon Purchase**
+            **Beats Available For Download Without Vocal Tags Via Email and Via
+            Website Immediately Upon Purchase**
           </p>
         </div>
         <div className="licensing-card-container" id="license">

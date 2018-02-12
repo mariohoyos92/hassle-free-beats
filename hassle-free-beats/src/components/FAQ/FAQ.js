@@ -10,6 +10,10 @@ const FAQ = () => (
   <div className="faq-container">
     <h1 className="faq-header">WE HAVE THE ANSWERS</h1>
     <QuestionAnswer
+      question={`HOW DO I BUY A BEAT?`}
+      answer={`In our beat store, simply listen to the different available instrumentals, add the ones you like to your cart, hit the checkout button, and put in your card information through our secure payment processing portal powered by Stripe. Your beats will then be emailed to you and will be available for download immediately on the website as well.`}
+    />
+    <QuestionAnswer
       question={`DO YOUR PRODUCERS USE SAMPLES?`}
       answer={`No we do not! Our producers create entirely original instrumentals in order to ensure that you do not have to worry about clearing samples. We do not want to burden you with legal issues.`}
     />
@@ -23,7 +27,7 @@ const FAQ = () => (
     />
     <QuestionAnswer
       question={`HOW LONG DO I HAVE TO WAIT TO DOWNLOAD MY INSTRUMENTAL?`}
-      answer={`You won't have to wait at all! As soon as the payment is processed you will be redirected to a page where you can download the songs immediately.`}
+      answer={`You won't have to wait at all! As soon as the payment is processed, we will send you an email with download links and you will also be redirected to a page where you can download the songs immediately.`}
     />
     <QuestionAnswer
       question={`WHAT FORMS OF PAYMENT DO YOU ACCEPT?`}

@@ -39,14 +39,18 @@ class Success extends Component {
     return (
       <div className="success-container">
         <h1 className="thank-you">THANK YOU!</h1>
-        <h2>Please click the links below to download your beats!</h2>
+        <h2>
+          Please click the links below (or check your email) to download your
+          beats!
+        </h2>
         <div>{purchaseLinks}</div>
         <br />
         <br />
         <p style={{ textDecoration: "underline" }}>
           {" "}
           ** Unless you logged in before purchase you will not have access to
-          these links again, please download them NOW **
+          these links again, please download them NOW or wait for them to show
+          up in your inbox (check your spam folder) **
         </p>
       </div>
     );
