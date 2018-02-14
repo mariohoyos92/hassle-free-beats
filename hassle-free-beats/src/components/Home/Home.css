@@ -151,39 +151,47 @@
   .logo {
     height: 50%;
   }
-
+  .license-header {
+    font-size: 1.7em;
+  }
 
   .call-to-action {
-  background-image: url("../../assets/background gradient-min.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 50vh;
-}
+    background-image: url("../../assets/background gradient-min.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50vh;
+  }
 
-.call-to-action h1 {
-  margin: 0;
-  font-size: 1.85em;
-}
-.call-to-action h3 {
-  margin: 60% 0;
-  font-size: 1.7em;
-  padding: 0 10%;
+  .call-to-action h1 {
+    margin: 0;
+    font-size: 1.85em;
+  }
+  .call-to-action h3 {
+    margin: 60% 0;
+    font-size: 1.7em;
+    padding: 0 10%;
+  }
 
-}
+  .call-to-action a {
+    font-size: 1em;
+    text-decoration: underline;
+  }
 
-.call-to-action a {
-  font-size: 1em;
-  text-decoration: underline;
-}
+  .mobile {
+    display: none;
+  }
 
-.mobile {
-  display: none;
-}
+  .promotion {
+    font-size: 1.5em;
+  }
 
+  .testimonial-header {
+    font-size: 2em;
+  }
 
-.promotion{
-  font-size: 1.5em;
-}
+  .bottom-portion {
+    font-size: 1.5em;
+  }
 }
