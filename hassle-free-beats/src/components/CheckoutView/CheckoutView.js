@@ -119,12 +119,13 @@ export default class CheckoutView extends Component {
 
     return (
       <div className="checkout-container">
-        <div className="login-option">
+        <div className="login-option" style={{ display: "none" }}>
           <Card className="checkout-card">{loginView}</Card>
         </div>
         <div className="checkout-cart">
           <Card className="checkout-card">
             <h1> Checkout </h1>
+            <p>** Beats Will Be Sent To Provided Email **</p>
             <Divider />
             {cartViewDisplay}
             <Divider />

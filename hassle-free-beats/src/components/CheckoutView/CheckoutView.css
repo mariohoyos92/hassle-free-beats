@@ -1,8 +1,7 @@
 .checkout-container {
-  padding-top: 15vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   min-height: 80vh;
   height: auto;
@@ -11,6 +10,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-top: 10vh;
 }
 
 .login-option {
@@ -22,9 +22,11 @@
   text-align: left;
 }
 .checkout-cart {
-  padding: 10% 10%;
-  width: 80%;
+  width: 60%;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .checkout-view-cart {
@@ -49,7 +51,7 @@
   height: 1.5em;
 }
 .checkout-card {
-  width: 100%;
+  width: 75%;
   min-height: 60vh;
   height: auto;
   display: flex;
@@ -58,9 +60,22 @@
   padding: 5% 5%;
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
   .checkout-container {
     flex-direction: column;
     flex-flow: column-reverse;
+  }
+  .checkout-cart {
+    padding: 0 0;
+    width: 90%;
+    padding-bottom: 5%;
+  }
+  .checkout-card {
+    width: 100%;
+    margin-top: 10vh;
+  }
+
+  .checkout-card p {
+    font-size: 0.8em;
   }
 }

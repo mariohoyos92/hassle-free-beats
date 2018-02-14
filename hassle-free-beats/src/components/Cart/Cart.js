@@ -48,16 +48,18 @@ class Cart extends Component {
                   {track}
                   <IconButton
                     onClick={() => this.handleDeleteFromCart(track)}
-                    iconClassName="fa fa-trash"
+                    iconClassName="fa fa-trash mobile-trash"
                     iconStyle={{ iconHoverColor: "#faa916" }}
                     tooltip={"Delete From Cart"}
                     touch={true}
                     tooltipPosition="bottom-right"
+                    style={{ fontSize: "0.5em" }}
                   />
                 </p>
               </div>
               <div className="cart-right">
-                <span className="struck">$50.00  {"  "}</span><span style={{ fontWeight: "bold" }}>$25.00</span>
+                <span className="struck">$50.00 {"  "}</span>
+                <span style={{ fontWeight: "bold" }}>$25.00</span>
               </div>
             </div>
           );

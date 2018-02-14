@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 
 // IMPORT MODULES
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import Drawer from "material-ui/Drawer";
 import MenuItem from "material-ui/MenuItem";
 
-import LoginButton from "../LoginButton/LoginButton";
-
 // IMPORT CSS
 import "./Header.css";
-import headerLogo from '../../assets/header-logo-min.jpg'
+import headerLogo from "../../assets/header-logo-min.jpg";
 
 class Header extends Component {
   constructor(props) {
@@ -26,15 +26,12 @@ class Header extends Component {
   }
   // RENDER
   render() {
+    console.log(this.props);
     return (
       <div className="header">
         <div className="header-logo">
           <Link to="/">
-            <img
-              className="header-image"
-              src={headerLogo}
-              alt="logo"
-            />
+            <img className="header-image" src={headerLogo} alt="logo" />
           </Link>
         </div>
         <i
@@ -53,8 +50,7 @@ class Header extends Component {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            paddingTop: '10%',
-            
+            paddingTop: "10%"
           }}
         >
           <MenuItem onClick={this.handleDrawer}>
@@ -78,7 +74,14 @@ class Header extends Component {
             </Link>
           </MenuItem>
           <MenuItem>
-            <LoginButton />
+            <HashLink to="/#musicStore">
+              <RaisedButton
+                primary={true && true}
+                labelColor={"#fbfffe"}
+                label={"Shop Now"}
+                style={{ boxShadow: "none" }}
+              />
+            </HashLink>
           </MenuItem>
         </Drawer>
         <div className="header-button">
@@ -94,11 +97,17 @@ class Header extends Component {
           <Link to="contact">
             <FlatButton style={{ color: "white" }} label="Contact" />
           </Link>
-          <LoginButton />{" "}
+          <HashLink to="/#musicStore">
+            <RaisedButton
+              primary={true && true}
+              labelColor={"#fbfffe"}
+              label={"Shop Now"}
+            />
+          </HashLink>{" "}
         </div>
       </div>
     );
   }
 }
 
-export default Header;
+export default withRouter(Header);

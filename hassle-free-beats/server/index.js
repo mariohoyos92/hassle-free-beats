@@ -6,21 +6,21 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-const compression = require('compression');
+const compression = require("compression");
 // const mailgun = require("mailgun-js")({
 //   apiKey: process.env.MAILGUN_KEY,
 //   domain: process.env.MAILGUN_SECRET
 // });
 
 // IMPORT CONTROLLERS
-const beatsController = require('./controllers/beats_controller');
+const beatsController = require("./controllers/beats_controller");
 const cartController = require("./controllers/cart_controller");
 const authController = require("./controllers/authorization");
 const emailController = require("./controllers/email");
 
 // BEGIN SERVER
 const app = (module.exports = express());
-app.use(compression())
+app.use(compression());
 
 // SERVE FRONTEND
 app.use(express.static(`${__dirname}/../build/`));
@@ -101,24 +101,11 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/../build/index.html"));
 });
 
-
-
 const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
-
-
-
-
-
-
-
-
-
-
-
 
 // ---------------------------------------------------------------------------Separating for Readability---------------------------------------------------------------------------------------------------------
 

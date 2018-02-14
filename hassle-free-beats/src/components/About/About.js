@@ -51,7 +51,7 @@ class About extends Component {
                 Stripe
               </a>{" "}
               to handle our payments so that you can be sure your financial
-              information is secure
+              information is secure.
             </p>
           </div>
           <div className="about-us-triplet">

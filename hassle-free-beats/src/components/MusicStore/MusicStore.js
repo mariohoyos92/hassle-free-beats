@@ -8,10 +8,10 @@ import Dialog from "material-ui/Dialog";
 import axios from "axios";
 
 import Cart from "../Cart/Cart";
-import StoreItem from './StoreItem/StoreItem'
+import StoreItem from "./StoreItem/StoreItem";
 
 import "./MusicStore.css";
-import logo from '../../assets/header-logo-min.jpg'
+import logo from "../../assets/header-logo-min.jpg";
 
 class MusicStore extends Component {
   constructor(props) {
@@ -76,12 +76,12 @@ class MusicStore extends Component {
         .then(response => {
           this.setState({ cart: response.data.tracks });
         })
-        .catch((console.log));
+        .catch(console.log);
     } else {
       axios
-      .delete(`/api/cart/${beat}`)
-      .then(response => this.setState({ cart: response.data.tracks }))
-      .catch(console.log);
+        .delete(`/api/cart/${beat}`)
+        .then(response => this.setState({ cart: response.data.tracks }))
+        .catch(console.log);
     }
   }
 
@@ -188,7 +188,14 @@ class MusicStore extends Component {
     };
 
     const storeItems = playlist.map(track => (
-      <StoreItem track={track} playlist = {playlist} activeMusicIndex={activeMusicIndex} handleAddToCart={this.handleAddToCart} handleSelect={this.handleSelect} cart={this.state.cart} />
+      <StoreItem
+        track={track}
+        playlist={playlist}
+        activeMusicIndex={activeMusicIndex}
+        handleAddToCart={this.handleAddToCart}
+        handleSelect={this.handleSelect}
+        cart={this.state.cart}
+      />
     ));
 
     return (
@@ -203,11 +210,7 @@ class MusicStore extends Component {
         />
         <div className="store-header">
           <div className="store-header-left">
-            <img
-              className="store-logo"
-              src={logo}
-              alt="logo"
-            />
+            <img className="store-logo" src={logo} alt="logo" />
             <p className="player-info">{`Total Beats: ${playlist.length}  `}</p>
 
             <p className="player-info">Total Plays: 1.2M </p>
@@ -223,7 +226,7 @@ class MusicStore extends Component {
               onClick={this.handleOpen}
             />
             <Dialog
-              title="Here are the beats you've added to your cart!"
+              title="Your Cart"
               actions={[
                 <FlatButton
                   label="Continue Shopping"
@@ -231,11 +234,7 @@ class MusicStore extends Component {
                   onClick={this.handleClose}
                 />,
                 <Link to={"/checkout"}>
-                  <FlatButton
-                    label="Checkout Now"
-                    primary={true}
-                    keyboardFocused={true}
-                  />
+                  <RaisedButton label="Checkout Now" primary={true} />
                 </Link>
               ]}
               modal={true}
