@@ -1,0 +1,1 @@
+INSERT INTO email_acquisitions (submitted_email) VALUES ($1)

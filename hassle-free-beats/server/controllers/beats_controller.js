@@ -92,6 +92,11 @@ module.exports = {
                 console.log(err);
               } else {
                 console.log(info);
+                req.app
+                  .get("db")
+                  .submitUserEmail([stripeRes.source.name])
+                  .then()
+                  .catch(console.log);
               }
             });
           });
@@ -161,6 +166,29 @@ module.exports = {
             })
             .catch(console.log("CreateInvoiceforUser2"));
         }
+      }
+    });
+  },
+  sendFreeBeat: (req, res, next) => {
+    const mailOptions = {
+      from: "hasslefreebeats@gmail.com",
+      to: req.body.email,
+      subject: "Your Free Beat",
+      html:
+        "<h1>As promised, here is your free beat.</h1></br><a href='https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/Untagged+Mastered+Beats+Ready+For+Website/Ride+-+Hip+Hop.mp3' download>Ride</a></br><p>Go ahead. Take that beat. Use it. Create whatever song you want with it. Then, take your song, put in on Spotify, Youtube, SoundCloud, whatever it is you use. Make some money for your work! We won't bother you about it, we promise. That's the magic of our Hassle-Free-License. You pay us once and never worry about paying us again.</p></br><p>We at Hassle-Free-Beats wish you the best of luck in your ambitions and we hope to see you again soon.</p></br><h3>The Hassle Free Beats Team</h3>"
+    };
+
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        res.status(500);
+        console.log(err);
+      } else {
+        res.status(200).json("email sent");
+        req.app
+          .get("db")
+          .submitUserEmail([req.body.email])
+          .then()
+          .catch(console.log);
       }
     });
   }

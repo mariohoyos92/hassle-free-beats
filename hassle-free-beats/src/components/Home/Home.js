@@ -6,12 +6,13 @@ import Paper from "material-ui/Paper";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
-import scrollToComponent from "react-scroll-to-component";
+import Dialog from "material-ui/Dialog";
 
 // IMPORT COMPONENTS
 import Header from "../Header/Header";
 import MusicStore from "../MusicStore/MusicStore";
 import Testimonials from "../Testimonials/Testimonials";
+import EmailCapture from "../EmailCapture/EmailCapture";
 
 // IMPORT CSS
 import "./Home.css";
@@ -21,8 +22,10 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      playlist: []
+      playlist: [],
+      emailModalOpen: false
     };
+    this.handleEmailModalToggle = this.handleEmailModalToggle.bind(this);
   }
 
   componentDidMount() {
@@ -46,6 +49,12 @@ class Home extends Component {
       .catch(console.log);
   }
 
+  handleEmailModalToggle() {
+    this.setState({
+      emailModalOpen: !this.state.emailModalOpen
+    });
+  }
+
   // RENDER
   render() {
     return (
@@ -57,25 +66,41 @@ class Home extends Component {
           </div>
         </div>
         <div className="call-to-action">
-          <h1 className="mobile">Sound too good to be true?</h1>
-          <a
-            className="download-link mobile"
-            href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/Untagged+Mastered+Beats+Ready+For+Website/Motherland+-+Alt-Rap.mp3"
-            download
-          >
-            <h3 className="mobile">Here, have a free beat.</h3>
-          </a>
-          <h3 className="mobile">Easy enough, right?</h3>
-          <h3 className="mobile">
-            Want to be free to create AND maximize your profits?
-          </h3>
+          <h2>
+            Test Out Our Immediate Delivery By Letting Us Send You a FREE Beat
+          </h2>
           <RaisedButton
-            primary={true && true}
-            labelColor={"#fbfffe"}
-            label={"Shop Now"}
-            onClick={() => scrollToComponent(this.Store)}
-            style={{ marginBottom: "20%" }}
+            onClick={this.handleEmailModalToggle}
+            label={"Send Me a Free Beat"}
           />
+          <Dialog
+            modal={false}
+            open={this.state.emailModalOpen}
+            onRequestClose={this.handleEmailModalToggle}
+          >
+            <EmailCapture handleEmailToggle={this.handleEmailModalToggle} />
+          </Dialog>
+          {
+            //  <h1 className="mobile">Sound too good to be true?</h1>
+            // <a
+            //   className="download-link mobile"
+            //   href="https://s3.us-east-2.amazonaws.com/hassle-free-beats-untagged-audio/Untagged+Mastered+Beats+Ready+For+Website/Motherland+-+Alt-Rap.mp3"
+            //   download
+            // >
+            //   <h3 className="mobile">Here, have a free beat.</h3>
+            // </a>
+            // <h3 className="mobile">Easy enough, right?</h3>
+            // <h3 className="mobile">
+            //   Want to be free to create AND maximize your profits?
+            // </h3>
+            // <RaisedButton
+            //   primary={true && true}
+            //   labelColor={"#fbfffe"}
+            //   label={"Shop Now"}
+            //   onClick={() => scrollToComponent(this.Store)}
+            //   style={{ marginBottom: "20%" }}
+            // />
+          }
         </div>
         <div
           className="music-store"

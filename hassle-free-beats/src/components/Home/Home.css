@@ -32,12 +32,16 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 50vh;
+  min-height: 30vh;
 }
 
 .call-to-action h1 {
   margin: 0;
   font-size: 3em;
+}
+.call-to-action h2 {
+  margin: -10% 0 5% 0;
+  font-size: 2em;
 }
 .call-to-action h3 {
   margin-top: 20%;
@@ -148,6 +152,10 @@
   .splash-logo {
     width: 100%;
   }
+  .splash {
+    min-height: 60vh;
+    width: 100%;
+  }
   .logo {
     height: 50%;
   }
@@ -161,7 +169,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 50vh;
+    min-height: 30vh;
   }
 
   .call-to-action h1 {
@@ -177,6 +185,10 @@
   .call-to-action a {
     font-size: 1em;
     text-decoration: underline;
+  }
+  .call-to-action h2 {
+    margin: -50% 0 5% 0;
+    font-size: 1.2em;
   }
 
   .mobile {

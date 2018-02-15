@@ -94,6 +94,7 @@ app.delete("/api/cart/:title", cartController.delete);
 
 // CHECKOUT
 app.post("/api/charge", beatsController.postSaleToDbAndRedirect);
+app.post("/api/submitEmail", beatsController.sendFreeBeat);
 
 // CATCH-ALL TO SERVE FRONT END FILES
 const path = require("path");
