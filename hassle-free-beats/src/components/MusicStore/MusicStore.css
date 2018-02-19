@@ -220,4 +220,7 @@
   .currently-playing {
     font-size: 0.5em;
   }
+  .store-header-right {
+    width: 100%;
+  }
 }

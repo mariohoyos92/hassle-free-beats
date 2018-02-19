@@ -9,6 +9,7 @@ import axios from "axios";
 
 import Cart from "../Cart/Cart";
 import StoreItem from "./StoreItem/StoreItem";
+import Checkout from "../Cart/Checkout";
 
 import "./MusicStore.css";
 import logo from "../../assets/header-logo-min.jpg";
@@ -235,9 +236,11 @@ class MusicStore extends Component {
                   primary={true}
                   onClick={this.handleClose}
                 />,
-                <Link to={"/checkout"}>
-                  <RaisedButton label="Checkout Now" primary={true} />
-                </Link>
+                <Checkout
+                  name={"Hassle Free Beats"}
+                  description={"No Waiting, No Royalties, No Limits"}
+                  amount={10 * this.state.cart.length}
+                />
               ]}
               modal={true}
               open={this.state.open}
@@ -245,13 +248,11 @@ class MusicStore extends Component {
             >
               <Cart />
             </Dialog>
-            <Link to="/checkout">
-              <RaisedButton
-                primary={true}
-                labelColor={"#fbfffe"}
-                label={"CHECKOUT"}
-              />
-            </Link>
+            <Checkout
+              name={"Hassle Free Beats"}
+              description={"No Waiting, No Royalties, No Limits"}
+              amount={10 * this.state.cart.length}
+            />
           </div>
         </div>
         <div className="beats-container">{storeItems}</div>
