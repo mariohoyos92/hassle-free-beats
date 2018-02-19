@@ -75,7 +75,7 @@ export default class EmailCapture extends Component {
       </div>
     ) : (
       <div>
-        <h1>Please Drop A Valid Email Below!</h1>
+        <h1>Please provide a valid email.</h1>
         <form className="contact-form">
           <TextField
             style={{ width: "90%" }}

@@ -32,13 +32,15 @@ export default Footer => {
         >
           Hassle-Free-License{" "}
         </Link>|{" "}
-        <Link
-          to="/#testimonials"
-          className="footer-link"
-          style={{ textDecoration: "none" }}
-        >
-          Testimonials{" "}
-        </Link>|
+        {
+          // <Link
+          //   to="/#testimonials"
+          //   className="footer-link"
+          //   style={{ textDecoration: "none" }}
+          // >
+          //   Testimonials{" "}
+          // </Link>|
+        }
       </span>
     </div>
   );

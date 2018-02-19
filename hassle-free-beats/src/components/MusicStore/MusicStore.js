@@ -137,7 +137,9 @@ class MusicStore extends Component {
   }
 
   handleSelect(index) {
-    this._playMusic(index);
+    this.state.activeMusicIndex === index
+      ? this.handleToggle()
+      : this._playMusic(index);
   }
 
   handlePrev() {

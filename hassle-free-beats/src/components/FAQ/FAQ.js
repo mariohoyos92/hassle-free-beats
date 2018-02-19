@@ -8,7 +8,7 @@ import "./FAQ.css";
 
 const FAQ = () => (
   <div className="faq-container">
-    <h1 className="faq-header">Questions? We have the answers!</h1>
+    <h1 className="faq-header">F.A.Q.</h1>
     <QuestionAnswer
       question={`HOW DO I BUY A BEAT?`}
       answer={`In our beat store, simply listen to the different available instrumentals, add the ones you like to your cart, hit the checkout button, and put in your card information through our secure payment processing portal powered by Stripe. Your beats will then be emailed to you and will be available for download immediately on the website as well.`}

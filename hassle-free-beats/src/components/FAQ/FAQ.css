@@ -18,3 +18,9 @@
 .faq-header {
   color: white;
 }
+
+@media (max-width: 623px) {
+  .faq-container {
+    padding-top: 5vh;
+  }
+}

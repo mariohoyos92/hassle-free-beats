@@ -78,9 +78,8 @@
 }
 
 .struck {
-  text-decoration: #96031A line-through;
+  text-decoration: #96031a line-through;
   margin-right: 5px;
-  
 }
 
 .track-title {
@@ -205,6 +204,10 @@
     padding: 2px;
   }
 
+  .store-container {
+    width: 73%;
+  }
+
   .track-genre {
     font-size: 0.5em;
   }
@@ -212,8 +215,8 @@
     font-size: 0.75em;
   }
   .store-item-right {
-  font-size: 0.75em;
-}
+    font-size: 0.75em;
+  }
   .currently-playing {
     font-size: 0.5em;
   }

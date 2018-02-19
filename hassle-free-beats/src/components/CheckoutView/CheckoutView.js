@@ -127,7 +127,7 @@ export default class CheckoutView extends Component {
         <div className="checkout-cart">
           <Card className="checkout-card">
             <h1> Checkout </h1>
-            <p>** Beats Will Be Sent To Provided Email **</p>
+            <p>** Beats will be sent to provided email **</p>
             <Divider />
             {cartViewDisplay}
             <Divider />

@@ -71,6 +71,9 @@
 }
 
 @media (max-width: 450px) {
+  .about-logo {
+    width: 95%;
+  }
   .additional-info {
     flex-direction: column;
     justify-content: space-between;

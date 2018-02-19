@@ -25,3 +25,9 @@
   width: 80%;
   margin-left: 10%;
 }
+
+@media (max-width: 623px) {
+  .contact-container {
+    padding-bottom: 10vh;
+  }
+}
