@@ -125,11 +125,11 @@ export default class Contact extends Component {
       </div>
     ) : (
       <div>
-        <h1>HAVE A QUESTION? WE HAVE AN ANSWER!</h1>
+        <h1>Have a question? We have an answer!</h1>
         <form className="contact-form">
           <TextField
             hintText={`eg. "John Doe"`}
-            floatingLabelText="Your Name (required)"
+            floatingLabelText="Your Name"
             onChange={this.handleName}
             value={this.state.name}
             errorText={this.state.nameError}
@@ -137,7 +137,7 @@ export default class Contact extends Component {
           <br />
           <TextField
             hintText={`eg. "johndoe@gmail.com"`}
-            floatingLabelText="Your Email (required)"
+            floatingLabelText="Your Email"
             onChange={this.handleEmail}
             value={this.state.email}
             errorText={this.state.emailError}

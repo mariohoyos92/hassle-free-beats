@@ -14,7 +14,7 @@ class About extends Component {
     return (
       <div className="about-container">
         <img className="about-logo" src={aboutLogo} alt="logo" />
-        <h1>We Exist To Let You Be Creative</h1>
+        <h1>We exist to let you be creative</h1>
         <p className="about-blurb">
           Hassle-Free-Beats was created with the vision of allowing artists to
           channel their full creativity without worrying about complicated
@@ -32,14 +32,16 @@ class About extends Component {
           <Link className="about-blurb-link" to="/#license">
             a single non-restrictive license
           </Link>, and a quality sound.{" "}
-          <Link className="about-blurb-link" to="/#testimonials">
-            Check out what some of our customers have to say!
-          </Link>{" "}
+          {
+            // <Link className="about-blurb-link" to="/#testimonials">
+            //   Check out what some of our customers have to say!
+            // </Link>{" "}
+          }
         </p>
         <div className="additional-info">
           <div className="about-us-triplet">
             <i className="fa fa-cc-stripe triplet" aria-hidden="true" />
-            <h3 style={{ color: "#faa916" }}>Secure Payment</h3>
+            <h3>Secure Payment</h3>
             <p>
               We use{" "}
               <a
@@ -56,7 +58,7 @@ class About extends Component {
           </div>
           <div className="about-us-triplet">
             <i className="fa fa-download triplet" aria-hidden="true" />
-            <h3 style={{ color: "#faa916" }}>Instant Download</h3>
+            <h3>Instant Download</h3>
             <p>
               Immediately after processing your payment, your download links
               will be available immediately both on our website and in your
@@ -65,7 +67,7 @@ class About extends Component {
           </div>
           <div className="about-us-triplet">
             <i className="fa fa-music triplet" aria-hidden="true" />
-            <h3 style={{ color: "#faa916" }}>Quality Music</h3>
+            <h3>Quality Music</h3>
             <p>
               Our team of producers uses the latest in production techniques to
               ensure that you are receiving quality instrumentals that are ready
@@ -73,18 +75,20 @@ class About extends Component {
             </p>
           </div>
         </div>
-        <div className="faq-contact  info bottom-portion">
-          <span>
-            If you have ANY questions at all check out our{" "}
-            <Link to="/faq" className="home-bottom-link">
-              FAQ
-            </Link>{" "}
-            or{" "}
-            <Link to="/contact" className="home-bottom-link">
-              hit us up
-            </Link>!
-          </span>
-        </div>
+        {
+          // <div className="faq-contact  info bottom-portion">
+          //   <span>
+          //     If you have ANY questions at all check out our{" "}
+          //     <Link to="/faq" className="home-bottom-link">
+          //       FAQ
+          //     </Link>{" "}
+          //     or{" "}
+          //     <Link to="/contact" className="home-bottom-link">
+          //       hit us up
+          //     </Link>!
+          //   </span>
+          // </div>
+        }
       </div>
     );
   }

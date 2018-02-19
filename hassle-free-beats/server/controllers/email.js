@@ -3,7 +3,6 @@ const mailgun = require("mailgun-js")({
   domain: process.env.MAILGUN_SECRET
 });
 
-
 module.exports = {
   contactForm: (req, res) => {
     let data = {
@@ -14,7 +13,6 @@ module.exports = {
     };
 
     mailgun.messages().send(data, (error, body) => {
-      console.log(body);
       if (body.message === "Queued. Thank you.") {
         res.status(200).json("message sent");
       } else {

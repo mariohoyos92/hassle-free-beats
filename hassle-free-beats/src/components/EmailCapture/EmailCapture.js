@@ -8,7 +8,7 @@ import { HashLink as Link } from "react-router-hash-link";
 
 import "./EmailCapture.css";
 
-export default class Contact extends Component {
+export default class EmailCapture extends Component {
   constructor(props) {
     super(props);
     this.state = {

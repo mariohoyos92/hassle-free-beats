@@ -20,7 +20,7 @@
 }
 
 .about-logo {
-  width: 60%;
+  width: 80%;
 }
 
 .about-blurb {
@@ -70,7 +70,7 @@
   color: #faa916;
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
   .additional-info {
     flex-direction: column;
     justify-content: space-between;

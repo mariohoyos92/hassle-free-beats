@@ -216,7 +216,7 @@ class MusicStore extends Component {
             <p className="player-info">Total Plays: 1.2M </p>
           </div>
           <div className="store-header-right">
-            <span>${25 * this.state.cart.length}.00 (usd)</span>
+            <span>${10 * this.state.cart.length}.00 (usd)</span>
             <IconButton
               iconClassName="fa fa-shopping-cart"
               iconStyle={{ iconHoverColor: "#faa916" }}

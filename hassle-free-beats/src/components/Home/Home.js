@@ -13,6 +13,9 @@ import Header from "../Header/Header";
 import MusicStore from "../MusicStore/MusicStore";
 import Testimonials from "../Testimonials/Testimonials";
 import EmailCapture from "../EmailCapture/EmailCapture";
+import FAQ from "../FAQ/FAQ";
+import About from "../About/About";
+import Contact from "../Contact/Contact";
 
 // IMPORT CSS
 import "./Home.css";
@@ -67,11 +70,12 @@ class Home extends Component {
         </div>
         <div className="call-to-action">
           <h2>
-            Test Out Our Immediate Delivery By Letting Us Send You a FREE Beat
+            Test out our immediate delivery by letting us send you a FREE beat!
           </h2>
           <RaisedButton
             onClick={this.handleEmailModalToggle}
             label={"Send Me a Free Beat"}
+            primary={true}
           />
           <Dialog
             modal={false}
@@ -109,11 +113,13 @@ class Home extends Component {
             this.Store = div;
           }}
         >
-          <h1 className="beat-store-headers">IMMEDIATE DELIVERY BEAT STORE</h1>
-          <h1 className="beat-store-headers promotion">
-            *** 50% OFF ALL BEATS FOR VALENTINE'S DAY BECAUSE WE{" "}
-            <span style={{ color: "#96031a" }}>❤</span> YOU ***
-          </h1>
+          <h1 className="beat-store-headers">BEAT STORE</h1>
+          {
+            // <h1 className="beat-store-headers promotion">
+            //   *** 50% OFF ALL BEATS FOR VALENTINE'S DAY BECAUSE WE{" "}
+            //   <span style={{ color: "#96031a" }}>❤</span> YOU ***
+            // </h1>
+          }
           <MusicStore
             playlist={
               this.state.playlist.length > 0
@@ -130,10 +136,12 @@ class Home extends Component {
             }
           />
           <p className="vocal-tag-disclaimer">
-            **Beats Available For Download Without Vocal Tags Via Email and Via
-            Website Immediately Upon Purchase**
+            **Beats available for download without vocal tags via email and via
+            website immediately upon purchase**
           </p>
         </div>
+        <About />
+        <FAQ />
         <div className="licensing-card-container" id="license">
           <Paper
             style={{
@@ -149,7 +157,7 @@ class Home extends Component {
             }}
             zDepth={5}
           >
-            <h1 className="license-header">Hassle-Free-License</h1>
+            <h1 className="license-header">Our Hassle-Free-License</h1>
             <Divider className="license-divide" />
             <p>Mp3 (320 kbps)</p>
             <Divider className="license-divide" />
@@ -167,29 +175,30 @@ class Home extends Component {
             <Divider className="license-divide" />
             <p>UNLIMITED Total Earnings Allowed</p>
             <Divider className="license-divide" />
-            <p>INSTANT Download</p>
-            <Divider className="license-divide" />
             <p />
           </Paper>
         </div>
-        <div className="home-testimonials" id="testimonials">
-          <h1 className="testimonial-header">
-            {" "}
-            What Our <span style={{ color: "#FAA916" }}>Friends</span> Have To
-            Say{" "}
-          </h1>
-          <Testimonials />
-        </div>
+        <Contact />
+        {
+          // <div className="home-testimonials" id="testimonials">
+          //   <h1 className="testimonial-header">
+          //     {" "}
+          //     What Our <span style={{ color: "#FAA916" }}>Friends</span> Have To
+          //     Say{" "}
+          //   </h1>
+          //   <Testimonials />
+          // </div>
+        }
         <div className="bottom-portion info">
           <div className="faq-contact  info bottom-portion">
             <span>
-              If you have ANY questions at all check out our{" "}
+              Questions? Check out our{" "}
               <Link to="/faq" className="home-bottom-link">
                 FAQ
               </Link>{" "}
               or{" "}
               <Link to="/contact" className="home-bottom-link">
-                hit us up
+                contact us
               </Link>!
             </span>
           </div>
