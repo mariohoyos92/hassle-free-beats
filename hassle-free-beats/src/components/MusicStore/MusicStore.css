@@ -223,4 +223,7 @@
   .store-header-right {
     width: 100%;
   }
+  .store-header-left {
+    width: 21%;
+  }
 }

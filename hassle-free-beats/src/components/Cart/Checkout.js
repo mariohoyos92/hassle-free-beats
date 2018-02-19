@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 import { withRouter } from "react-router-dom";
+import RaisedButton from "material-ui/RaisedButton";
 
 const CURRENCY = "USD";
 const fromDollarToCent = amount => amount * 100;
@@ -49,7 +50,13 @@ class Checkout extends Component {
         currency={CURRENCY}
         stripeKey={`pk_test_3K5DAd2ifP6uTwcvSMDlskAs`}
         zipCode={true}
-      />
+      >
+        <RaisedButton
+          primary={true}
+          labelColor={"#fbfffe"}
+          label={"CHECKOUT"}
+        />
+      </StripeCheckout>
     );
   }
 }
