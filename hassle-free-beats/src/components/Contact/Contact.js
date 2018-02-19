@@ -182,7 +182,7 @@ export default class Contact extends Component {
       </div>
     );
     return (
-      <div className="contact-container">
+      <div className="contact-container" id="contact">
         <Card className="contact-card">{cardDisplay}</Card>
       </div>
     );

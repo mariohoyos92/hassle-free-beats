@@ -7,7 +7,7 @@ import QuestionAnswer from "../QuestionAnswer/QuestionAnswer";
 import "./FAQ.css";
 
 const FAQ = () => (
-  <div className="faq-container">
+  <div className="faq-container" id="faq">
     <h1 className="faq-header">F.A.Q.</h1>
     <QuestionAnswer
       question={`HOW DO I BUY A BEAT?`}
