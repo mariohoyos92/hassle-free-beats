@@ -15,7 +15,10 @@ module.exports = {
     req.app
       .get("db")
       .getPlaylist()
-      .then(response => res.status(200).json(response))
+      .then(response => {
+        res.append("Cache-Control", "max-age=86400000");
+        res.status(200).json(response);
+      })
       .catch(res.status(500));
   },
   getPastPurchasesFromDb: (req, res, next) => {

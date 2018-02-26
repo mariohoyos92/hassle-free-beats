@@ -18,10 +18,11 @@ module.exports = {
   },
   get: (req, res, next) => {
     if (req.session.cart) {
+      res.append("Cache-Control", "max-age=86400000");
       res.status(200).json(req.session.cart);
-    }
-    else {
-      res.status(200).json({tracks: []})
+    } else {
+      res.append("Cache-Control", "max-age=86400000");
+      res.status(200).json({ tracks: [] });
     }
   },
   delete: (req, res, next) => {
