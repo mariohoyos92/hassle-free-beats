@@ -8,7 +8,8 @@ export default ({
   activeMusicIndex,
   cart,
   handleSelect,
-  handleAddToCart
+  handleAddToCart,
+  mobile
 }) => {
   const { title, artist } = track;
   return (
@@ -46,8 +47,8 @@ export default ({
             }
             tooltip={
               cart.indexOf(track.title) === -1
-                ? "Add To Cart"
-                : "Remove From Cart"
+                ? !mobile && "Add To Cart"
+                : !mobile && "Remove From Cart"
             }
             touch={true}
             tooltipPosition="bottom-left"
