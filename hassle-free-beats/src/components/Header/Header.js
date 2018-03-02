@@ -72,6 +72,11 @@ class Header extends Component {
               <FlatButton style={{ color: "black" }} label="Contact" />
             </HashLink>
           </MenuItem>
+          <MenuItem onClick={this.handleDrawer}>
+            <a href="https://hasslefreebeatsblog.com" target="_blank">
+              <FlatButton style={{ color: "black" }} label="Blog" />
+            </a>
+          </MenuItem>
           <MenuItem>
             <HashLink to="/#musicStore">
               <RaisedButton
@@ -96,6 +101,9 @@ class Header extends Component {
           <HashLink to="/#contact">
             <FlatButton style={{ color: "white" }} label="Contact" />
           </HashLink>
+          <a href="https://hasslefreebeatsblog.com" target="_blank">
+            <FlatButton style={{ color: "white" }} label="Blog" />
+          </a>
           <HashLink to="/#musicStore">
             <RaisedButton
               primary={true && true}
