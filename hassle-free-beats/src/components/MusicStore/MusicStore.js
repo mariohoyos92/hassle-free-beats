@@ -264,7 +264,9 @@ class MusicStore extends Component {
             />
           </div>
         </div>
-        <div className="beats-container">{storeItems}</div>
+        <div className="beats-container" onClick={(e) => {
+          this.handleSelect(parseInt(e.target.dataset.track, 16))
+        }}>{storeItems}</div>
         <div className="player-controls">
           <div className="controls-container" />
           <i

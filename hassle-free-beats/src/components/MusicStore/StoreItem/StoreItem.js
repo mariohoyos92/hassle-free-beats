@@ -15,6 +15,7 @@ export default ({
   return (
     <div key={title}>
       <div
+      data-track={playlist.indexOf(track)}
         className="store-item"
         onClick={() => handleSelect(playlist.indexOf(track))}
         style={{
